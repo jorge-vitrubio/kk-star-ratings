@@ -15,7 +15,7 @@ use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use RegexIterator;
 
-if (! defined('ABSPATH')) {
+if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);
     exit();
 }

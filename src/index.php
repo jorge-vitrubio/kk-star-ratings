@@ -18,6 +18,8 @@ if (! defined('KK_STAR_RATINGS')) {
     exit();
 }
 
+kksr(require __DIR__.'/config.php');
+
 require_once __DIR__.'/hooks.php';
 
 register_activation_hook(kksr('file'), kksr('core.activate'));
