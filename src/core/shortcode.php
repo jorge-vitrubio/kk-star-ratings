@@ -63,14 +63,14 @@ function shortcode($attrs, string $contents, string $tag): string
         return '';
     }
 
-    $payload['readonly'] = (bool) $payload['readonly'];
-
-    try {
-        if (apply_filters(kksr('filters.validate'), null, $payload['id'], $payload['slug'], $payload) === false) {
-            throw new Exception;
+    if ($payload['readonly'] === '') {
+        try {
+            if (apply_filters(kksr('filters.validate'), null, $payload['id'], $payload['slug'], $payload) === false) {
+                throw new Exception;
+            }
+        } catch (Exception $e) {
+            $payload['readonly'] = true;
         }
-    } catch (Exception $e) {
-        $payload['readonly'] = true;
     }
 
     return response(array_filter($payload, function ($value) {
