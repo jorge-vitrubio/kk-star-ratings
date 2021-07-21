@@ -20,6 +20,9 @@ if (! defined('KK_STAR_RATINGS')) {
 
 require_once __DIR__.'/hooks.php';
 
+register_activation_hook(kksr('file'), kksr('core.activate'));
+register_deactivation_hook(kksr('file'), kksr('core.deactivate'));
+
 add_action('plugins_loaded', kksr('core.kernel'));
 
 add_action('wp_head', kksr('core.head'));
