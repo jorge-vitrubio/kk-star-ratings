@@ -19,7 +19,7 @@ if (! defined('KK_STAR_RATINGS')) {
     exit();
 }
 
-function activate(string $version, string $previous): void
+function activate(string $version, ?string $previous): void
 {
     $options = array_map(function ($key) {
         return option($key);
