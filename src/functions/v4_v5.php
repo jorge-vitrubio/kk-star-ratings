@@ -18,6 +18,16 @@ if (! defined('KK_STAR_RATINGS')) {
 
 function v4_v5(): void
 {
+    // Upgrade options
+
+    $varRegex = '/\[([\s\S]*?)\]/';
+    $varReplacement = '{$1}';
+
+    option([
+        'legend' => preg_replace($varRegex, $varReplacement, get_option('kksr_legend')),
+        'sd' => preg_replace($varRegex, $varReplacement, get_option('kksr_sd')),
+    ]);
+
     // Upgrade posts
 
     global $wpdb;
