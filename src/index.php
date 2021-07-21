@@ -25,7 +25,7 @@ require_once __DIR__.'/hooks.php';
 register_activation_hook(kksr('file'), kksr('core.activate'));
 register_deactivation_hook(kksr('file'), kksr('core.deactivate'));
 
-add_action('plugins_loaded', kksr('core.kernel'));
+add_filter('load_textdomain_mofile', kksr('core.i18n'), 10, 2);
 
 add_action('wp_head', kksr('core.head'));
 
@@ -48,3 +48,6 @@ add_action('admin_menu', kksr('core.admin'));
 
 add_action('add_meta_boxes', kksr('core.metabox'), 10, 2);
 add_action('save_post', kksr('core.save_metabox'));
+
+// Initialize
+add_action('plugins_loaded', kksr('core.kernel'));
