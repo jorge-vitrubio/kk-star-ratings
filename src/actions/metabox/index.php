@@ -12,7 +12,6 @@
 namespace Bhittani\StarRating\actions\metabox;
 
 use function Bhittani\StarRating\functions\view;
-use function kk_star_ratings as kksr;
 use WP_Post;
 
 if (! defined('KK_STAR_RATINGS')) {

@@ -31,14 +31,14 @@ if (! function_exists('Bhittani\StarRating\functions\dot')) {
     require __DIR__.'/src/functions/dot.php';
 }
 
-function kk_star_ratings($keyOrItems = null, $default = null)
+function kksr($keyOrItems = null, $default = null)
 {
     static $config;
 
     if (! $config) {
         $config = ['file' => KK_STAR_RATINGS];
 
-        return kk_star_ratings($keyOrItems, $default);
+        return kksr($keyOrItems, $default);
     }
 
     if (is_array($keyOrItems)) {

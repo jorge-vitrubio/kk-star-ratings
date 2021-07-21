@@ -12,7 +12,6 @@
 namespace Bhittani\StarRating\functions;
 
 use InvalidArgumentException;
-use function kk_star_ratings as kksr;
 
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);
@@ -26,7 +25,7 @@ function view(string $__path, array $__payload = [], string $__base = null): str
         return view($path, array_merge($__payload, $payload), $base ?: $__base);
     };
     $__dusk = kksr('functions.dusk_attr');
-    $__kksr = 'kk_star_ratings';
+    $__kksr = 'kksr';
 
     $resolve = function (string $base, string $path): string {
         if (is_file($path)) {

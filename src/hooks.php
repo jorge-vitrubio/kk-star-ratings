@@ -11,7 +11,6 @@
 
 namespace Bhittani\StarRating;
 
-use function kk_star_ratings as kksr;
 use ReflectionFunction;
 
 if (! defined('KK_STAR_RATINGS')) {

@@ -15,7 +15,6 @@ use function Bhittani\StarRating\functions\cast;
 use function Bhittani\StarRating\functions\sanitize;
 use function Bhittani\StarRating\functions\to_shortcode;
 use Exception;
-use function kk_star_ratings as kksr;
 
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);

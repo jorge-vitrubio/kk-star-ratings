@@ -13,7 +13,6 @@ namespace Bhittani\StarRating\filters;
 
 use function Bhittani\StarRating\functions\option;
 use Exception;
-use function kk_star_ratings as kksr;
 
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);
