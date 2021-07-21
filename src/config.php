@@ -9,6 +9,8 @@
  * the LICENSE file that was distributed with this source code.
  */
 
+namespace Bhittani\StarRating;
+
 use function Bhittani\StarRating\functions\autoload;
 
 if (! defined('KK_STAR_RATINGS')) {
