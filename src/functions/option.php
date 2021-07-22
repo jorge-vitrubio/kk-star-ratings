@@ -30,7 +30,7 @@ function option($keyOrOptions, $default = null, array $fallback = null)
 
     if (! is_array($keyOrOptions)) {
         [$prefix, $key] = explode_prefix($keyOrOptions);
-        $fallbackValue = $fallback[$key] ?? null;
+        $fallbackValue = find($fallback, $key);
         $value = get_option($prefix.$key, $default ?? $fallbackValue);
 
         return type_cast($value, gettype($fallbackValue));
@@ -38,7 +38,7 @@ function option($keyOrOptions, $default = null, array $fallback = null)
 
     foreach ($keyOrOptions as $key => $value) {
         [$prefix, $key] = explode_prefix($key);
-        $fallbackValue = $fallback[$key] ?? null;
+        $fallbackValue = find($fallback, $key);
         $type = gettype($fallbackValue);
         $value = type_cast($value, $type == 'boolean' ? 'integer' : $type);
         update_option($prefix.$key, $value);
