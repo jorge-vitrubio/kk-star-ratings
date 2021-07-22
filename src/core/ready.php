@@ -16,7 +16,7 @@ if (! defined('KK_STAR_RATINGS')) {
     exit();
 }
 
-function kernel()
+function ready()
 {
     do_action(kksr('actions.init'), kksr());
 }

@@ -48,4 +48,4 @@ add_action('add_meta_boxes', kksr('core.metabox'), 10, 2);
 add_action('save_post', kksr('core.save_metabox'));
 
 // Initialize
-add_action('plugins_loaded', kksr('core.kernel'));
+add_action('plugins_loaded', kksr('core.ready'));
