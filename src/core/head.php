@@ -22,10 +22,10 @@ if (! defined('KK_STAR_RATINGS')) {
 function head(): void
 {
     if (option('enable') && option('grs') && is_singular()) {
-        $best = 5;
+        $best = option('stars');
         $id = get_post_field('ID');
         $title = esc_html(get_post_field('post_title'));
-        [$count, $score] = calculate($id, 'default');
+        [$count, $score] = calculate($id, 'default', $best);
 
         if ($count && $score) {
             ob_start();
