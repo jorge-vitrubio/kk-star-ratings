@@ -25,7 +25,7 @@ function activate(): void
 
     if (! $previous) {
         do_action(kksr('actions.install'), $version);
-    } elseif (version_compare($previous, '5.0.0', '<')) {
+    } elseif (version_compare($previous, '5.0.dev', '<')) {
         do_action(kksr('actions.upgrade'), $version, $previous);
     }
 
