@@ -27,9 +27,9 @@ define('KK_STAR_RATINGS', __FILE__);
 foreach ([
     'vendor/autoload.php',
     'freemius.php',
-] as $filepath) {
-    if (file_exists($filepath)) {
-        require_once __DIR__.'/'.ltrim($filepath, '\/');
+] as $filename) {
+    if (file_exists($filepath = __DIR__.'/'.ltrim($filename, '\/'))) {
+        require_once $filepath;
     }
 }
 

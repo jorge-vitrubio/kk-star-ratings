@@ -29,7 +29,6 @@ $ns = 'Bhittani\StarRating\\';
 
 return [
     // Manifest
-    'file' => $file,
     'url' => plugin_dir_url($file),
     'path' => plugin_dir_path($file),
     'signature' => plugin_basename($file),
@@ -43,10 +42,10 @@ return [
     'nick' => 'Plugin Nick',
 ]) + [
     // Source
-    'core' => autoload($ns.'core', $src.'core'),
-    'actions' => autoload($ns.'actions', $src.'actions'),
-    'filters' => autoload($ns.'filters', $src.'filters'),
-    'functions' => autoload($ns.'functions', $src.'functions'),
+    'core' => autoload($ns.'core', $src.'core', ['index.php']),
+    'actions' => autoload($ns.'actions', $src.'actions', ['index.php']),
+    'filters' => autoload($ns.'filters', $src.'filters', ['index.php', 'admin/index.php']),
+    'functions' => autoload($ns.'functions', $src.'functions', ['index.php']),
 ] + [
     // Data
     'views' => $path.'views/',
