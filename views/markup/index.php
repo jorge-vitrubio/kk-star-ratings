@@ -1,3 +1,10 @@
+<?php
+    if (! defined('KK_STAR_RATINGS')) {
+        http_response_code(404);
+        exit();
+    }
+?>
+
 <div class="kk-star-ratings
     <?= $valign ? (' kksr-valign-'. esc_attr($valign)) : '' ?>
     <?= $align ? (' kksr-align-'. esc_attr($align)) : '' ?>

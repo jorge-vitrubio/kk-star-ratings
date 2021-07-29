@@ -17,22 +17,31 @@
 use function Bhittani\StarRating\functions\dot;
 use function Bhittani\StarRating\functions\to_shortcode;
 
-if (!defined('ABSPATH')) {
+if (! defined('ABSPATH')) {
     http_response_code(404);
     exit();
 }
 
 define('KK_STAR_RATINGS', __FILE__);
 
-if (file_exists($composer = __DIR__.'/vendor/autoload.php')) {
-    require_once $composer;
+foreach ([
+    'vendor/autoload.php',
+    'freemius.php',
+] as $filepath) {
+    if (file_exists($filepath)) {
+        require_once __DIR__.'/'.ltrim($filepath, '\/');
+    }
 }
 
-if (! function_exists('Bhittani\StarRating\functions\dot')) {
-    require __DIR__.'/src/functions/dot.php';
+foreach ([
+    'Bhittani\StarRating\functions\dot' => 'src/functions/dot.php',
+] as $fn => $filepath) {
+    if (! function_exists($fn)) {
+        require_once __DIR__.'/'.ltrim($filepath, '\/');
+    }
 }
 
-/** @param null|string|array $keyOrItems */
+/** @param string|array|null $keyOrItems */
 function kksr($keyOrItems = null, $default = null)
 {
     static $config;
@@ -56,7 +65,7 @@ function kksr($keyOrItems = null, $default = null)
     return $config;
 }
 
-/** @param null|int|string|array|object|WP_POST $idOrPostOrPayload */
+/** @param int|string|array|object|WP_POST|null $idOrPostOrPayload */
 function kk_star_ratings($idOrPostOrPayload = null): string
 {
     $payload = [];

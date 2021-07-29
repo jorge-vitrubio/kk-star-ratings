@@ -29,6 +29,7 @@ $ns = 'Bhittani\StarRating\\';
 
 return [
     // Manifest
+    'file' => $file,
     'url' => plugin_dir_url($file),
     'path' => plugin_dir_path($file),
     'signature' => plugin_basename($file),

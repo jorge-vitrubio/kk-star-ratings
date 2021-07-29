@@ -32,7 +32,7 @@ kk Star Ratings - A WordPress Plugin
 
 kk Star Ratings allows blog visitors to involve and interact more effectively with your website by rating posts.
 
-This plugin has been renewed from the ground up as of v4.
+This plugin has been renewed from the ground up as of v5.
 
 <!-- only:github/ -->
 **Table of contents**
@@ -86,11 +86,7 @@ kk Star Ratings is a widely used star rating plugin for wordpress. Here are some
 
   - Customize position within the post content.
 
-  - Adjust the number of stars.
-
   - Adjust the amount of stars.
-
-  - Adjust the colors of the stars.
   
 - And much more...
 
@@ -136,13 +132,13 @@ kk Star Ratings is a widely used star rating plugin for wordpress. Here are some
 Please have patience as we have no control over how google or any search engine indexes your pages. It might take some days or even weeks for the robots to crawl the ratings.
 
 <!-- only:wp>
-= I have been using a verion of this plugin prior to v3. Is it safe for me to update? =
+= I have been using a verion of this plugin prior to v4. Is it safe for me to update? =
 </only:wp -->
 <!-- only:github/ -->
-> I have been using a verion of this plugin prior to v3. Is it safe for me to update?
+> I have been using a verion of this plugin prior to v4. Is it safe for me to update?
 <!-- /only:github -->
 
-All previous ratings and options will be preserved. However, since v3 has been renewed from scratch, we do not support downgrading to v2 after upgrading to v3.
+All previous ratings and options will be preserved. However, since v5 has been renewed from scratch, we do not support downgrading after upgrading to v5.
 
 <!-- only:wp>
 = I found a bug or want to contribute. =
@@ -162,9 +158,12 @@ The source of this plugin is located at [Github](https://github.com/kamalkhan/kk
 <!-- only:wp>
 == Changelog ==
 
-= 4.x =
+= 5.x =
 
 - [View Changelog](https://github.com/kamalkhan/kk-star-ratings/blob/master/CHANGELOG.md)
+
+= 4.x =
+[Archived](https://github.com/kamalkhan/kk-star-ratings/blob/master/.github/CHANGELOG-v4.md)
 
 = 3.x =
 [Archived](https://github.com/kamalkhan/kk-star-ratings/blob/master/.github/CHANGELOG-v3.md)
@@ -179,6 +178,9 @@ The source of this plugin is located at [Github](https://github.com/kamalkhan/kk
 <!-- only:wp>
 == Upgrade Notice ==
 
+= 5.x =
+All previous ratings and options will be preserved. However, since v5 has been renewed from scratch, we do not support downgrading.
+
 = 4.x =
 It is seamless to upgrade from v3 to v4.
 
@@ -191,41 +193,13 @@ All previous ratings and options will be preserved. However, since v3 has been r
 
 Please see the [CHANGELOG](CHANGELOG.md) for more information on what has changed.
 
+[Version 4.x](.github/CHANGELOG-v4.md) has been *archived* as of July 2021.
+
 [Version 3.x](.github/CHANGELOG-v3.md) has been *archived* as of October 2019.
 
 [Version 2.x](.github/CHANGELOG-v2.md) has been *archived* as of July 2019.
 
 [Version 1.x](.github/CHANGELOG-v1.md) has been *archived* as of March 2016.
-
-<!-- ## i18n
-
-```bash
-npm install
-npm run i18n
-```
-
-or
-
-```bash
-yarn
-yarn i18n
-```
-
-## Testing
-
-You may clone this repository for development and test purposes.
-
-```bash
-git clone https://github.com/kamalkhan/kk-star-ratings
-
-cd kk-star-ratings
-
-composer install
-
-composer install-test-suite
-
-composer test
-``` -->
 
 ## Contributing
 
