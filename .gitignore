@@ -11,5 +11,7 @@
 TODO.md
 
 # Temp
+/composer.json
+/composer.lock
 /tests
 /phpunit.xml.dist
