@@ -8,4 +8,4 @@
 /.editorconfig export-ignore
 /.gitattributes export-ignore
 /phpunit.xml.dist export-ignore
-/.php_cs_fixer.php export-ignore
+/.php-cs-fixer.php export-ignore
