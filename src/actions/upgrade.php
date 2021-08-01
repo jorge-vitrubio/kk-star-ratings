@@ -21,7 +21,7 @@ if (! defined('KK_STAR_RATINGS')) {
 
 function upgrade(string $version, string $previous): void
 {
-    if (version_compare($previous, '5.0.0', '<')) {
+    if (version_compare($previous, '5.0.dev', '<')) {
         if (version_compare($previous, '4.0.0', '>=')) {
             v4_v5();
         } elseif (version_compare($previous, '3.0.1', '>=')) {
