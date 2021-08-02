@@ -40,6 +40,8 @@ function autoload(string $namespace, string $path, array $excludes = [], int $de
 
         $name = substr($filename, 0, -4);
         $function = $namespace.'\\'.preg_replace('/[\/\\\]/', '\\', $name);
+        // Replace non alphanumerics and backslashes with underscores.
+        $function = preg_replace('/([^a-zA-Z0-9\\\]+?)/', '_', $function);
 
         if (! function_exists($function)) {
             require_once $filepath;
