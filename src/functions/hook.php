@@ -9,19 +9,20 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace Bhittani\StarRating;
+namespace Bhittani\StarRating\functions;
 
-use function Bhittani\StarRating\functions\hook;
+use ReflectionFunction;
 
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);
     exit();
 }
 
-foreach (kksr('actions') as $fn) {
-    hook('action', $fn, $fn);
-}
+function hook(string $type, string $tag, string $fn): bool
+{
+    if (! function_exists($fn)) {
+        return false;
+    }
 
-foreach (kksr('filters') as $fn) {
-    hook('filter', $fn, $fn);
+    return ('add_'.$type)($tag, $fn, 9, (new ReflectionFunction($fn))->getNumberOfParameters());
 }
