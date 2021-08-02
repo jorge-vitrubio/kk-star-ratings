@@ -1,4 +1,9 @@
 <?php
+    if (! defined('KK_STAR_RATINGS')) {
+        http_response_code(404);
+        exit();
+    }
+
     $gap = $get('gap');
     $greet = $get('greet');
     $legend = $get('legend');

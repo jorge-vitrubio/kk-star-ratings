@@ -5,6 +5,13 @@
     }
 ?>
 
+<?php
+    if (! defined('KK_STAR_RATINGS')) {
+        http_response_code(404);
+        exit();
+    }
+?>
+
 <div>
     <!-- Github -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
