@@ -19,7 +19,7 @@ if (! defined('KK_STAR_RATINGS')) {
 }
 
 if (! function_exists('Bhittani\StarRating\functions\autoload')) {
-    require __DIR__.'/functions/autoload.php';
+    require_once __DIR__.'/functions/autoload.php';
 }
 
 $file = KK_STAR_RATINGS;
