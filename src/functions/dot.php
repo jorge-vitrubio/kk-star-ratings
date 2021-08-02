@@ -16,9 +16,34 @@ if (! defined('KK_STAR_RATINGS')) {
     exit();
 }
 
-/** Access items using dot notation */
-function dot(array $items, string $key, $default = null)
+/**
+ * Get or set items using dot notation.
+ *
+ * @param int|string|array $keyOrItems
+ * @param mixed|null $default
+ */
+function dot(array $items, $keyOrItems, $default = null)
 {
+    if (is_array($keyOrItems)) {
+        foreach ($keyOrItems as $key => $value) {
+            $parts = explode('.', $key, 2);
+            $head = array_shift($parts);
+            $tail = array_shift($parts);
+
+            if (! $tail) {
+                $items[$head] = $value;
+
+                continue;
+            }
+
+            $items[$head] = dot((array) ($items[$head] ?? []), [$tail => $value]);
+        }
+
+        return $items;
+    }
+
+    $key = $keyOrItems;
+
     $parts = explode('.', $key, 2);
     $head = array_shift($parts);
     $tail = array_shift($parts);
@@ -27,5 +52,5 @@ function dot(array $items, string $key, $default = null)
         return $items[$head] ?? $default;
     }
 
-    return dot((array) $items[$head] ?? [], $tail, $default);
+    return dot((array) ($items[$head] ?? []), $tail, $default);
 }
