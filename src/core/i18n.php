@@ -18,11 +18,11 @@ if (! defined('KK_STAR_RATINGS')) {
 
 function i18n($mofile, $domain)
 {
-    if ($domain !== 'kk-star-ratings' || strpos($mofile, WP_LANG_DIR.'/plugins/') !== false) {
+    if ($domain !== kksr('domain') || strpos($mofile, WP_LANG_DIR.'/plugins/') !== false) {
         return $mofile;
     }
 
     $locale = apply_filters('plugin_locale', determine_locale(), $domain);
 
-    return WP_PLUGIN_DIR.'/'.dirname(kksr('signature')).'/languages/'.$domain.'-'.$locale.'.mo';
+    return kksr('path').'languages/'.$domain.'-'.$locale.'.mo';
 }
