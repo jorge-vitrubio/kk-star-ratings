@@ -53,9 +53,7 @@ function kksr($keyOrItems = null, $default = null)
     }
 
     if (is_array($keyOrItems)) {
-        $config = array_merge($config, $keyOrItems);
-
-        return $config;
+        return $config = dot($config, $keyOrItems);
     }
 
     if (! is_null($keyOrItems)) {
