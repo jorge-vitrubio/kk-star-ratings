@@ -36,16 +36,17 @@ return [
     // Metadata
     'author' => 'Author',
     'author_url' => 'Author URI',
-    'version' => 'Version',
+    'domain' => 'Text Domain',
     'name' => 'Plugin Name',
-    'slug' => 'Plugin Slug',
     'nick' => 'Plugin Nick',
+    'slug' => 'Plugin Slug',
+    'version' => 'Version',
 ]) + [
     // Source
-    'core' => autoload($ns.'core', $src.'core', ['index.php']),
-    'actions' => autoload($ns.'actions', $src.'actions', ['index.php']),
-    'filters' => autoload($ns.'filters', $src.'filters', ['index.php', 'admin/index.php']),
-    'functions' => autoload($ns.'functions', $src.'functions', ['index.php']),
+    'actions' => autoload($ns.'actions', $src.'actions'),
+    'core' => autoload($ns.'core', $src.'core'),
+    'filters' => autoload($ns.'filters', $src.'filters'),
+    'functions' => autoload($ns.'functions', $src.'functions'),
 ] + [
     // Data
     'views' => $path.'views/',
