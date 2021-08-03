@@ -19,9 +19,9 @@ if (! defined('KK_STAR_RATINGS')) {
 }
 
 foreach (kksr('actions') as $fn) {
-    hook('action', $fn, $fn);
+    hook('action', $fn, $fn, 9);
 }
 
 foreach (kksr('filters') as $fn) {
-    hook('filter', $fn, $fn);
+    hook('filter', $fn, $fn, 9);
 }
