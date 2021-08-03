@@ -20,7 +20,8 @@ if (! defined('KK_STAR_RATINGS')) {
 
 function wp_enqueue_scripts(): void
 {
-    action('style');
+    $isDebugMode = defined('WP_DEBUG') && WP_DEBUG;
 
-    action('script');
+    action('style', $isDebugMode);
+    action('script', $isDebugMode);
 }

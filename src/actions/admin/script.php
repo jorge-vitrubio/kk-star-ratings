@@ -16,6 +16,6 @@ if (! defined('KK_STAR_RATINGS')) {
     exit();
 }
 
-function script(): void
+function script(bool $isDebugMode = false): void
 {
 }

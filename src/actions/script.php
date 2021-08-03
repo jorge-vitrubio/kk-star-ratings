@@ -16,10 +16,8 @@ if (! defined('KK_STAR_RATINGS')) {
     exit();
 }
 
-function script(): void
+function script(bool $isDebugMode = false): void
 {
-    $isDebugMode = defined('WP_DEBUG') && WP_DEBUG;
-
     wp_enqueue_script(
         kksr('slug'),
         kksr('url').'public/js/kk-star-ratings'
