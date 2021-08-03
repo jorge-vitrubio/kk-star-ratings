@@ -24,5 +24,15 @@ function hook(string $type, string $tag, string $fn): bool
         return false;
     }
 
-    return ('add_'.$type)($tag, $fn, 9, (new ReflectionFunction($fn))->getNumberOfParameters());
+    $params = [$tag, $fn, 9, (new ReflectionFunction($fn))->getNumberOfParameters()];
+
+    if ($type == 'action') {
+        return add_action(...$params);
+    }
+
+    if ($type == 'filter') {
+        return add_filter(...$params);
+    }
+
+    return false;
 }

@@ -11,6 +11,7 @@
 
 namespace Bhittani\StarRating\actions;
 
+use function Bhittani\StarRating\functions\filter;
 use function Bhittani\StarRating\functions\post_meta;
 
 if (! defined('KK_STAR_RATINGS')) {
@@ -20,8 +21,8 @@ if (! defined('KK_STAR_RATINGS')) {
 
 function save(float $outOf5, int $id, string $slug, array $payload): void
 {
-    $count = (int) apply_filters(kksr('filters.count'), null, $id, $slug);
-    $ratings = (float) apply_filters(kksr('filters.ratings'), null, $id, $slug);
+    $count = (int) filter('count', null, $id, $slug);
+    $ratings = (float) filter('ratings', null, $id, $slug);
 
     // For safe keeping, ensure we have not already casted this vote.
     if ($count == ((int) $payload['count'] ?? 0)
@@ -30,7 +31,7 @@ function save(float $outOf5, int $id, string $slug, array $payload): void
         $newCount = $count + 1;
         $newRatings = $ratings + $outOf5;
 
-        $fingerprint = apply_filters(kksr('filters.fingerprint'), null, $id, $slug);
+        $fingerprint = filter('fingerprint', null, $id, $slug);
 
         post_meta($id, [
             "count_{$slug}" => $newCount,

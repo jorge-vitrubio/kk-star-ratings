@@ -9,18 +9,16 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace Bhittani\StarRating\core;
-
-use function Bhittani\StarRating\functions\action;
+namespace Bhittani\StarRating\functions;
 
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);
     exit();
 }
 
-function assets(): void
+function filter(string $tag, ...$args)
 {
-    action('style');
+    $tag = strpos($tag, '/') === 0 ? substr($tag, 1) : kksr('filters.'.$tag);
 
-    action('script');
+    return apply_filters($tag, ...$args);
 }

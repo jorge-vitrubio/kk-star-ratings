@@ -11,6 +11,7 @@
 
 namespace Bhittani\StarRating\core;
 
+use function Bhittani\StarRating\functions\action;
 use function Bhittani\StarRating\functions\calculate;
 use function Bhittani\StarRating\functions\option;
 
@@ -29,7 +30,7 @@ function head(): void
 
         if ($count && $score) {
             ob_start();
-            do_action(kksr('actions.sd'), compact('id', 'best', 'title', 'count', 'score'));
+            action('sd', compact('id', 'best', 'title', 'count', 'score'));
             echo ob_get_clean();
         }
     }

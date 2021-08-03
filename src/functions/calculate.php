@@ -18,11 +18,11 @@ if (! defined('KK_STAR_RATINGS')) {
 
 function calculate(int $id, string $slug, int $best = 5): array
 {
-    $count = (int) apply_filters(kksr('filters.count'), null, $id, $slug);
-    $ratings = (float) apply_filters(kksr('filters.ratings'), null, $id, $slug);
+    $count = (int) filter('count', null, $id, $slug);
+    $ratings = (float) filter('ratings', null, $id, $slug);
     $score = $count ? ($ratings / $count) : 0;
     $score = (float) min(max(0, cast($score, $best)), $best);
-    $score = apply_filters(kksr('filters.score'), $score);
+    $score = filter('score', $score);
 
     return [$count, $score];
 }

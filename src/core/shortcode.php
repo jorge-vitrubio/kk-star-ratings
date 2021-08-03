@@ -11,6 +11,7 @@
 
 namespace Bhittani\StarRating\core;
 
+use function Bhittani\StarRating\functions\filter;
 use function Bhittani\StarRating\functions\response;
 use Exception;
 
@@ -59,13 +60,13 @@ function shortcode($attrs, string $contents, string $tag): string
 
     $payload['explicit'] = (bool) $payload['explicit'];
 
-    if (! apply_filters(kksr('filters.okay'), null, $payload['id'], $payload['slug'], $payload)) {
+    if (! filter('okay', null, $payload['id'], $payload['slug'], $payload)) {
         return '';
     }
 
     if ($payload['readonly'] === '') {
         try {
-            if (apply_filters(kksr('filters.validate'), null, $payload['id'], $payload['slug'], $payload) === false) {
+            if (filter('validate', null, $payload['id'], $payload['slug'], $payload) === false) {
                 throw new Exception;
             }
         } catch (Exception $e) {

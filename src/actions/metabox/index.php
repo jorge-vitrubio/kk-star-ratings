@@ -11,6 +11,7 @@
 
 namespace Bhittani\StarRating\actions\metabox;
 
+use function Bhittani\StarRating\functions\action;
 use function Bhittani\StarRating\functions\view;
 use WP_Post;
 
@@ -22,7 +23,7 @@ if (! defined('KK_STAR_RATINGS')) {
 function index(?string $type, WP_Post $post = null): void
 {
     ob_start();
-    do_action(kksr('actions.metabox/content'), $type, $post);
+    action('metabox/content', $type, $post);
     $content = ob_get_clean();
 
     echo view('metabox/index.php', compact('content'));

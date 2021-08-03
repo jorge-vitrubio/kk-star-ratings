@@ -11,6 +11,8 @@
 
 namespace Bhittani\StarRating\actions\admin;
 
+use function Bhittani\StarRating\functions\action;
+use function Bhittani\StarRating\functions\filter;
 use function Bhittani\StarRating\functions\view;
 use InvalidArgumentException;
 
@@ -21,8 +23,8 @@ if (! defined('KK_STAR_RATINGS')) {
 
 function index(): void
 {
-    $tabs = apply_filters(kksr('filters.admin/tabs'), []);
-    $active = apply_filters(kksr('filters.admin/active_tab'), reset($tabs));
+    $tabs = filter('admin/tabs', []);
+    $active = filter('admin/active_tab', reset($tabs));
 
     $errors = [];
     $payload = [];
@@ -40,10 +42,10 @@ function index(): void
                 throw new InvalidArgumentException(__('You can only save the options via the admin.', 'kk-star-ratings'));
             }
 
-            do_action(kksr('actions.admin/save'), $payload, $active);
+            action('admin/save', $payload, $active);
 
             if ($filename) {
-                do_action(kksr('actions.admin/save/'.$filename), $payload, $active);
+                action('admin/save/'.$filename, $payload, $active);
             }
         } catch (InvalidArgumentException $e) {
             if (is_string($name = $e->getCode())) {
@@ -55,12 +57,12 @@ function index(): void
     }
 
     ob_start();
-    do_action(kksr('actions.admin/content'), $errors ? $payload : null, $active);
+    action('admin/content', $errors ? $payload : null, $active);
     $content = ob_get_clean();
 
     if ($filename) {
         ob_start();
-        do_action(kksr('actions.admin/tabs/'.$filename), $errors ? $payload : null, $active);
+        action('admin/tabs/'.$filename, $errors ? $payload : null, $active);
         $content .= ob_get_clean();
     }
 

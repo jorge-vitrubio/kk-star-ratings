@@ -11,6 +11,7 @@
 
 namespace Bhittani\StarRating\filters;
 
+use function Bhittani\StarRating\functions\filter;
 use function Bhittani\StarRating\functions\option;
 use Exception;
 
@@ -43,10 +44,10 @@ function validate(?bool $valid, int $id, string $slug, array $payload): bool
         throw new Exception(__('You need to be authenticated to cast a vote.', 'kk-star-ratings'), 401);
     }
 
-    $fingerprint = apply_filters(kksr('filters.fingerprint'), null, $id, $slug);
+    $fingerprint = filter('fingerprint', null, $id, $slug);
 
     if (in_array('unique', $strategies)
-        && ! apply_filters(kksr('filters.unique'), null, $fingerprint, $id, $slug)
+        && ! filter('unique', null, $fingerprint, $id, $slug)
     ) {
         throw new Exception(__('You have already casted your vote.', 'kk-star-ratings'), 403);
     }

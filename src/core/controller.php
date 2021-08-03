@@ -11,7 +11,9 @@
 
 namespace Bhittani\StarRating\core;
 
+use function Bhittani\StarRating\functions\action;
 use function Bhittani\StarRating\functions\cast;
+use function Bhittani\StarRating\functions\filter;
 use function Bhittani\StarRating\functions\sanitize;
 use function Bhittani\StarRating\functions\to_shortcode;
 use Exception;
@@ -34,7 +36,7 @@ function controller()
         $slug = $payload['slug'] ?? 'default';
         $best = intval($payload['best'] ?? 5);
 
-        if (apply_filters(kksr('filters.validate'), null, $payload['id'], $payload['slug'], $payload) === false) {
+        if (filter('validate', null, $payload['id'], $payload['slug'], $payload) === false) {
             throw new Exception(__('A rating can not be accepted at the moment.', 'kk-star-ratings'));
         }
 
@@ -50,9 +52,9 @@ function controller()
 
         $outOf5 = cast($rating, 5, $best);
 
-        do_action(kksr('actions.save'), $outOf5, $id, $slug, [
-            'count' => (int) apply_filters(kksr('filters.count'), null, $id, $slug),
-            'ratings' => (float) apply_filters(kksr('filters.ratings'), null, $id, $slug),
+        action('save', $outOf5, $id, $slug, [
+            'count' => (int) filter('count', null, $id, $slug),
+            'ratings' => (float) filter('ratings', null, $id, $slug),
         ] + $payload);
 
         $payload['legend'] = $payload['_legend'];

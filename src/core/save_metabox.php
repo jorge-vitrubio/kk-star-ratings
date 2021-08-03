@@ -11,6 +11,8 @@
 
 namespace Bhittani\StarRating\core;
 
+use function Bhittani\StarRating\functions\action;
+
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);
     exit();
@@ -22,6 +24,6 @@ function save_metabox($id): void
         && ! (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE)
         && current_user_can('edit_post', $id)
     ) {
-        do_action(kksr('actions.metabox/save'), $id, $_POST);
+        action('metabox/save', $id, $_POST);
     }
 }

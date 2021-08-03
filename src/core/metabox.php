@@ -11,6 +11,7 @@
 
 namespace Bhittani\StarRating\core;
 
+use function Bhittani\StarRating\functions\action;
 use function Bhittani\StarRating\functions\calculate;
 use function Bhittani\StarRating\functions\option;
 
@@ -53,7 +54,7 @@ function metabox($type, $post): void
         $title,
         function () use ($type, $post) {
             wp_nonce_field(kksr('core.save_metabox'), kksr('slug').'-metabox');
-            do_action(kksr('actions.metabox/index'), $type, $post);
+            action('metabox/index', $type, $post);
         },
         $postTypes,
         'side'

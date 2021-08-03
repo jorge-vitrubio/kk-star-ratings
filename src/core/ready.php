@@ -11,6 +11,8 @@
 
 namespace Bhittani\StarRating\core;
 
+use function Bhittani\StarRating\functions\action;
+
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);
     exit();
@@ -18,5 +20,5 @@ if (! defined('KK_STAR_RATINGS')) {
 
 function ready()
 {
-    do_action(kksr('actions.init'), kksr());
+    action('init', kksr());
 }

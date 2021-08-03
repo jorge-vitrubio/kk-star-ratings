@@ -30,23 +30,67 @@ function autoload(string $namespace, string $path, array $excludes = [], int $de
     $recursiveIterator->setMaxDepth($depth);
     $iterator = new RegexIterator($recursiveIterator, '/\.php$/');
 
-    return array_reduce(iterator_to_array($iterator), function ($arr, $splFileInfo) use ($namespace, $excludes, $cutoffLength) {
+    // $autoload = function (string $fn, string $fqcn = null) use (&$autoload) {
+    //     $fqcn = $fqcn ?: $fn;
+
+    //     $parts = explode('\\', $fn, 2);
+    //     $head = array_shift($parts);
+    //     $tail = array_shift($parts);
+
+    //     if (! $tail) {
+    //         return [$head => $fqcn];
+    //     }
+
+    //     return [$head => $autoload($tail, $fqcn)];
+    // };
+
+    // $autoloads = [];
+
+    // foreach (iterator_to_array($iterator) as $splFileInfo) {
+    //     $filepath = (string) $splFileInfo;
+    //     $filename = substr($filepath, $cutoffLength);
+
+    //     if (in_array($filename, $excludes)) {
+    //         continue;
+    //     }
+
+    // $name = substr($filename, 0, -4);
+    // $name = preg_replace('/[\/\\\]/', '/', $name);
+    // $fn = preg_replace('/\//', '\\', $name);
+    // $fn = preg_replace('/([^a-zA-Z0-9\\\]+?)/', '_', $fn);
+    // $fqcn = $namespace.'\\'.$fn;
+
+    //     if (! function_exists($fqcn)) {
+    //         require_once $filepath;
+    //     }
+
+    //     $autoloads = array_replace_recursive($autoloads, $autoload($fn, $fqcn));
+    // }
+
+    // return $autoloads;
+
+    $autoloads = [];
+
+    foreach (iterator_to_array($iterator) as $splFileInfo) {
         $filepath = (string) $splFileInfo;
         $filename = substr($filepath, $cutoffLength);
 
         if (in_array($filename, $excludes)) {
-            return $arr;
+            continue;
         }
 
         $name = substr($filename, 0, -4);
-        $function = $namespace.'\\'.preg_replace('/[\/\\\]/', '\\', $name);
-        // Replace non alphanumerics and backslashes with underscores.
-        $function = preg_replace('/([^a-zA-Z0-9\\\]+?)/', '_', $function);
+        $name = preg_replace('/[\/\\\]/', '/', $name);
+        $fn = preg_replace('/\//', '\\', $name);
+        $fn = preg_replace('/([^a-zA-Z0-9\\\]+?)/', '_', $fn);
+        $fqcn = $namespace.'\\'.$fn;
 
-        if (! function_exists($function)) {
+        if (! function_exists($fqcn)) {
             require_once $filepath;
         }
 
-        return $arr = [$name => $function] + $arr;
-    }, []);
+        $autoloads = [$name => $fqcn] + $autoloads;
+    }
+
+    return $autoloads;
 }

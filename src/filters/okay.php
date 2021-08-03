@@ -11,6 +11,7 @@
 
 namespace Bhittani\StarRating\filters;
 
+use function Bhittani\StarRating\functions\filter;
 use function Bhittani\StarRating\functions\option;
 use function count;
 
@@ -47,7 +48,7 @@ function okay(?bool $okay, int $id, string $slug, array $payload): bool
         return true;
     }
 
-    $status = apply_filters(kksr('filters.status'), null, $id, $slug);
+    $status = filter('status', null, $id, $slug);
 
     if ($status == 'disable') {
         return false;

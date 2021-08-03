@@ -11,6 +11,7 @@
 
 namespace Bhittani\StarRating\core;
 
+use function Bhittani\StarRating\functions\action;
 use function Bhittani\StarRating\functions\option;
 
 if (! defined('KK_STAR_RATINGS')) {
@@ -24,12 +25,12 @@ function activate(): void
     $previous = option('ver');
 
     if (! $previous) {
-        do_action(kksr('actions.install'), $version);
+        action('install', $version);
     } elseif (version_compare($previous, '5.0.dev', '<')) {
-        do_action(kksr('actions.upgrade'), $version, $previous);
+        action('upgrade', $version, $previous);
     }
 
-    do_action(kksr('actions.activate'), $version, $previous);
+    action('activate', $version, $previous);
 
     option(['ver' => $version]);
 }

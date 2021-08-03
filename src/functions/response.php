@@ -35,7 +35,7 @@ function response(array $payload): string
     $payload['readonly'] = (bool) $payload['readonly'];
     $payload['size'] = (int) $payload['size'];
 
-    $payload = apply_filters(kksr('filters.payload'), $payload);
+    $payload = filter('payload', $payload);
 
     $payload['greet'] = str_replace('{type}', get_post_type($payload['id']) ?: 'post', $payload['greet']);
     $payload['_legend'] = $payload['legend'];
@@ -46,7 +46,7 @@ function response(array $payload): string
 
     ob_start();
 
-    do_action(kksr('actions.markup'), $payload);
+    action('markup', $payload);
 
     return ob_get_clean();
 }
