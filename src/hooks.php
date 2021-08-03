@@ -11,7 +11,6 @@
 
 namespace Bhittani\StarRating;
 
-use function Bhittani\StarRating\functions\flat;
 use function Bhittani\StarRating\functions\hook;
 
 if (! defined('KK_STAR_RATINGS')) {
@@ -19,10 +18,10 @@ if (! defined('KK_STAR_RATINGS')) {
     exit();
 }
 
-foreach (flat(kksr('actions')) as $fn) {
+foreach (kksr('actions') as $fn) {
     hook('action', $fn, $fn);
 }
 
-foreach (flat(kksr('filters')) as $fn) {
+foreach (kksr('filters') as $fn) {
     hook('filter', $fn, $fn);
 }
