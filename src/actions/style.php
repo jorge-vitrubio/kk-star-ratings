@@ -18,9 +18,12 @@ if (! defined('KK_STAR_RATINGS')) {
 
 function style(): void
 {
+    $isDebugMode = defined('WP_DEBUG') && WP_DEBUG;
+
     wp_enqueue_style(
         kksr('slug'),
-        kksr('url').'public/css/kk-star-ratings.css',
+        kksr('url').'public/css/kk-star-ratings'
+            .($isDebugMode ? '' : '.min').'.css',
         [],
         kksr('version')
     );

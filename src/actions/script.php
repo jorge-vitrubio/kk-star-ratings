@@ -18,9 +18,12 @@ if (! defined('KK_STAR_RATINGS')) {
 
 function script(): void
 {
+    $isDebugMode = defined('WP_DEBUG') && WP_DEBUG;
+
     wp_enqueue_script(
         kksr('slug'),
-        kksr('url').'public/js/kk-star-ratings.js',
+        kksr('url').'public/js/kk-star-ratings'
+            .($isDebugMode ? '' : '.min').'.js',
         ['jquery'],
         kksr('version'),
         true
@@ -32,7 +35,7 @@ function script(): void
         [
             'action' => kksr('slug'),
             'endpoint' => admin_url('admin-ajax.php'),
-            'nonce' => wp_create_nonce(kksr('core.controller')),
+            'nonce' => wp_create_nonce(kksr('wp.actions.wp_ajax_'.kksr('slug'))),
         ]
     );
 }
