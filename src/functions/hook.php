@@ -18,13 +18,13 @@ if (! defined('KK_STAR_RATINGS')) {
     exit();
 }
 
-function hook(string $type, string $tag, string $fn): bool
+function hook(string $type, string $tag, string $fn, int $priority = 10): bool
 {
     if (! function_exists($fn)) {
         return false;
     }
 
-    $params = [$tag, $fn, 9, (new ReflectionFunction($fn))->getNumberOfParameters()];
+    $params = [$tag, $fn, $priority, (new ReflectionFunction($fn))->getNumberOfParameters()];
 
     if ($type == 'action') {
         return add_action(...$params);
