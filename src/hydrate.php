@@ -11,13 +11,21 @@
 
 namespace Bhittani\StarRating;
 
+use function Bhittani\StarRating\functions\hook;
+
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);
     exit();
 }
 
-kksr(require __DIR__.'/config.php');
+foreach (kksr('wp.actions') as $tag => $fn) {
+    hook('action', $tag, $fn);
+}
 
-require_once __DIR__.'/hooks.php';
+foreach (kksr('wp.filters') as $tag => $fn) {
+    hook('filter', $tag, $fn);
+}
 
-require_once __DIR__.'/hydrate.php';
+foreach (kksr('wp.shortcodes') as $tag => $fn) {
+    add_shortcode($tag, $fn);
+}

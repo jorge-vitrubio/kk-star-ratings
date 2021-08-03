@@ -9,7 +9,7 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace Bhittani\StarRating\core;
+namespace Bhittani\StarRating\wp\actions;
 
 use function Bhittani\StarRating\functions\action;
 use function Bhittani\StarRating\functions\calculate;
@@ -20,7 +20,7 @@ if (! defined('KK_STAR_RATINGS')) {
     exit();
 }
 
-function head(): void
+function wp_head(): void
 {
     if (option('enable') && option('grs') && is_singular()) {
         $best = option('stars');

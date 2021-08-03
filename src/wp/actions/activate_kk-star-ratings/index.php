@@ -9,7 +9,7 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace Bhittani\StarRating\core;
+namespace Bhittani\StarRating\wp\actions\activate_kk_star_ratings;
 
 use function Bhittani\StarRating\functions\action;
 use function Bhittani\StarRating\functions\option;
@@ -19,7 +19,7 @@ if (! defined('KK_STAR_RATINGS')) {
     exit();
 }
 
-function activate(): void
+function index(): void
 {
     $version = kksr('version');
     $previous = option('ver');

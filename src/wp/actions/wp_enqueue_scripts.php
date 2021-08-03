@@ -9,7 +9,7 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace Bhittani\StarRating\core;
+namespace Bhittani\StarRating\wp\actions;
 
 use function Bhittani\StarRating\functions\action;
 
@@ -18,12 +18,9 @@ if (! defined('KK_STAR_RATINGS')) {
     exit();
 }
 
-function save_metabox($id): void
+function wp_enqueue_scripts(): void
 {
-    if (wp_verify_nonce($_POST[kksr('slug').'-metabox'] ?? '', __FUNCTION__)
-        && ! (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE)
-        && current_user_can('edit_post', $id)
-    ) {
-        action('metabox/save', $id, $_POST);
-    }
+    action('style');
+
+    action('script');
 }

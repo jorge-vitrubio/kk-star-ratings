@@ -9,7 +9,7 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace Bhittani\StarRating\core;
+namespace Bhittani\StarRating\wp\shortcodes;
 
 use function Bhittani\StarRating\functions\filter;
 use function Bhittani\StarRating\functions\response;
@@ -21,7 +21,7 @@ if (! defined('KK_STAR_RATINGS')) {
 }
 
 /** @param string|array $attrs */
-function shortcode($attrs, string $contents, string $tag): string
+function kk_star_ratings($attrs, string $contents, string $tag): string
 {
     $defaults = array_fill_keys([
         'align', 'best', 'count', 'gap', 'greet', 'id',

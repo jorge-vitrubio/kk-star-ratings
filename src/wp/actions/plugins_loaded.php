@@ -9,7 +9,7 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace Bhittani\StarRating\core;
+namespace Bhittani\StarRating\wp\actions;
 
 use function Bhittani\StarRating\functions\action;
 
@@ -18,16 +18,7 @@ if (! defined('KK_STAR_RATINGS')) {
     exit();
 }
 
-function admin(): void
+function plugins_loaded()
 {
-    add_menu_page(
-        kksr('name'),
-        kksr('name'),
-        'manage_options',
-        kksr('slug'),
-        function () {
-            action('admin/index');
-        },
-        'dashicons-star-filled'
-    );
+    action('init', kksr());
 }

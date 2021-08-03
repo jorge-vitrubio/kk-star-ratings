@@ -44,9 +44,13 @@ return [
 ]) + [
     // Source
     'actions' => autoload($ns.'actions', $src.'actions'),
-    'core' => autoload($ns.'core', $src.'core'),
     'filters' => autoload($ns.'filters', $src.'filters'),
     'functions' => autoload($ns.'functions', $src.'functions'),
+    'wp' => [
+        'actions' => autoload($ns.'wp\actions', $src.'wp/actions'),
+        'filters' => autoload($ns.'wp\filters', $src.'wp/filters'),
+        'shortcodes' => autoload($ns.'wp\shortcodes', $src.'wp/shortcodes'),
+    ],
 ] + [
     // Data
     'views' => $path.'views/',

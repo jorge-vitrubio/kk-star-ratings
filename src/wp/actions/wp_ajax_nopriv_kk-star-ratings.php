@@ -9,16 +9,14 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace Bhittani\StarRating\core;
-
-use function Bhittani\StarRating\functions\action;
+namespace Bhittani\StarRating\wp\actions;
 
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);
     exit();
 }
 
-function ready()
+function wp_ajax_nopriv_kk_star_ratings()
 {
-    action('init', kksr());
+    wp_ajax_kk_star_ratings();
 }

@@ -9,7 +9,7 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace Bhittani\StarRating\core;
+namespace Bhittani\StarRating\wp\filters;
 
 use function Bhittani\StarRating\functions\option;
 use function Bhittani\StarRating\functions\to_shortcode;
@@ -19,7 +19,7 @@ if (! defined('KK_STAR_RATINGS')) {
     exit();
 }
 
-function content(string $content): string
+function the_content(string $content): string
 {
     foreach ([
         kksr('slug'),

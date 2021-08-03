@@ -9,14 +9,14 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace Bhittani\StarRating\core;
+namespace Bhittani\StarRating\wp\filters;
 
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);
     exit();
 }
 
-function i18n($mofile, $domain)
+function load_textdomain_mofile($mofile, $domain): string
 {
     if ($domain !== kksr('domain') || strpos($mofile, WP_LANG_DIR.'/plugins/') !== false) {
         return $mofile;

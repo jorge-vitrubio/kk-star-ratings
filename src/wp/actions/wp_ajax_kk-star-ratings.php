@@ -9,7 +9,7 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace Bhittani\StarRating\core;
+namespace Bhittani\StarRating\wp\actions;
 
 use function Bhittani\StarRating\functions\action;
 use function Bhittani\StarRating\functions\cast;
@@ -23,7 +23,7 @@ if (! defined('KK_STAR_RATINGS')) {
     exit();
 }
 
-function controller()
+function wp_ajax_kk_star_ratings()
 {
     try {
         if (! check_ajax_referer(__FUNCTION__, 'nonce', false)) {
