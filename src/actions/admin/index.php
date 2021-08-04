@@ -42,11 +42,11 @@ function index(): void
                 throw new InvalidArgumentException(__('You can only save the options via the admin.', 'kk-star-ratings'));
             }
 
-            action('admin/save', $payload, $active);
-
             if ($filename) {
                 action('admin/save/'.$filename, $payload, $active);
             }
+
+            action('admin/save', $payload, $active);
         } catch (InvalidArgumentException $e) {
             if (is_string($name = $e->getCode())) {
                 $errors[$name] = array_merge($errors[$name] ?? [], [$e->getMessage()]);
