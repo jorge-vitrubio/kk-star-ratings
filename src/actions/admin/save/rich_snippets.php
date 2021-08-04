@@ -22,10 +22,10 @@ if (! defined('KK_STAR_RATINGS')) {
 
 function rich_snippets(array $payload, string $tab): void
 {
-    $payload = strip_prefix($payload) + array_fill_keys([
+    $payload = shortcode_atts(array_fill_keys([
         'grs',
         'sd',
-    ], null);
+    ], null), strip_prefix($payload));
 
     option(sanitize($payload, [
         'sd' => function ($value) {

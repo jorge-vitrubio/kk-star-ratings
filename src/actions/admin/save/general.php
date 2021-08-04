@@ -22,12 +22,12 @@ if (! defined('KK_STAR_RATINGS')) {
 
 function general(array $payload, string $tab): void
 {
-    $payload = strip_prefix($payload) + array_fill_keys([
+    $payload = shortcode_atts(array_fill_keys([
         'enable',
         'exclude_categories',
         'exclude_locations',
         'strategies',
-    ], null);
+    ], null), strip_prefix($payload));
 
     option(sanitize($payload));
 }

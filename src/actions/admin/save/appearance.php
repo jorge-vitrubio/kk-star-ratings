@@ -22,14 +22,14 @@ if (! defined('KK_STAR_RATINGS')) {
 
 function appearance(array $payload, string $tab): void
 {
-    $payload = strip_prefix($payload) + array_fill_keys([
+    $payload = shortcode_atts(array_fill_keys([
         'gap',
         'greet',
         'legend',
         'position',
         'size',
         'stars',
-    ], null);
+    ], null), strip_prefix($payload));
 
     option(sanitize($payload));
 }
