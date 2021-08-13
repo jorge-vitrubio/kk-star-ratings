@@ -18,7 +18,9 @@ if (! defined('KK_STAR_RATINGS')) {
 
 function action(string $tag, ...$args): void
 {
-    $tag = strpos($tag, '/') === 0 ? substr($tag, 1) : kksr('actions.'.$tag);
+    $tag = strpos($tag, '/') === 0
+        ? substr($tag, 1)
+        : ('Bhittani\StarRating\actions\\'.str_replace('/', '\\', $tag));
 
     do_action($tag, ...$args);
 }

@@ -18,7 +18,9 @@ if (! defined('KK_STAR_RATINGS')) {
 
 function filter(string $tag, ...$args)
 {
-    $tag = strpos($tag, '/') === 0 ? substr($tag, 1) : kksr('filters.'.$tag);
+    $tag = strpos($tag, '/') === 0
+        ? substr($tag, 1)
+        : ('Bhittani\StarRating\filters\\'.str_replace('/', '\\', $tag));
 
     return apply_filters($tag, ...$args);
 }
