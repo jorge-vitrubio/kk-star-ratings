@@ -36,10 +36,16 @@
     </h1>
 
     <h2 class="nav-tab-wrapper">
-        <?php foreach ($tabs as $tab) : ?>
-            <a class="nav-tab <?= $tab === $active ? 'nav-tab-active' : '' ?>"
-                href="<?= admin_url('admin.php?page='.esc_attr($_GET['page']).'&tab='. urlencode(esc_attr($tab))) ?>">
+        <?php foreach ($tabs as $tab => $tabMeta) : ?>
+            <a class="nav-tab <?= ($tabMeta['is_active'] ?? false) ? 'nav-tab-active' : '' ?>"
+                style="position: relative; border-radius: 4px 4px 0 0; <?= ($tabMeta['is_addon'] ?? false) ? (($tabMeta['is_active'] ?? false) ? 'background-color: auto; border-color: auto;' : 'background-color: #f6efc7; border-color: #ead2ae;') : '' ?>"
+                href="<?= admin_url('admin.php?page='.esc_attr($_GET['page'] ?? '').'&tab='. urlencode(esc_attr($tab))) ?>">
                 <?= esc_html($tab) ?>
+                <?php if ($tabMeta['is_addon'] ?? false) : ?>
+                    <span style="position: absolute; z-index: 10; top: -9px; right: -9px; display: flex; align-items: center; justify-content: center; width: 21px; height: 21px; font-weight: 600; background-color: inherit; border-radius: 50%;">
+                        &dollar;
+                    </span>
+                <?php endif; ?>
             </a>
         <?php endforeach; ?>
         <div style="float: left; margin-left: 10px;">

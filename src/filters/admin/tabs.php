@@ -22,5 +22,9 @@ function tabs(array $tabs): array
         __('General', 'kk-star-ratings'),
         __('Appearance', 'kk-star-ratings'),
         __('Rich Snippets', 'kk-star-ratings'),
+        // [
+        //     'tab' => __('Addons', 'kk-star-ratings'),
+        //     'is_addon' => true,
+        // ],
     ], $tabs);
 }
