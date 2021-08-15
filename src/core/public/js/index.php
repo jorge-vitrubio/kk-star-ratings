@@ -9,7 +9,4 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-if (! defined('KK_STAR_RATINGS')) {
-    http_response_code(404);
-    exit();
-}
+http_response_code(404); exit();

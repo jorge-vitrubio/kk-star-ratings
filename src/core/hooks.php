@@ -9,7 +9,17 @@
  * the LICENSE file that was distributed with this source code.
  */
 
+use function Bhittani\StarRating\functions\hook;
+
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);
     exit();
+}
+
+foreach (kksr('actions') as $fn) {
+    hook('action', $fn, $fn, 9);
+}
+
+foreach (kksr('filters') as $fn) {
+    hook('filter', $fn, $fn, 9);
 }

@@ -9,7 +9,21 @@
  * the LICENSE file that was distributed with this source code.
  */
 
+use function Bhittani\StarRating\functions\hook;
+
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);
     exit();
+}
+
+foreach (kksr('wp.actions') as $tag => $fn) {
+    hook('action', $tag, $fn);
+}
+
+foreach (kksr('wp.filters') as $tag => $fn) {
+    hook('filter', $tag, $fn);
+}
+
+foreach (kksr('wp.shortcodes') as $tag => $fn) {
+    add_shortcode($tag, $fn);
 }
