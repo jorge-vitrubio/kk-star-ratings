@@ -9,9 +9,9 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace Bhittani\StarRating\actions;
+namespace Bhittani\StarRating\core\actions;
 
-use function Bhittani\StarRating\functions\view;
+use function Bhittani\StarRating\core\functions\view;
 
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);

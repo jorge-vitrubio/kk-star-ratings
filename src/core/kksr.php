@@ -9,13 +9,13 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-use function Bhittani\StarRating\functions\autoload;
-use function Bhittani\StarRating\functions\dot;
+use function Bhittani\StarRating\core\functions\autoload;
+use function Bhittani\StarRating\core\functions\dot;
 
-autoload('Bhittani\StarRating\functions\dot');
+autoload('Bhittani\StarRating\core\functions\dot');
 
 // foreach ([
-//     'Bhittani\StarRating\functions\dot' => 'src/core/functions/dot.php',
+//     'Bhittani\StarRating\core\functions\dot' => 'src/core/functions/dot.php',
 // ] as $fn => $filepath) {
 //     if (! function_exists($fn)) {
 //         require_once dirname(KK_STAR_RATINGS).'/'.ltrim($filepath, '\/');

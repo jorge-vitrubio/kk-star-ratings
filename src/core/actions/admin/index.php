@@ -9,11 +9,11 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace Bhittani\StarRating\actions\admin;
+namespace Bhittani\StarRating\core\actions\admin;
 
-use function Bhittani\StarRating\functions\action;
-use function Bhittani\StarRating\functions\filter;
-use function Bhittani\StarRating\functions\view;
+use function Bhittani\StarRating\core\functions\action;
+use function Bhittani\StarRating\core\functions\filter;
+use function Bhittani\StarRating\core\functions\view;
 use InvalidArgumentException;
 
 if (! defined('KK_STAR_RATINGS')) {

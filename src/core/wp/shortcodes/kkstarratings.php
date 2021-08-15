@@ -9,7 +9,7 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace Bhittani\StarRating\wp\shortcodes;
+namespace Bhittani\StarRating\core\wp\shortcodes;
 
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);

@@ -9,10 +9,10 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace Bhittani\StarRating\filters;
+namespace Bhittani\StarRating\core\filters;
 
-use function Bhittani\StarRating\functions\filter;
-use function Bhittani\StarRating\functions\option;
+use function Bhittani\StarRating\core\functions\filter;
+use function Bhittani\StarRating\core\functions\option;
 use function count;
 
 if (! defined('KK_STAR_RATINGS')) {

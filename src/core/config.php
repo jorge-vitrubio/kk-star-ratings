@@ -9,21 +9,21 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-use function Bhittani\StarRating\functions\autoload;
+use function Bhittani\StarRating\core\functions\autoload;
 
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);
     exit();
 }
 
-// if (! function_exists('Bhittani\StarRating\functions\autoload')) {
+// if (! function_exists('Bhittani\StarRating\core\functions\autoload')) {
 //     require_once __DIR__.'/functions/autoload.php';
 // }
 
 $file = KK_STAR_RATINGS;
 $path = dirname($file).'/';
 $src = $path.'src/core/';
-$ns = 'Bhittani\StarRating\\';
+$ns = 'Bhittani\StarRating\core\\';
 
 return [
     // Manifest

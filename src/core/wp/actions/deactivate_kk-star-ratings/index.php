@@ -9,9 +9,9 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace Bhittani\StarRating\wp\actions\deactivate_kk_star_ratings;
+namespace Bhittani\StarRating\core\wp\actions\deactivate_kk_star_ratings;
 
-use function Bhittani\StarRating\functions\action;
+use function Bhittani\StarRating\core\functions\action;
 
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);

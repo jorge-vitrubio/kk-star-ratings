@@ -9,10 +9,10 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace Bhittani\StarRating\actions\metabox;
+namespace Bhittani\StarRating\core\actions\metabox;
 
-use function Bhittani\StarRating\functions\action;
-use function Bhittani\StarRating\functions\view;
+use function Bhittani\StarRating\core\functions\action;
+use function Bhittani\StarRating\core\functions\view;
 use WP_Post;
 
 if (! defined('KK_STAR_RATINGS')) {

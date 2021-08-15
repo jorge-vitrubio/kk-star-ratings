@@ -9,11 +9,11 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace Bhittani\StarRating\actions\metabox;
+namespace Bhittani\StarRating\core\actions\metabox;
 
-use function Bhittani\StarRating\functions\explode_meta_prefix;
-use function Bhittani\StarRating\functions\post_meta;
-use function Bhittani\StarRating\functions\sanitize;
+use function Bhittani\StarRating\core\functions\explode_meta_prefix;
+use function Bhittani\StarRating\core\functions\post_meta;
+use function Bhittani\StarRating\core\functions\sanitize;
 
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);

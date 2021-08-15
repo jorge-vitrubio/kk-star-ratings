@@ -9,10 +9,10 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace Bhittani\StarRating\wp\shortcodes;
+namespace Bhittani\StarRating\core\wp\shortcodes;
 
-use function Bhittani\StarRating\functions\filter;
-use function Bhittani\StarRating\functions\response;
+use function Bhittani\StarRating\core\functions\filter;
+use function Bhittani\StarRating\core\functions\response;
 use Exception;
 
 if (! defined('KK_STAR_RATINGS')) {

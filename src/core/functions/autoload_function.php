@@ -9,9 +9,8 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace Bhittani\StarRating\functions;
+namespace Bhittani\StarRating\core\functions;
 
-use FilesystemIterator;
 use RuntimeException;
 
 if (! defined('KK_STAR_RATINGS')) {
@@ -22,8 +21,6 @@ if (! defined('KK_STAR_RATINGS')) {
 /** @throws RuntimeException if the function can not be autoloaded. */
 function autoload_function(string $fqcn): bool
 {
-    static $core;
-
     if (function_exists($fqcn)) {
         return false;
     }
@@ -31,28 +28,19 @@ function autoload_function(string $fqcn): bool
     $prefix = 'Bhittani\StarRating\\';
 
     if (strpos($fqcn, $prefix) !== 0) {
-        throw new RuntimeException("Failed to autoload function '{$fqcn}`");
-    }
+        if (strpos($fqcn, '\\') === 0) {
+            throw new RuntimeException("Failed to autoload function '{$fqcn}`");
+        }
 
-    if (is_null($core)) {
-        $core = array_filter(array_map(function ($fileInfo) {
-            if ($fileInfo->isDir()) {
-                return $fileInfo->getFilename();
-            }
-        }, iterator_to_array(new FilesystemIterator(dirname(KK_STAR_RATINGS).'/src/core'))));
+        $fqcn = $prefix.$fqcn;
     }
 
     $name = substr($fqcn, strlen($prefix));
-    $parts = explode('\\', $name);
-
-    if (in_array($parts[0], $core)) {
-        array_unshift($parts, 'core');
-    }
 
     // kebab-Case
     $parts = array_map(function (string $part) {
         return preg_replace(['/([a-z\d])([A-Z])/', '/([^-_])([A-Z][a-z])/'], '$1-$2', $part);
-    }, $parts);
+    }, explode('\\', $name));
 
     $filepath = dirname(KK_STAR_RATINGS).'/src/'.implode('/', $parts).'.php';
 

@@ -9,7 +9,7 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace Bhittani\StarRating\functions;
+namespace Bhittani\StarRating\core\functions;
 
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);
@@ -20,7 +20,7 @@ function action(string $tag, ...$args): void
 {
     $tag = strpos($tag, '/') === 0
         ? substr($tag, 1)
-        : ('Bhittani\StarRating\actions\\'.str_replace('/', '\\', $tag));
+        : ('Bhittani\StarRating\core\actions\\'.str_replace('/', '\\', $tag));
 
     do_action($tag, ...$args);
 }

@@ -9,7 +9,7 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace Bhittani\StarRating\functions;
+namespace Bhittani\StarRating\core\functions;
 
 use InvalidArgumentException;
 
