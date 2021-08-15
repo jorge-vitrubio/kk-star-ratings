@@ -9,18 +9,10 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-use function Bhittani\StarRating\core\functions\autoload;
-use function Bhittani\StarRating\core\functions\to_shortcode;
+use function Bhittani\StarRating\functions\autoload;
+use function Bhittani\StarRating\functions\to_shortcode;
 
-autoload('Bhittani\StarRating\core\functions\to_shortcode');
-
-// foreach ([
-//     'Bhittani\StarRating\core\functions\to_shortcode' => 'src/core/functions/to_shortcode.php',
-// ] as $fn => $filepath) {
-//     if (! function_exists($fn)) {
-//         require_once dirname(KK_STAR_RATINGS).'/'.ltrim($filepath, '\/');
-//     }
-// }
+autoload('Bhittani\StarRating\functions\to_shortcode');
 
 /** @param int|string|array|object|WP_POST|null $idOrPostOrPayload */
 function kk_star_ratings($idOrPostOrPayload = null): string

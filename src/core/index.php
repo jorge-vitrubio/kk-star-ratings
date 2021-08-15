@@ -14,25 +14,12 @@ if (! defined('KK_STAR_RATINGS')) {
     exit();
 }
 
-foreach ([
-    'vendor/autoload.php',
-    'src/core/functions/autoload.php',
-    'src/core/functions/autoload_function.php',
-    'freemius.php',
-] as $filename) {
-    if (file_exists($filepath = dirname(KK_STAR_RATINGS).'/'.ltrim($filename, '\/'))) {
-        require_once $filepath;
-    }
-}
-
-require_once __DIR__.'/kksr.php';
-
+// TODO: Use 'core' key. e.g. ['core' => ...].
 kksr(require __DIR__.'/config.php');
 
 foreach ([
     'hooks.php',
     'hydrate.php',
-    'kk_star_ratings.php',
 ] as $filename) {
     $filepath = __DIR__.'/'.ltrim($filename, '\/');
     require_once $filepath;

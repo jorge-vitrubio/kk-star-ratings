@@ -11,6 +11,9 @@
 
 namespace Bhittani\StarRating\core\functions;
 
+use function Bhittani\StarRating\functions\find;
+use function Bhittani\StarRating\functions\type_cast;
+
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);
     exit();

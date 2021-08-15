@@ -9,50 +9,33 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-use function Bhittani\StarRating\core\functions\autoload;
+use function Bhittani\StarRating\functions\autoload;
 
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);
     exit();
 }
 
-// if (! function_exists('Bhittani\StarRating\core\functions\autoload')) {
-//     require_once __DIR__.'/functions/autoload.php';
-// }
-
-$file = KK_STAR_RATINGS;
-$path = dirname($file).'/';
-$src = $path.'src/core/';
 $ns = 'Bhittani\StarRating\core\\';
+$path = dirname(KK_STAR_RATINGS).'/src/core/';
 
 return [
     // Manifest
-    'path' => plugin_dir_path($file),
-    'public_url' => ($url = plugin_dir_url($file)).'src/core/public/',
-    'signature' => plugin_basename($file),
-    'url' => $url,
-] + get_file_data($file, [
-    // Metadata
-    'author' => 'Author',
-    'author_url' => 'Author URI',
-    'domain' => 'Text Domain',
-    'name' => 'Plugin Name',
-    'nick' => 'Plugin Nick',
-    'slug' => 'Plugin Slug',
-    'version' => 'Version',
-]) + [
+    // TODO: Use `url` instead and disregard 'public/' from the end.
+    'public_url' => ($url = plugin_dir_url(KK_STAR_RATINGS)).'src/core/public/',
+] + [
     // Source
-    'actions' => autoload($ns.'actions', $src.'actions'),
-    'filters' => autoload($ns.'filters', $src.'filters'),
-    'functions' => autoload($ns.'functions', $src.'functions'),
+    'actions' => autoload($ns.'actions', $path.'actions'),
+    'filters' => autoload($ns.'filters', $path.'filters'),
+    'functions' => autoload($ns.'functions', $path.'functions'),
     'wp' => [
-        'actions' => autoload($ns.'wp\actions', $src.'wp/actions'),
-        'filters' => autoload($ns.'wp\filters', $src.'wp/filters'),
-        'shortcodes' => autoload($ns.'wp\shortcodes', $src.'wp/shortcodes'),
+        'actions' => autoload($ns.'wp\actions', $path.'wp/actions'),
+        'filters' => autoload($ns.'wp\filters', $path.'wp/filters'),
+        'shortcodes' => autoload($ns.'wp\shortcodes', $path.'wp/shortcodes'),
     ],
 ] + [
-    // Data
-    'views' => $src.'views/',
+    // Config
+    'views' => $path.'views/',
     'post_meta' => [
         'count_*' => 0,
         'fingerprint_*[]' => '',

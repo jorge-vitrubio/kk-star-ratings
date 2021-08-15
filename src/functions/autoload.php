@@ -9,7 +9,7 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace Bhittani\StarRating\core\functions;
+namespace Bhittani\StarRating\functions;
 
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
@@ -20,11 +20,21 @@ if (! defined('KK_STAR_RATINGS')) {
     exit();
 }
 
-/** @return bool|array */
-function autoload(string $namespace, string $path = null, array $excludes = [], int $depth = -1)
+/**
+ * @param string|array $namespace
+ *
+ * @return bool|array
+ */
+function autoload($namespace, string $path = null, array $excludes = [], int $depth = -1)
 {
     if (is_null($path)) {
-        return autoload_function($namespace);
+        if (! is_array($namespace)) {
+            return autoload_function($namespace);
+        }
+
+        return array_map(function ($ns) {
+            return autoload_function($ns);
+        }, $namespace);
     }
 
     $path = rtrim($path, '\/');
@@ -35,18 +45,18 @@ function autoload(string $namespace, string $path = null, array $excludes = [], 
     $recursiveIterator->setMaxDepth($depth);
     $iterator = new RegexIterator($recursiveIterator, '/\.php$/');
 
-    // $autoload = function (string $fn, string $fqcn = null) use (&$autoload) {
-    //     $fqcn = $fqcn ?: $fn;
+    // $autoload = function (string $fn, string $fqfn = null) use (&$autoload) {
+    //     $fqfn = $fqfn ?: $fn;
 
     //     $parts = explode('\\', $fn, 2);
     //     $head = array_shift($parts);
     //     $tail = array_shift($parts);
 
     //     if (! $tail) {
-    //         return [$head => $fqcn];
+    //         return [$head => $fqfn];
     //     }
 
-    //     return [$head => $autoload($tail, $fqcn)];
+    //     return [$head => $autoload($tail, $fqfn)];
     // };
 
     // $autoloads = [];
@@ -63,13 +73,13 @@ function autoload(string $namespace, string $path = null, array $excludes = [], 
     // $name = preg_replace('/[\/\\\]/', '/', $name);
     // $fn = preg_replace('/\//', '\\', $name);
     // $fn = preg_replace('/([^a-zA-Z0-9\\\]+?)/', '_', $fn);
-    // $fqcn = $namespace.'\\'.$fn;
+    // $fqfn = $namespace.'\\'.$fn;
 
-    //     if (! function_exists($fqcn)) {
+    //     if (! function_exists($fqfn)) {
     //         require_once $filepath;
     //     }
 
-    //     $autoloads = array_replace_recursive($autoloads, $autoload($fn, $fqcn));
+    //     $autoloads = array_replace_recursive($autoloads, $autoload($fn, $fqfn));
     // }
 
     // return $autoloads;
@@ -88,17 +98,17 @@ function autoload(string $namespace, string $path = null, array $excludes = [], 
         $name = preg_replace('/[\/\\\]/', '/', $name);
         $fn = preg_replace('/\//', '\\', $name);
         $fn = preg_replace('/([^a-zA-Z0-9\\\]+?)/', '_', $fn);
-        $fqcn = $namespace.'\\'.$fn;
+        $fqfn = $namespace.'\\'.$fn;
 
-        if (! function_exists($fqcn)) {
+        if (! function_exists($fqfn)) {
             require_once $filepath;
 
-            if (! function_exists($fqcn)) {
+            if (! function_exists($fqfn)) {
                 continue;
             }
         }
 
-        $autoloads = [$name => $fqcn] + $autoloads;
+        $autoloads = [$name => $fqfn] + $autoloads;
     }
 
     return $autoloads;

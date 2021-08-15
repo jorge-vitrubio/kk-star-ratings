@@ -9,7 +9,25 @@
  * the LICENSE file that was distributed with this source code.
  */
 
+use function Bhittani\StarRating\functions\autoload;
+
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);
     exit();
 }
+
+foreach ([
+    'functions/autoload.php',
+    'functions/autoload_function.php',
+] as $filename) {
+    require_once __DIR__.'/'.ltrim($filename, '\/');
+}
+
+autoload('Bhittani\StarRating', __DIR__.'/functions');
+
+autoload([
+    '\kksr',
+    '\kk_star_ratings',
+]);
+
+kksr(require __DIR__.'/config.php');

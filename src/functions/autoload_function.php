@@ -9,7 +9,7 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace Bhittani\StarRating\core\functions;
+namespace Bhittani\StarRating\functions;
 
 use RuntimeException;
 
@@ -25,17 +25,21 @@ function autoload_function(string $fqcn): bool
         return false;
     }
 
+    $name = $fqcn;
     $prefix = 'Bhittani\StarRating\\';
 
-    if (strpos($fqcn, $prefix) !== 0) {
-        if (strpos($fqcn, '\\') === 0) {
-            throw new RuntimeException("Failed to autoload function '{$fqcn}`");
-        }
-
+    if (strpos($fqcn, '\\') !== 0
+        && strpos($fqcn, $prefix) !== 0
+    ) {
         $fqcn = $prefix.$fqcn;
     }
 
-    $name = substr($fqcn, strlen($prefix));
+    if (strpos($fqcn, $prefix) === 0) {
+        $name = substr($fqcn, strlen($prefix));
+    }
+
+    $fqcn = trim($fqcn, '\\');
+    $name = trim($name, '\\');
 
     // kebab-Case
     $parts = array_map(function (string $part) {

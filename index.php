@@ -21,4 +21,14 @@ if (! defined('ABSPATH')) {
 
 define('KK_STAR_RATINGS', __FILE__);
 
+foreach ([
+    'freemius.php',
+    'vendor/autoload.php',
+] as $filename) {
+    if (file_exists($filepath = __DIR__.'/'.ltrim($filename, '\/'))) {
+        require_once $filepath;
+    }
+}
+
+require_once __DIR__.'/src/index.php';
 require_once __DIR__.'/src/core/index.php';

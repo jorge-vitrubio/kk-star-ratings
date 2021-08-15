@@ -12,7 +12,7 @@
 namespace Bhittani\StarRating\core\wp\filters;
 
 use function Bhittani\StarRating\core\functions\option;
-use function Bhittani\StarRating\core\functions\to_shortcode;
+use function Bhittani\StarRating\functions\to_shortcode;
 
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);
