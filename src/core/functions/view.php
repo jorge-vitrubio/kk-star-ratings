@@ -20,7 +20,7 @@ if (! defined('KK_STAR_RATINGS')) {
 
 function view(string $__path, array $__payload = [], string $__base = null): string
 {
-    $__base = rtrim($__base ?: kksr('views'), '\/').'/';
+    $__base = rtrim($__base ?: kksr('core.views'), '\/').'/';
     $__view = function (string $path, array $payload = [], string $base = null) use ($__payload, $__base) {
         return view($path, array_merge($__payload, $payload), $base ?: $__base);
     };

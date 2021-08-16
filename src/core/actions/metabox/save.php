@@ -25,9 +25,9 @@ function save($id, array $payload): void
     [$statusPrefix, $statusFieldName] = explode_meta_prefix('status_default');
     $statusField = $statusPrefix.$statusFieldName;
 
-    if ($status = ($payload[$statusField] ?? false)) {
+    if (isset($payload[$statusField])) {
         post_meta($id, [
-            $statusFieldName => sanitize($status),
+            $statusFieldName => sanitize($payload[$statusField]),
         ]);
     }
 

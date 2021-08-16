@@ -20,7 +20,7 @@ function script(bool $isDebugMode = false): void
 {
     wp_enqueue_script(
         kksr('slug'),
-        kksr('public_url').'js/kk-star-ratings'
+        kksr('core.url').'public/js/kk-star-ratings'
             .($isDebugMode ? '' : '.min').'.js',
         ['jquery'],
         kksr('version'),
@@ -33,7 +33,7 @@ function script(bool $isDebugMode = false): void
         [
             'action' => kksr('slug'),
             'endpoint' => admin_url('admin-ajax.php'),
-            'nonce' => wp_create_nonce(kksr('wp.actions.wp_ajax_'.kksr('slug'))),
+            'nonce' => wp_create_nonce(kksr('core.wp.actions.wp_ajax_'.kksr('slug'))),
         ]
     );
 }

@@ -27,7 +27,7 @@ function content(?string $type, WP_Post $post = null): void
         return post_meta($post ? $post->ID : 0, $key, $default);
     };
 
-    $get = get_hof(null, $factory, '_'.kksr('nick').'_', array_map('gettype', kksr('post_meta')));
+    $get = get_hof(null, $factory, '_'.kksr('nick').'_', array_map('gettype', kksr('core.post_meta')));
 
     echo view('metabox/content.php', compact('get', 'type', 'post'));
 }

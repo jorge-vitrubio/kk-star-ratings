@@ -16,14 +16,14 @@ if (! defined('KK_STAR_RATINGS')) {
     exit();
 }
 
-foreach (kksr('wp.actions') as $tag => $fn) {
+foreach (kksr('core.wp.actions') as $tag => $fn) {
     hook('action', $tag, $fn);
 }
 
-foreach (kksr('wp.filters') as $tag => $fn) {
+foreach (kksr('core.wp.filters') as $tag => $fn) {
     hook('filter', $tag, $fn);
 }
 
-foreach (kksr('wp.shortcodes') as $tag => $fn) {
+foreach (kksr('core.wp.shortcodes') as $tag => $fn) {
     add_shortcode($tag, $fn);
 }

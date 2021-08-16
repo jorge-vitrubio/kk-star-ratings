@@ -22,7 +22,7 @@ function activate(string $version, ?string $previous): void
 {
     $options = array_map(function ($key) {
         return option($key);
-    }, array_keys(kksr('options')));
+    }, array_keys(kksr('core.options')));
 
     option($options);
 }

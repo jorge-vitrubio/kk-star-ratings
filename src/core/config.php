@@ -17,12 +17,14 @@ if (! defined('KK_STAR_RATINGS')) {
 }
 
 $ns = 'Bhittani\StarRating\core\\';
-$path = dirname(KK_STAR_RATINGS).'/src/core/';
+$url = plugin_dir_url(KK_STAR_RATINGS).'src/core/';
+$path = plugin_dir_path(KK_STAR_RATINGS).'src/core/';
 
 return [
     // Manifest
-    // TODO: Use `url` instead and disregard 'public/' from the end.
-    'public_url' => ($url = plugin_dir_url(KK_STAR_RATINGS)).'src/core/public/',
+    'path' => $path,
+    'url' => $url,
+    'views' => $path.'views/',
 ] + [
     // Source
     'actions' => autoload($ns.'actions', $path.'actions'),
@@ -35,7 +37,6 @@ return [
     ],
 ] + [
     // Config
-    'views' => $path.'views/',
     'post_meta' => [
         'count_*' => 0,
         'fingerprint_*[]' => '',

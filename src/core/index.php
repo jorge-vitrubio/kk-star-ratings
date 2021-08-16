@@ -14,8 +14,7 @@ if (! defined('KK_STAR_RATINGS')) {
     exit();
 }
 
-// TODO: Use 'core' key. e.g. ['core' => ...].
-kksr(require __DIR__.'/config.php');
+kksr(['core' => require __DIR__.'/config.php']);
 
 foreach ([
     'hooks.php',

@@ -24,5 +24,5 @@ function load_textdomain_mofile($mofile, $domain): string
 
     $locale = apply_filters('plugin_locale', determine_locale(), $domain);
 
-    return kksr('path').'languages/'.$domain.'-'.$locale.'.mo';
+    return kksr('core.path').'languages/'.$domain.'-'.$locale.'.mo';
 }

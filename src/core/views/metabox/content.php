@@ -25,7 +25,7 @@
     <div style="margin-top: 1rem;">
         <label class="components-base-control__label" style="margin-top: .5rem; margin-bottom: .25rem;">
             <input type="radio" name="<?php echo esc_attr($status[0]); ?>" value="" <?php echo checked($status[1], '', false); ?>>
-            <?php echo esc_html_x('Auto', 'label', 'kk-star-ratings'); ?>
+            <?php echo esc_html_x('Global', 'label', 'kk-star-ratings'); ?>
         </label>
         <label class="components-base-control__label" style="margin-top: .5rem; margin-bottom: .25rem; margin-left: .5rem;">
             <input type="radio" name="<?php echo esc_attr($status[0]); ?>" value="enable" <?php echo checked($status[1], 'enable', false); ?>>

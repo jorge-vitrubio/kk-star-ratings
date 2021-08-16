@@ -28,7 +28,7 @@ if (! defined('KK_STAR_RATINGS')) {
 function option($keyOrOptions, $default = null, string $prefix = null, array $fallback = null)
 {
     if (is_null($fallback)) {
-        $fallback = (array) kksr('options');
+        $fallback = (array) kksr('core.options');
     }
 
     if (! is_array($keyOrOptions)) {

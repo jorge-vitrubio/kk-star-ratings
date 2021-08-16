@@ -18,7 +18,7 @@ if (! defined('KK_STAR_RATINGS')) {
     exit();
 }
 
-function save_metabox($id): void
+function save_post($id): void
 {
     if (wp_verify_nonce($_POST[kksr('slug').'-metabox'] ?? '', __FUNCTION__)
         && ! (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE)

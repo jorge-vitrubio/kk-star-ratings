@@ -29,7 +29,7 @@ if (! defined('KK_STAR_RATINGS')) {
 function post_meta($id, $keyOrOptions, $default = null, array $fallback = null)
 {
     if (is_null($fallback)) {
-        $fallback = (array) kksr('post_meta');
+        $fallback = (array) kksr('core.post_meta');
     }
 
     $explodeSingle = function ($key) {

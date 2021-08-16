@@ -16,10 +16,10 @@ if (! defined('KK_STAR_RATINGS')) {
     exit();
 }
 
-foreach (kksr('actions') as $fn) {
+foreach (kksr('core.actions') as $fn) {
     hook('action', $fn, $fn, 9);
 }
 
-foreach (kksr('filters') as $fn) {
+foreach (kksr('core.filters') as $fn) {
     hook('filter', $fn, $fn, 9);
 }

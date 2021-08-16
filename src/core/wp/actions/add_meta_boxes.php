@@ -53,7 +53,7 @@ function add_meta_boxes($type, $post): void
         kksr('slug'),
         $title,
         function () use ($type, $post) {
-            wp_nonce_field(kksr('core.save_metabox'), kksr('slug').'-metabox');
+            wp_nonce_field(kksr('core.wp.actions.save_post'), kksr('slug').'-metabox');
             action('metabox/index', $type, $post);
         },
         $postTypes,

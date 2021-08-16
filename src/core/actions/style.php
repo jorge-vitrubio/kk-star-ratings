@@ -20,7 +20,7 @@ function style(bool $isDebugMode = false): void
 {
     wp_enqueue_style(
         kksr('slug'),
-        kksr('public_url').'css/kk-star-ratings'
+        kksr('core.url').'public/css/kk-star-ratings'
             .($isDebugMode ? '' : '.min').'.css',
         [],
         kksr('version')
