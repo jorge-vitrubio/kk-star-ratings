@@ -20,9 +20,10 @@ if (! defined('KK_STAR_RATINGS')) {
 
 function activate(string $version, ?string $previous): void
 {
-    $options = array_map(function ($key) {
-        return option($key);
-    }, array_keys(kksr('core.options')));
+    $options = array_map(
+        kksr('core.functions.option'),
+        array_keys(kksr('core.options'))
+    );
 
     option($options);
 }
