@@ -11,6 +11,8 @@
 
 namespace Bhittani\StarRating\core\functions;
 
+use function Bhittani\StarRating\functions\action as base_action;
+
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);
     exit();
@@ -18,9 +20,5 @@ if (! defined('KK_STAR_RATINGS')) {
 
 function action(string $tag, ...$args): void
 {
-    $tag = strpos($tag, '/') === 0
-        ? substr($tag, 1)
-        : ('Bhittani\StarRating\core\actions\\'.str_replace('/', '\\', $tag));
-
-    do_action($tag, ...$args);
+    base_action('Bhittani\StarRating\core\actions', $tag, ...$args);
 }

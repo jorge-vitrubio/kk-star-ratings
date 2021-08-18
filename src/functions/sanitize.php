@@ -9,7 +9,7 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace Bhittani\StarRating\core\functions;
+namespace Bhittani\StarRating\functions;
 
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);
@@ -22,7 +22,7 @@ function sanitize($values, $sanitizers = null)
     $defaultSanitizer = 'sanitize_text_field';
 
     if (! $sanitizers) {
-        $sanitizers = 'sanitize_text_field';
+        $sanitizers = $defaultSanitizer;
     }
 
     if (! is_array($values)) {

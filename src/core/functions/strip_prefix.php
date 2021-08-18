@@ -11,32 +11,19 @@
 
 namespace Bhittani\StarRating\core\functions;
 
+use function Bhittani\StarRating\functions\strip_prefix as base_strip_prefix;
+
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);
     exit();
 }
 
-/** @param string|array $keyOrArray */
-function strip_prefix($keyOrArray, string $prefix = null)
+/**
+ * @param string|array $strOrPayload
+ *
+ * @return string|array
+ */
+function strip_prefix($strOrPayload)
 {
-    if (is_array($keyOrArray)) {
-        return array_combine(
-            array_map(function ($key) use ($prefix) {
-                return strip_prefix($key, $prefix);
-            }, array_keys($keyOrArray)),
-            array_values($keyOrArray)
-        );
-    }
-
-    if (is_null($prefix)) {
-        $prefix = kksr('nick').'_';
-    }
-
-    $key = $keyOrArray;
-
-    if (strpos($key, $prefix) !== 0) {
-        return $key;
-    }
-
-    return substr($key, strlen($prefix));
+    return base_strip_prefix($strOrPayload, kksr('nick').'_');
 }

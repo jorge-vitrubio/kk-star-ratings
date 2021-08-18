@@ -11,8 +11,7 @@
 
 namespace Bhittani\StarRating\core\actions\metabox;
 
-use function Bhittani\StarRating\core\functions\get_hof;
-use function Bhittani\StarRating\core\functions\post_meta;
+use function Bhittani\StarRating\core\functions\get_meta_hof;
 use function Bhittani\StarRating\core\functions\view;
 use WP_Post;
 
@@ -23,11 +22,7 @@ if (! defined('KK_STAR_RATINGS')) {
 
 function content(?string $type, WP_Post $post = null): void
 {
-    $factory = function (string $key, $default = null) use ($post) {
-        return post_meta($post ? $post->ID : 0, $key, $default);
-    };
-
-    $get = get_hof(null, $factory, '_'.kksr('nick').'_', array_map('gettype', kksr('core.post_meta')));
+    $get = get_meta_hof(null, $post ? $post->ID : 0);
 
     echo view('metabox/content.php', compact('get', 'type', 'post'));
 }

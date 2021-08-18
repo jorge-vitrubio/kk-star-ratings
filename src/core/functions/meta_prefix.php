@@ -11,7 +11,7 @@
 
 namespace Bhittani\StarRating\core\functions;
 
-use function Bhittani\StarRating\functions\strip_prefix;
+use function Bhittani\StarRating\functions\prefix;
 
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);
@@ -23,7 +23,7 @@ if (! defined('KK_STAR_RATINGS')) {
  *
  * @return string|array
  */
-function strip_meta_prefix($strOrPayload)
+function meta_prefix($strOrPayload)
 {
-    return strip_prefix($strOrPayload, '_'.kksr('nick').'_');
+    return prefix($strOrPayload, '_'.kksr('nick').'_');
 }

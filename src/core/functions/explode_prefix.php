@@ -11,20 +11,14 @@
 
 namespace Bhittani\StarRating\core\functions;
 
+use function Bhittani\StarRating\functions\explode_prefix as base_explode_prefix;
+
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);
     exit();
 }
 
-function explode_prefix(string $key, string $prefix = null): array
+function explode_prefix(string $key): array
 {
-    if (is_null($prefix)) {
-        $prefix = kksr('nick').'_';
-    }
-
-    if (strpos($key, $prefix) === 0) {
-        $key = substr($key, strlen($prefix));
-    }
-
-    return [$prefix, $key];
+    return base_explode_prefix($key, kksr('nick').'_');
 }

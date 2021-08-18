@@ -11,19 +11,19 @@
 
 namespace Bhittani\StarRating\core\functions;
 
-use function Bhittani\StarRating\functions\strip_prefix;
+use function Bhittani\StarRating\functions\get_hof;
 
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);
     exit();
 }
 
-/**
- * @param string|array $strOrPayload
- *
- * @return string|array
- */
-function strip_meta_prefix($strOrPayload)
+/** @param int|string $id */
+function get_meta_hof(?array $payload, $id): callable
 {
-    return strip_prefix($strOrPayload, '_'.kksr('nick').'_');
+    $delegate = function (string $key, $default = null) use ($id) {
+        return post_meta($id, $key, $default);
+    };
+
+    return get_hof($payload, $delegate, '_'.kksr('nick').'_', array_map('gettype', kksr('core.post_meta')));
 }

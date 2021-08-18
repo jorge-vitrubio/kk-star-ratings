@@ -9,21 +9,21 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace Bhittani\StarRating\core\functions;
-
-use function Bhittani\StarRating\functions\strip_prefix;
+namespace Bhittani\StarRating\functions;
 
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);
     exit();
 }
 
-/**
- * @param string|array $strOrPayload
- *
- * @return string|array
- */
-function strip_meta_prefix($strOrPayload)
+function filter(string $namespace, string $tag, ...$args)
 {
-    return strip_prefix($strOrPayload, '_'.kksr('nick').'_');
+    $tag = strpos($tag, '/') === 0
+        ? substr($tag, 1)
+        : prefix(
+            str_replace('/', '\\', $tag),
+            rtrim($namespace, '\\').'\\'
+        );
+
+    return apply_filters($tag, ...$args);
 }

@@ -12,8 +12,8 @@
 namespace Bhittani\StarRating\core\actions\admin\save;
 
 use function Bhittani\StarRating\core\functions\option;
-use function Bhittani\StarRating\core\functions\sanitize;
 use function Bhittani\StarRating\core\functions\strip_prefix;
+use function Bhittani\StarRating\functions\sanitize;
 
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);

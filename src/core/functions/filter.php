@@ -11,6 +11,8 @@
 
 namespace Bhittani\StarRating\core\functions;
 
+use function Bhittani\StarRating\functions\filter as base_filter;
+
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);
     exit();
@@ -18,9 +20,5 @@ if (! defined('KK_STAR_RATINGS')) {
 
 function filter(string $tag, ...$args)
 {
-    $tag = strpos($tag, '/') === 0
-        ? substr($tag, 1)
-        : ('Bhittani\StarRating\core\filters\\'.str_replace('/', '\\', $tag));
-
-    return apply_filters($tag, ...$args);
+    return base_filter('Bhittani\StarRating\core\filters', $tag, ...$args);
 }

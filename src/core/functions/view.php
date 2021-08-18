@@ -11,57 +11,15 @@
 
 namespace Bhittani\StarRating\core\functions;
 
-use InvalidArgumentException;
+use function Bhittani\StarRating\functions\view as base_view;
 
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);
     exit();
 }
 
-function view(string $__path, array $__payload = [], string $__base = null): string
+/** @throws InvalidArgumentException If the template is not found */
+function view(string $path, array $payload = []): string
 {
-    $__base = rtrim($__base ?: kksr('core.views'), '\/').'/';
-    $__view = function (string $path, array $payload = [], string $base = null) use ($__payload, $__base) {
-        return view($path, array_merge($__payload, $payload), $base ?: $__base);
-    };
-    $__dusk = kksr('functions.dusk_attr');
-    $__kksr = 'kksr';
-
-    $resolve = function (string $base, string $path): string {
-        if (is_file($path)) {
-            return $path;
-        }
-
-        $path = trim($path, '\/');
-        $template = $base.'/'.$path;
-        $directory = kksr('slug');
-        $parentTheme = get_template_directory().'/'.$directory.'/'.$path;
-        $childTheme = get_stylesheet_directory().'/'.$directory.'/'.$path;
-
-        if (is_file($childTheme)) {
-            return $childTheme;
-        }
-
-        if (is_file($parentTheme)) {
-            return $parentTheme;
-        }
-
-        if (is_file($template)) {
-            return $template;
-        }
-
-        throw new InvalidArgumentException("The template '{$path}' could not be located at '{$template}'.");
-    };
-
-    $__template = $resolve($__base, $__path);
-
-    unset($resolve);
-
-    extract($__payload);
-
-    ob_start();
-
-    require $__template;
-
-    return ob_get_clean();
+    return base_view(kksr('core.views'), $path, $payload);
 }

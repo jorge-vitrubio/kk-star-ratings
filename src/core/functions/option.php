@@ -11,8 +11,7 @@
 
 namespace Bhittani\StarRating\core\functions;
 
-use function Bhittani\StarRating\functions\find;
-use function Bhittani\StarRating\functions\type_cast;
+use function Bhittani\StarRating\functions\option as base_option;
 
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);
@@ -25,25 +24,7 @@ if (! defined('KK_STAR_RATINGS')) {
  * @param array|string $keyOrOptions
  * @param mixed|null $default
  */
-function option($keyOrOptions, $default = null, string $prefix = null, array $fallback = null)
+function option($keyOrOptions, $default = null)
 {
-    if (is_null($fallback)) {
-        $fallback = (array) kksr('core.options');
-    }
-
-    if (! is_array($keyOrOptions)) {
-        [$prefix, $key] = explode_prefix($keyOrOptions, $prefix);
-        $fallbackValue = find($fallback, $key);
-        $value = get_option($prefix.$key, $default ?? $fallbackValue);
-
-        return type_cast($value, gettype($fallbackValue));
-    }
-
-    foreach ($keyOrOptions as $key => $value) {
-        [$prefix, $key] = explode_prefix($key, $prefix);
-        $fallbackValue = find($fallback, $key);
-        $type = gettype($fallbackValue);
-        $value = type_cast($value, $type == 'boolean' ? 'integer' : $type);
-        update_option($prefix.$key, $value);
-    }
+    return base_option($keyOrOptions, $default, kksr('nick').'_', kksr('core.options'));
 }

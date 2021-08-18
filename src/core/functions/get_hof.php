@@ -11,22 +11,14 @@
 
 namespace Bhittani\StarRating\core\functions;
 
-use function Bhittani\StarRating\functions\type_cast;
+use function Bhittani\StarRating\functions\get_hof as base_get_hof;
 
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);
     exit();
 }
 
-function get_hof(?array $payload, callable $factory, string $prefix = null, array $types = []): callable
+function get_hof(?array $payload): callable
 {
-    return function (string $key, $default = null) use ($payload, $factory, $prefix, $types) {
-        [$prefix, $key] = explode_prefix($key, $prefix);
-
-        $value = is_array($payload)
-            ? ($payload[$prefix.$key] ?? null)
-            : $factory($key, $default);
-
-        return [$prefix.$key, type_cast($value, $types[$key] ?? '')];
-    };
+    return base_get_hof($payload, kksr('core.functions.option'), kksr('nick').'_', array_map('gettype', kksr('core.options')));
 }
