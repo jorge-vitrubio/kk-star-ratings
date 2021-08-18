@@ -20,6 +20,5 @@ foreach ([
     'hooks.php',
     'hydrate.php',
 ] as $filename) {
-    $filepath = __DIR__.'/'.ltrim($filename, '\/');
-    require_once $filepath;
+    require_once __DIR__.'/'.ltrim($filename, '\/');
 }
