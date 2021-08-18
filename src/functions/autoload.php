@@ -38,6 +38,11 @@ function autoload($namespace, string $path = null, array $excludes = [], int $de
     }
 
     $path = rtrim($path, '\/');
+
+    if (! is_dir($path)) {
+        return [];
+    }
+
     $cutoffLength = strlen($path) + 1;
     $namespace = rtrim($namespace, '\\');
 

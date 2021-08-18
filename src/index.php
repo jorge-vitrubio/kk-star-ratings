@@ -23,11 +23,6 @@ foreach ([
     require_once __DIR__.'/'.ltrim($filename, '\/');
 }
 
-autoload('Bhittani\StarRating', __DIR__.'/functions');
-
-autoload([
-    '\kksr',
-    '\kk_star_ratings',
-]);
+autoload(['\kksr', '\kk_star_ratings']);
 
 kksr(require __DIR__.'/config.php');
