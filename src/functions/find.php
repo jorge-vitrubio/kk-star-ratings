@@ -20,9 +20,11 @@ if (! defined('KK_STAR_RATINGS')) {
 function find(array $items, string $key, $default = null)
 {
     $isRegex = function (string $s) {
-        $l = strlen($s);
+        return @preg_match($s, '') !== false;
 
-        return strpos($s, '/') === 0 && strpos($s, '/', $l - 2) === ($l - 1);
+        // $l = strlen($s);
+
+        // return strpos($s, '/') === 0 && strpos($s, '/', $l - 2) === ($l - 1);
     };
 
     foreach ($items as $k => $v) {
