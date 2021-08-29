@@ -2,11 +2,13 @@
 
 /tests export-ignore
 /.github export-ignore
-/README.md export-ignore
+/.fsignore export-ignore
 /.gitignore export-ignore
+/.distignore export-ignore
 /composer.lock export-ignore
 /composer.json export-ignore
 /.editorconfig export-ignore
 /.gitattributes export-ignore
+/.prettierignore export-ignore
 /phpunit.xml.dist export-ignore
 /.php-cs-fixer.php export-ignore

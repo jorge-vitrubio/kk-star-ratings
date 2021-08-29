@@ -1,14 +1,21 @@
+.DS_Store
 /.vscode
 /*.cache
 /svn
 /bin
 /node_modules
 /vendor
+/dist
 /phpunit.xml
 /readme.txt
 /freemius
 /freemius.php
+/languages/kksr-*.pot
+/languages/kksr-*.mo
 TODO.md
+
+# Premium
+/src/custom-stars
 
 # Temp
 /composer.json

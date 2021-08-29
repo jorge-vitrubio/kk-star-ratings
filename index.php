@@ -32,3 +32,6 @@ foreach ([
 
 require_once __DIR__.'/src/index.php';
 require_once __DIR__.'/src/core/index.php';
+/* @fs */
+require_once __DIR__.'/src/custom-stars/index.php';
+/* @endfs */
