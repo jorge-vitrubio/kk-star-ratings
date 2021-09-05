@@ -19,9 +19,9 @@ if (! defined('KK_STAR_RATINGS')) {
 function tabs(array $tabs): array
 {
     return array_merge([
-        __('General', 'kk-star-ratings'),
-        __('Appearance', 'kk-star-ratings'),
-        __('Rich Snippets', 'kk-star-ratings'),
+        _x('General', 'Label', 'kk-star-ratings'),
+        _x('Appearance', 'Label', 'kk-star-ratings'),
+        _x('Rich Snippets', 'Label', 'kk-star-ratings'),
         // [
         //     'tab' => __('Addons', 'kk-star-ratings'),
         //     'is_addon' => true,

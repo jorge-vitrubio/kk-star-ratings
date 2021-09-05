@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-07-29T19:10:31+00:00\n"
+"POT-Creation-Date: 2021-09-05T16:14:53+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: kk-star-ratings\n"
@@ -34,313 +34,353 @@ msgstr ""
 msgid "http://bhittani.com"
 msgstr ""
 
-#: src/actions/admin/index.php:40
+#: src/core/actions/admin/index.php:75
 msgid "You can only save the options via the admin."
 msgstr ""
 
-#: src/actions/admin/index.php:71
+#: src/core/actions/admin/index.php:106
 msgid "There were some errors while saving the options."
 msgstr ""
 
-#: src/core/controller.php:28
-msgid "This action is forbidden."
-msgstr ""
-
-#: src/core/controller.php:38
-msgid "A rating can not be accepted at the moment."
-msgstr ""
-
-#: src/core/controller.php:42
-msgid "A rating is required to cast a vote."
-msgstr ""
-
-#: src/core/controller.php:48
-msgid "The rating value must be between %1$d and %2$d."
-msgstr ""
-
-#: src/filters/admin/tabs.php:22
+#: src/core/filters/admin/tabs.php:22
+msgctxt "Label"
 msgid "General"
 msgstr ""
 
-#: src/filters/admin/tabs.php:23
+#: src/core/filters/admin/tabs.php:23
+msgctxt "Label"
 msgid "Appearance"
 msgstr ""
 
-#: src/filters/admin/tabs.php:24
+#: src/core/filters/admin/tabs.php:24
+msgctxt "Label"
 msgid "Rich Snippets"
 msgstr ""
 
-#: src/filters/validate.php:29
+#: src/core/filters/validate.php:30
 msgid "The ratings are readonly."
 msgstr ""
 
-#: src/filters/validate.php:37
+#: src/core/filters/validate.php:38
 msgid "You can not cast a vote in archives."
 msgstr ""
 
-#: src/filters/validate.php:43
+#: src/core/filters/validate.php:44
 msgid "You need to be authenticated to cast a vote."
 msgstr ""
 
-#: src/filters/validate.php:51
+#: src/core/filters/validate.php:52
 msgid "You have already casted your vote."
 msgstr ""
 
-#: src/functions/response.php:45
+#: src/core/functions/response.php:45
 msgid "vote"
 msgid_plural "votes"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views/admin/index.php:17
+#: src/core/views/admin/index.php:19
 msgid "Options saved."
 msgstr ""
 
-#: views/admin/tabs/appearance.php:10
+#: src/core/views/admin/tabs/appearance.php:15
 msgctxt "Label"
 msgid "Top Left"
 msgstr ""
 
-#: views/admin/tabs/appearance.php:11
+#: src/core/views/admin/tabs/appearance.php:16
 msgctxt "Label"
 msgid "Top Center"
 msgstr ""
 
-#: views/admin/tabs/appearance.php:12
+#: src/core/views/admin/tabs/appearance.php:17
 msgctxt "Label"
 msgid "Top Right"
 msgstr ""
 
-#: views/admin/tabs/appearance.php:13
+#: src/core/views/admin/tabs/appearance.php:18
 msgctxt "Label"
 msgid "Bottom Left"
 msgstr ""
 
-#: views/admin/tabs/appearance.php:14
+#: src/core/views/admin/tabs/appearance.php:19
 msgctxt "Label"
 msgid "Bottom Center"
 msgstr ""
 
-#: views/admin/tabs/appearance.php:15
+#: src/core/views/admin/tabs/appearance.php:20
 msgctxt "Label"
 msgid "Bottom Right"
 msgstr ""
 
-#: views/admin/tabs/appearance.php:25
+#: src/core/views/admin/tabs/appearance.php:30
 msgctxt "Label"
 msgid "Greeting"
 msgstr ""
 
-#: views/admin/tabs/appearance.php:33
+#: src/core/views/admin/tabs/appearance.php:38
 msgid "Text that will be displayed when no votes have been casted."
 msgstr ""
 
-#: views/admin/tabs/appearance.php:35
-#: views/admin/tabs/appearance.php:56
-#: views/admin/tabs/rich-snippets.php:38
+#: src/core/views/admin/tabs/appearance.php:40
+#: src/core/views/admin/tabs/appearance.php:61
+#: src/core/views/admin/tabs/rich-snippets.php:43
 msgid "The following variables are available:"
 msgstr ""
 
-#: views/admin/tabs/appearance.php:37
+#: src/core/views/admin/tabs/appearance.php:42
 msgid "%s Post Type"
 msgstr ""
 
-#: views/admin/tabs/appearance.php:46
+#: src/core/views/admin/tabs/appearance.php:51
 msgctxt "Label"
 msgid "Legend"
 msgstr ""
 
-#: views/admin/tabs/appearance.php:54
+#: src/core/views/admin/tabs/appearance.php:59
 msgid "Text that will be displayed when votes have been casted."
 msgstr ""
 
-#: views/admin/tabs/appearance.php:58
+#: src/core/views/admin/tabs/appearance.php:63
 msgid "%s Average ratings"
 msgstr ""
 
-#: views/admin/tabs/appearance.php:60
+#: src/core/views/admin/tabs/appearance.php:65
 msgid "%s Number of votes casted"
 msgstr ""
 
-#: views/admin/tabs/appearance.php:62
+#: src/core/views/admin/tabs/appearance.php:67
 msgid "%s Total amount of stars"
 msgstr ""
 
-#: views/admin/tabs/appearance.php:64
+#: src/core/views/admin/tabs/appearance.php:69
 msgid "%s Votes"
 msgstr ""
 
-#: views/admin/tabs/appearance.php:73
+#: src/core/views/admin/tabs/appearance.php:78
 msgctxt "Label"
 msgid "Stars"
 msgstr ""
 
-#: views/admin/tabs/appearance.php:81
+#: src/core/views/admin/tabs/appearance.php:86
 msgid "Total number of stars."
 msgstr ""
 
-#: views/admin/tabs/appearance.php:90
+#: src/core/views/admin/tabs/appearance.php:95
 msgctxt "Label"
 msgid "Gap"
 msgstr ""
 
-#: views/admin/tabs/appearance.php:98
+#: src/core/views/admin/tabs/appearance.php:103
 msgid "Gap between the stars."
 msgstr ""
 
-#: views/admin/tabs/appearance.php:107
+#: src/core/views/admin/tabs/appearance.php:112
 msgctxt "Label"
 msgid "Size"
 msgstr ""
 
-#: views/admin/tabs/appearance.php:115
+#: src/core/views/admin/tabs/appearance.php:120
 msgid "Size of a single star."
 msgstr ""
 
-#: views/admin/tabs/appearance.php:123
+#: src/core/views/admin/tabs/appearance.php:128
 msgctxt "Label"
 msgid "Default Position"
 msgstr ""
 
-#: views/admin/tabs/appearance.php:135
+#: src/core/views/admin/tabs/appearance.php:140
 msgid "Choose the default position for the auto-embedded star ratings."
 msgstr ""
 
-#: views/admin/tabs/general.php:31
+#: src/core/views/admin/tabs/general.php:37
 msgctxt "Label"
 msgid "Home"
 msgstr ""
 
-#: views/admin/tabs/general.php:32
+#: src/core/views/admin/tabs/general.php:38
 msgctxt "Label"
 msgid "Archives"
 msgstr ""
 
-#: views/admin/tabs/general.php:36
+#: src/core/views/admin/tabs/general.php:42
 msgctxt "Label"
 msgid "Allow voting in archives"
 msgstr ""
 
-#: views/admin/tabs/general.php:37
+#: src/core/views/admin/tabs/general.php:43
 msgctxt "Label"
 msgid "Allow guests to vote"
 msgstr ""
 
-#: views/admin/tabs/general.php:38
+#: src/core/views/admin/tabs/general.php:44
 msgctxt "Label"
 msgid "Unique votes (based on IP Address)"
 msgstr ""
 
-#: views/admin/tabs/general.php:48
-#: views/admin/tabs/rich-snippets.php:12
+#: src/core/views/admin/tabs/general.php:54
+#: src/core/views/admin/tabs/rich-snippets.php:17
 msgctxt "Label"
 msgid "Status"
 msgstr ""
 
-#: views/admin/tabs/general.php:53
+#: src/core/views/admin/tabs/general.php:59
 msgctxt "Label"
 msgid "Active"
 msgstr ""
 
-#: views/admin/tabs/general.php:56
+#: src/core/views/admin/tabs/general.php:62
 msgid "Globally activate/deactivate the star ratings."
 msgstr ""
 
-#: views/admin/tabs/general.php:64
+#: src/core/views/admin/tabs/general.php:70
 msgctxt "Label"
 msgid "Strategies"
 msgstr ""
 
-#: views/admin/tabs/general.php:76
+#: src/core/views/admin/tabs/general.php:82
 msgid "Select the voting strategies."
 msgstr ""
 
-#: views/admin/tabs/general.php:84
+#: src/core/views/admin/tabs/general.php:90
 msgctxt "Label"
 msgid "Manual Control"
 msgstr ""
 
-#: views/admin/tabs/general.php:96
+#: src/core/views/admin/tabs/general.php:102
 msgid "Select the post types that should not auto embed the markup and will be manually controlled by the theme. E.g. Using %s in your theme/template file(s)."
 msgstr ""
 
-#: views/admin/tabs/general.php:104
+#: src/core/views/admin/tabs/general.php:110
 msgctxt "Label"
 msgid "Exclude Locations"
 msgstr ""
 
-#: views/admin/tabs/general.php:116
+#: src/core/views/admin/tabs/general.php:122
 msgid "The selected locations will not auto-embed the star ratings. You may still manually show the star ratings. E.g. Using %s in your theme/template file(s)."
 msgstr ""
 
-#: views/admin/tabs/general.php:124
+#: src/core/views/admin/tabs/general.php:130
 msgctxt "Label"
 msgid "Exclude Categories"
 msgstr ""
 
-#: views/admin/tabs/general.php:136
+#: src/core/views/admin/tabs/general.php:142
 msgid "The posts belonging to the selected categories will not auto-embed the star ratings. You may still manually show the star ratings. E.g. Using %s in your theme/template file(s)."
 msgstr ""
 
-#: views/admin/tabs/rich-snippets.php:17
+#: src/core/views/admin/tabs/rich-snippets.php:22
 msgctxt "Label"
 msgid "Enable"
 msgstr ""
 
-#: views/admin/tabs/rich-snippets.php:20
+#: src/core/views/admin/tabs/rich-snippets.php:25
 msgid "Enable/disable rich snippets."
 msgstr ""
 
-#: views/admin/tabs/rich-snippets.php:28
+#: src/core/views/admin/tabs/rich-snippets.php:33
 msgctxt "Label"
 msgid "Content"
 msgstr ""
 
-#: views/admin/tabs/rich-snippets.php:36
+#: src/core/views/admin/tabs/rich-snippets.php:41
 msgid "Provide the ld+json structure."
 msgstr ""
 
-#: views/admin/tabs/rich-snippets.php:40
+#: src/core/views/admin/tabs/rich-snippets.php:45
 msgctxt "Label"
 msgid "%s Post title"
 msgstr ""
 
-#: views/admin/tabs/rich-snippets.php:42
+#: src/core/views/admin/tabs/rich-snippets.php:47
 msgctxt "Label"
 msgid "%s Average ratings"
 msgstr ""
 
-#: views/admin/tabs/rich-snippets.php:44
+#: src/core/views/admin/tabs/rich-snippets.php:49
 msgctxt "Label"
 msgid "%s Number of votes casted"
 msgstr ""
 
-#: views/admin/tabs/rich-snippets.php:46
+#: src/core/views/admin/tabs/rich-snippets.php:51
 msgctxt "Label"
 msgid "%s Total amount of stars"
 msgstr ""
 
-#: views/metabox/content.php:15
+#: src/core/views/metabox/content.php:15
 msgctxt "label"
 msgid "Reset Ratings"
 msgstr ""
 
-#: views/metabox/content.php:22
+#: src/core/views/metabox/content.php:22
 msgctxt "label"
 msgid "Auto Embed"
 msgstr ""
 
-#: views/metabox/content.php:28
+#: src/core/views/metabox/content.php:28
 msgctxt "label"
-msgid "Auto"
+msgid "Global"
 msgstr ""
 
-#: views/metabox/content.php:32
+#: src/core/views/metabox/content.php:32
 msgctxt "label"
 msgid "Enable"
 msgstr ""
 
-#: views/metabox/content.php:36
+#: src/core/views/metabox/content.php:36
 msgctxt "label"
 msgid "Disable"
+msgstr ""
+
+#: src/core/wp/actions/wp_ajax_kk-star-ratings.php:30
+msgid "This action is forbidden."
+msgstr ""
+
+#: src/core/wp/actions/wp_ajax_kk-star-ratings.php:40
+msgid "A rating can not be accepted at the moment."
+msgstr ""
+
+#: src/core/wp/actions/wp_ajax_kk-star-ratings.php:44
+msgid "A rating is required to cast a vote."
+msgstr ""
+
+#: src/core/wp/actions/wp_ajax_kk-star-ratings.php:50
+msgid "The rating value must be between %1$d and %2$d."
+msgstr ""
+
+#: src/custom-stars/core/filters/admin/tabs.php:23
+msgctxt "Label"
+msgid "Custom Stars"
+msgstr ""
+
+#: src/custom-stars/views/admin/tabs/custom-stars.php:12
+msgid "This will be used for active stars."
+msgstr ""
+
+#: src/custom-stars/views/admin/tabs/custom-stars.php:13
+msgid "This will be used for inactive stars."
+msgstr ""
+
+#: src/custom-stars/views/admin/tabs/custom-stars.php:14
+msgid "This will be used for selected stars."
+msgstr ""
+
+#: src/custom-stars/views/admin/tabs/custom-stars.php:17
+msgctxt "Label"
+msgid "Active Star"
+msgstr ""
+
+#: src/custom-stars/views/admin/tabs/custom-stars.php:18
+msgctxt "Label"
+msgid "Inactive Star"
+msgstr ""
+
+#: src/custom-stars/views/admin/tabs/custom-stars.php:19
+msgctxt "Label"
+msgid "Selected Star"
+msgstr ""
+
+#: src/custom-stars/views/admin/tabs/custom-stars.php:56
+msgctxt "Label"
+msgid "Select Icon"
 msgstr ""
