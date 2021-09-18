@@ -26,7 +26,7 @@ function index(): void
 
     if (! $previous) {
         action('install', $version);
-    } elseif (version_compare($previous, '5.0.dev', '<')) {
+    } elseif (version_compare($previous, '5.0.0-alpha', '<')) {
         action('upgrade', $version, $previous);
     }
 
