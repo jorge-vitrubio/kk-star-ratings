@@ -53,7 +53,8 @@ function index(): void
 
     $tabs = array_combine($tabKeys, $tabValues);
 
-    $active = filter('admin/active_tab', array_key_first($tabs) ?: '');
+    reset($tabs);
+    $active = filter('admin/active_tab', key($tabs) ?: '');
 
     if (isset($tabs[$active])) {
         $tabs[$active]['is_active'] = true;
