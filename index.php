@@ -10,7 +10,7 @@
  * Author URI:      http://bhittani.com
  * Text Domain:     kk-star-ratings
  * Domain Path:     /languages
- * Version:         5.0.alpha
+ * Version:         5.0.0-alpha
  * License:         GPLv2 or later
  */
 
@@ -21,17 +21,22 @@ if (! defined('ABSPATH')) {
 
 define('KK_STAR_RATINGS', __FILE__);
 
-foreach ([
-    'freemius.php',
-    'vendor/autoload.php',
-] as $filename) {
-    if (file_exists($filepath = __DIR__.'/'.ltrim($filename, '\/'))) {
-        require_once $filepath;
-    }
-}
+/* @dev */
+require_once __DIR__.'vendor/autoload.php';
+/* @enddev */
 
-require_once __DIR__.'/src/index.php';
-require_once __DIR__.'/src/core/index.php';
-/* @fs */
-require_once __DIR__.'/src/custom-stars/index.php';
-/* @endfs */
+if (function_exists('kksr_freemius')) {
+    kksr_freemius()->set_basename(true, __FILE__);
+} else {
+    if (! function_exists( 'kksr_freemius' )) {
+        require_once __DIR__.'/freemius.php';
+    }
+
+    require_once __DIR__.'/src/index.php';
+    require_once __DIR__.'/src/core/index.php';
+    /* @fs */
+    if ( kksr_freemius()->is_plan('starter') ) {
+        require_once __DIR__.'/src/custom-stars/index.php';
+    }
+    /* @endfs */
+}
