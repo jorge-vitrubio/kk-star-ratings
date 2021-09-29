@@ -10,12 +10,10 @@
 /readme.txt
 /freemius
 /freemius.php
-/languages/kksr-*.pot
-/languages/kksr-*.mo
 TODO.md
 
 # Premium
-/src/custom-stars
+/src/premium
 
 # Temp
 /composer.json
