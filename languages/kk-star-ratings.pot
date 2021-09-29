@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-09-18T15:33:16+00:00\n"
+"POT-Creation-Date: 2021-09-29T11:01:41+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: kk-star-ratings\n"
@@ -348,39 +348,39 @@ msgstr ""
 msgid "The rating value must be between %1$d and %2$d."
 msgstr ""
 
-#: src/custom-stars/core/filters/admin/tabs.php:23
+#: src/premium/custom-stars/core/filters/admin/tabs.php:23
 msgctxt "Label"
 msgid "Custom Stars"
 msgstr ""
 
-#: src/custom-stars/views/admin/tabs/custom-stars.php:12
+#: src/premium/custom-stars/views/admin/tabs/custom-stars.php:12
 msgid "This will be used for active stars."
 msgstr ""
 
-#: src/custom-stars/views/admin/tabs/custom-stars.php:13
+#: src/premium/custom-stars/views/admin/tabs/custom-stars.php:13
 msgid "This will be used for inactive stars."
 msgstr ""
 
-#: src/custom-stars/views/admin/tabs/custom-stars.php:14
+#: src/premium/custom-stars/views/admin/tabs/custom-stars.php:14
 msgid "This will be used for selected stars."
 msgstr ""
 
-#: src/custom-stars/views/admin/tabs/custom-stars.php:17
+#: src/premium/custom-stars/views/admin/tabs/custom-stars.php:17
 msgctxt "Label"
 msgid "Active Star"
 msgstr ""
 
-#: src/custom-stars/views/admin/tabs/custom-stars.php:18
+#: src/premium/custom-stars/views/admin/tabs/custom-stars.php:18
 msgctxt "Label"
 msgid "Inactive Star"
 msgstr ""
 
-#: src/custom-stars/views/admin/tabs/custom-stars.php:19
+#: src/premium/custom-stars/views/admin/tabs/custom-stars.php:19
 msgctxt "Label"
 msgid "Selected Star"
 msgstr ""
 
-#: src/custom-stars/views/admin/tabs/custom-stars.php:56
+#: src/premium/custom-stars/views/admin/tabs/custom-stars.php:56
 msgctxt "Label"
 msgid "Select Icon"
 msgstr ""

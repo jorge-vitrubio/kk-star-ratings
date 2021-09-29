@@ -5,7 +5,7 @@ Donate link: https://github.com/kamalkhan/kk-star-ratings
 Tags: star ratings, votings, rate posts, ajax ratings, infinite stars, unlimited stars, google rich snippets, structured data, SEO, SERP
 Requires at least: 5.0
 Requires PHP: 7.2
-Tested up to: 5.8
+Tested up to: 5.8.1
 Stable tag: 4.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -132,10 +132,10 @@ kk Star Ratings is a widely used star rating plugin for wordpress. Here are some
 Please have patience as we have no control over how google or any search engine indexes your pages. It might take some days or even weeks for the robots to crawl the ratings.
 
 <!-- only:wp>
-= I have been using a verion of this plugin prior to v4. Is it safe for me to update? =
+= I have been using a version of this plugin prior to v5. Is it safe for me to update? =
 </only:wp -->
 <!-- only:github/ -->
-> I have been using a verion of this plugin prior to v4. Is it safe for me to update?
+> I have been using a version of this plugin prior to v5. Is it safe for me to update?
 <!-- /only:github -->
 
 All previous ratings and options will be preserved. However, since v5 has been renewed from scratch, we do not support downgrading after upgrading to v5.
