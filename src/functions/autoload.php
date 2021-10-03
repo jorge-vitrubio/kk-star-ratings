@@ -103,17 +103,22 @@ function autoload($namespace, string $path = null, array $excludes = [], int $de
         $name = preg_replace('/[\/\\\]/', '/', $name);
         $fn = preg_replace('/\//', '\\', $name);
         $fn = preg_replace('/([^a-zA-Z0-9\\\]+?)/', '_', $fn);
-        $fqfn = $namespace.'\\'.$fn;
+        $fqFnOrCn = $namespace.'\\'.$fn;
 
-        if (! function_exists($fqfn)) {
-            require_once $filepath;
+        $parts = explode('\\', $name);
+        $last = array_pop($parts);
 
-            if (! function_exists($fqfn)) {
-                continue;
-            }
+        $exists = 'function_exists';
+
+        if (preg_match('/^\p{Lu}/u', $last)) {
+            $exists = 'class_exists';
         }
 
-        $autoloads = [$name => $fqfn] + $autoloads;
+        if (! $exists($fqFnOrCn)) {
+            require_once $filepath;
+
+            $autoloads = [$name => $fqFnOrCn] + $autoloads;
+        }
     }
 
     return $autoloads;
