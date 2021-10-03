@@ -38,6 +38,7 @@ return [
 ] + [
     // Config
     'post_meta' => [
+        'avg_*' => 0.0,
         'count_*' => 0,
         'fingerprint_*[]' => '',
         'ratings_*' => 0.0,
