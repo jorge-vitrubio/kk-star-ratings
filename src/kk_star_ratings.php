@@ -9,10 +9,7 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-use function Bhittani\StarRating\functions\autoload;
 use function Bhittani\StarRating\functions\to_shortcode;
-
-autoload('Bhittani\StarRating\functions\to_shortcode');
 
 /** @param int|string|array|object|WP_POST|null $idOrPostOrPayload */
 function kk_star_ratings($idOrPostOrPayload = null): string

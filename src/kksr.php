@@ -9,10 +9,7 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-use function Bhittani\StarRating\functions\autoload;
 use function Bhittani\StarRating\functions\container;
-
-autoload(['functions\dot', 'functions\container']);
 
 /** @param string|array|null $keyOrItems */
 function kksr($keyOrItems = null, $default = null)

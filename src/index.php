@@ -17,12 +17,16 @@ if (! defined('KK_STAR_RATINGS')) {
 }
 
 foreach ([
-    'functions/autoload.php',
-    'functions/autoload_function.php',
+    'functions/autoload',
+    'functions/autoload_class',
+    'functions/autoload_function',
+    'functions/dot',
+    'functions/container',
+    'kksr',
 ] as $filename) {
-    require_once __DIR__.'/'.ltrim($filename, '\/');
+    require_once __DIR__.'/'.ltrim($filename, '\/').'.php';
 }
 
-autoload(['\kksr', '\kk_star_ratings']);
-
 kksr(require __DIR__.'/config.php');
+
+autoload('\kk_star_ratings');

@@ -35,10 +35,6 @@ if (function_exists('kksr_freemius')) {
     require_once __DIR__.'/src/index.php';
     require_once __DIR__.'/src/core/index.php';
     /* @fs */
-    if ( kksr_freemius()->is__premium_only() ) {
-        if ( kksr_freemius()->is_plan('starter') ) {
-            require_once __DIR__.'/src/custom-stars/index.php';
-        }
-    }
+    require_once __DIR__.'/src/premium/index.php';
     /* @endfs */
 }
