@@ -19,26 +19,26 @@ if (! defined('KK_STAR_RATINGS')) {
 }
 
 /** @throws RuntimeException if the function can not be autoloaded. */
-function autoload_function(string $fqcn): bool
+function autoload_function(string $fqfn): bool
 {
-    if (function_exists($fqcn)) {
+    if (function_exists($fqfn)) {
         return false;
     }
 
-    $name = $fqcn;
+    $name = $fqfn;
     $prefix = 'Bhittani\StarRating\\';
 
-    if (strpos($fqcn, '\\') !== 0
-        && strpos($fqcn, $prefix) !== 0
+    if (strpos($fqfn, '\\') !== 0
+        && strpos($fqfn, $prefix) !== 0
     ) {
-        $fqcn = $prefix.$fqcn;
+        $fqfn = $prefix.$fqfn;
     }
 
-    if (strpos($fqcn, $prefix) === 0) {
-        $name = substr($fqcn, strlen($prefix));
+    if (strpos($fqfn, $prefix) === 0) {
+        $name = substr($fqfn, strlen($prefix));
     }
 
-    $fqcn = trim($fqcn, '\\');
+    $fqfn = trim($fqfn, '\\');
     $name = trim($name, '\\');
 
     // kebab-Case
@@ -49,13 +49,13 @@ function autoload_function(string $fqcn): bool
     $filepath = dirname(KK_STAR_RATINGS).'/src/'.implode('/', $parts).'.php';
 
     if (! is_file($filepath)) {
-        throw new RuntimeException("Failed to autoload function '{$fqcn}` because the file `{$filepath}` does not exist");
+        throw new RuntimeException("Failed to autoload function '{$fqfn}` because the file `{$filepath}` does not exist");
     }
 
     require_once $filepath;
 
-    if (! function_exists($fqcn)) {
-        throw new RuntimeException("Failed to autoload function '{$fqcn}` because the file `{$filepath}` does not contain the function `${fqcn}`");
+    if (! function_exists($fqfn)) {
+        throw new RuntimeException("Failed to autoload function '{$fqfn}` because the file `{$filepath}` does not contain the function `${fqfn}`");
     }
 
     return true;
