@@ -36,6 +36,7 @@ function save(float $outOf5, int $id, string $slug, array $payload): void
         post_meta($id, [
             "count_{$slug}" => $newCount,
             "ratings_{$slug}" => $newRatings,
+            "avg_{$slug}" => $newRatings / $newCount,
             "fingerprint_{$slug}[]" => $fingerprint,
         ]);
 

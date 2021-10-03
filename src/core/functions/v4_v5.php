@@ -33,15 +33,27 @@ function v4_v5(): void
     global $wpdb;
 
     $rows = $wpdb->get_results("
-        SELECT posts.ID FROM {$wpdb->posts} posts
-        WHERE posts.post_type NOT IN ('attachment','revision','nav_menu_item')
+        SELECT
+            posts.ID,
+            postmeta_ratings.meta_value as ratings,
+            postmeta_casts.meta_value as casts,
+            postmeta_status.meta_value as status
+        FROM {$wpdb->posts} posts
+        JOIN {$wpdb->postmeta} postmeta_ratings ON posts.ID = postmeta_ratings.post_id
+        JOIN {$wpdb->postmeta} postmeta_casts ON posts.ID = postmeta_casts.post_id
+        JOIN {$wpdb->postmeta} postmeta_status ON posts.ID = postmeta_status.post_id
+        WHERE
+            postmeta_ratings.meta_key = '_kksr_ratings'
+        AND postmeta_casts.meta_key = '_kksr_casts'
+        AND postmeta_status.meta_key = '_kksr_status'
     ");
 
     foreach ($rows as $row) {
         post_meta($row->ID, [
-            'count_default' => get_post_meta($row->ID, '_kksr_casts', true),
-            'ratings_default' => get_post_meta($row->ID, '_kksr_ratings', true),
-            'status_default' => get_post_meta($row->ID, '_kksr_status', true),
+            'count_default' => $count = (int) $row->casts,
+            'ratings_default' => $ratings = (float) $row->ratings,
+            'avg_default' => $count ? ($ratings / $count) : 0,
+            'status_default' => $row->status,
         ]);
 
         foreach (get_post_meta($row->ID, '_kksr_ref', false) as $fingerprint) {
