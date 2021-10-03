@@ -46,11 +46,16 @@ function v2_v4(): void
     // Normalize post ratings.
 
     $rows = $wpdb->get_results("
-        SELECT posts.ID, postmeta_avg.meta_value as avg, postmeta_casts.meta_value as casts
+        SELECT
+            posts.ID,
+            postmeta_avg.meta_value as avg,
+            postmeta_casts.meta_value as casts
         FROM {$wpdb->posts} posts
         JOIN {$wpdb->postmeta} postmeta_avg ON posts.ID = postmeta_avg.post_id
         JOIN {$wpdb->postmeta} postmeta_casts ON posts.ID = postmeta_casts.post_id
-        WHERE postmeta_avg.meta_key = '_kksr_avg' AND postmeta_casts.meta_key = '_kksr_casts'
+        WHERE
+            postmeta_avg.meta_key = '_kksr_avg'
+        AND postmeta_casts.meta_key = '_kksr_casts'
     ");
 
     $stars = max((int) get_option('kksr_stars', 5), 1);
@@ -60,6 +65,7 @@ function v2_v4(): void
         $score = min(max($row->avg, 0), $stars);
         $ratings = $score * $casts / $stars * 5;
 
-        post_meta($row->ID, compact('casts', 'ratings'));
+        update_post_meta($row->ID, '_kksr_casts', $casts);
+        update_post_meta($row->ID, '_kksr_ratings', $ratings);
     }
 }
