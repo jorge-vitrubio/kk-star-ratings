@@ -30,17 +30,13 @@ function okay(?bool $okay, int $id, string $slug, array $payload): bool
         return false;
     }
 
-    $excludedLocations = (array) option('exclude_locations');
+    $locations = (array) option('locations');
 
-    if ((is_front_page() || is_home())
-        && in_array('home', $excludedLocations)
-    ) {
+    if ((is_front_page() || is_home()) && ! in_array('home', $locations)) {
         return false;
     }
 
-    if (is_archive()
-        && in_array('archives', $excludedLocations)
-    ) {
+    if (is_archive() && ! in_array('archives', $locations)) {
         return false;
     }
 
@@ -60,7 +56,7 @@ function okay(?bool $okay, int $id, string $slug, array $payload): bool
 
     $type = get_post_type($id);
 
-    if (in_array($type, (array) $excludedLocations)) {
+    if (! in_array($type, $locations)) {
         return false;
     }
 

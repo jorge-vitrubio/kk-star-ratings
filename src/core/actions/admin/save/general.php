@@ -25,7 +25,7 @@ function general(array $payload, string $tab): void
     $payload = shortcode_atts(array_fill_keys([
         'enable',
         'exclude_categories',
-        'exclude_locations',
+        'locations',
         'strategies',
     ], null), strip_prefix($payload));
 

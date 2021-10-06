@@ -48,8 +48,7 @@ return [
         // General
         'enable' => true,
         'exclude_categories' => [],
-        'exclude_locations' => ['archives', 'home'],
-        // 'manual_control' => [],
+        'locations' => ['post'],
         'strategies' => ['archives', 'guests'],
         // Appearance
         'gap' => 5,

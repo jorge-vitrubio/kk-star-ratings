@@ -7,7 +7,7 @@
 
     $enable = $get('enable');
     $excludeCategories = $get('exclude_categories');
-    $excludeLocations = $get('exclude_locations');
+    $locations = $get('locations');
     $manualControl = $get('manual_control');
     $strategies = $get('strategies');
 
@@ -104,22 +104,22 @@
             </td>
         </tr> -->
 
-        <!-- Exclude Locations -->
+        <!-- Locations -->
         <tr>
             <th scope="row" valign="top">
-                <?php echo esc_html_x('Exclude Locations', 'Label', 'kk-star-ratings'); ?>
+                <?php echo esc_html_x('Locations', 'Label', 'kk-star-ratings'); ?>
             </th>
             <td>
                 <?php foreach ($availableLocations as $type => $label) { ?>
                     <p>
                         <label>
-                            <input type="checkbox" name="<?php echo esc_attr($excludeLocations[0]); ?>[]" value="<?php echo esc_attr($type); ?>"<?php echo (in_array($type, $excludeLocations[1])) ? ' checked="checked"' : ''; ?>>
+                            <input type="checkbox" name="<?php echo esc_attr($locations[0]); ?>[]" value="<?php echo esc_attr($type); ?>"<?php echo (in_array($type, $locations[1])) ? ' checked="checked"' : ''; ?>>
                             <?php echo esc_html($label); ?>
                         </label>
                     </p>
                 <?php } ?>
                 <p class="description" style="max-width: 22rem; margin-top: .75rem;">
-                    <?php echo sprintf(esc_html__('The selected locations will not auto-embed the star ratings. You may still manually show the star ratings. E.g. Using %s in your theme/template file(s).', 'kk-star-ratings'), '<code>echo kk_star_ratings();</code>'); ?>
+                    <?php echo sprintf(esc_html__('Star ratings will be auto-embedded for the selected locations. You may still manually allow star ratings for unselected/other locations. E.g. Using %s in your theme/template file(s).', 'kk-star-ratings'), '<code>echo kk_star_ratings();</code>'); ?>
                 </p>
             </td>
         </tr>
