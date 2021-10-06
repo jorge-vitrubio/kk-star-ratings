@@ -22,7 +22,7 @@ if (! defined('ABSPATH')) {
 define('KK_STAR_RATINGS', __FILE__);
 
 /* @dev */
-require_once __DIR__.'vendor/autoload.php';
+require_once __DIR__.'/vendor/autoload.php';
 /* @enddev */
 
 if (function_exists('kksr_freemius')) {
