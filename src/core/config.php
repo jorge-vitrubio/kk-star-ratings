@@ -33,6 +33,7 @@ return [
     'wp' => [
         'actions' => autoload($ns.'wp\actions', $path.'wp/actions'),
         'filters' => autoload($ns.'wp\filters', $path.'wp/filters'),
+        'functions' => autoload($ns.'wp\functions', $path.'wp/functions'),
         'shortcodes' => autoload($ns.'wp\shortcodes', $path.'wp/shortcodes'),
     ],
 ] + [

@@ -16,9 +16,8 @@ if (! defined('KK_STAR_RATINGS')) {
 
 kksr(['core' => require __DIR__.'/config.php']);
 
-foreach ([
-    'hooks.php',
-    'hydrate.php',
-] as $filename) {
-    require_once __DIR__.'/'.ltrim($filename, '\/');
-}
+require_once __DIR__.'/hooks.php';
+require_once __DIR__.'/hydrate.php';
+
+register_activation_hook(KK_STAR_RATINGS, kksr('core.wp.functions.activate'));
+register_deactivation_hook(KK_STAR_RATINGS, kksr('core.wp.functions.deactivate'));
