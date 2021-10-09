@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the kk Star Ratings plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: kk Star Ratings 5.0.0-alpha\n"
+"Project-Id-Version: kk Star Ratings 5.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/kk-star-ratings\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-09-29T11:01:41+00:00\n"
+"POT-Creation-Date: 2021-10-09T12:37:43+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: kk-star-ratings\n"
@@ -253,11 +253,11 @@ msgstr ""
 
 #: src/core/views/admin/tabs/general.php:110
 msgctxt "Label"
-msgid "Exclude Locations"
+msgid "Locations"
 msgstr ""
 
 #: src/core/views/admin/tabs/general.php:122
-msgid "The selected locations will not auto-embed the star ratings. You may still manually show the star ratings. E.g. Using %s in your theme/template file(s)."
+msgid "Star ratings will be auto-embedded for the selected locations. You may still manually allow star ratings for unselected/other locations. E.g. Using %s in your theme/template file(s)."
 msgstr ""
 
 #: src/core/views/admin/tabs/general.php:130
@@ -383,4 +383,43 @@ msgstr ""
 #: src/premium/custom-stars/views/admin/tabs/custom-stars.php:56
 msgctxt "Label"
 msgid "Select Icon"
+msgstr ""
+
+#: src/premium/top-rated-posts/classes/TopRatedPostsWidget.php:27
+#: src/premium/top-rated-posts/classes/TopRatedPostsWidget.php:66
+msgctxt "label"
+msgid "Top Rated Posts"
+msgstr ""
+
+#: src/premium/top-rated-posts/classes/TopRatedPostsWidget.php:30
+msgid "Show top rated posts."
+msgstr ""
+
+#: src/premium/top-rated-posts/views/widgets/top-rated-posts/form.php:16
+msgctxt "label"
+msgid "Title"
+msgstr ""
+
+#: src/premium/top-rated-posts/views/widgets/top-rated-posts/form.php:25
+msgctxt "label"
+msgid "Slug"
+msgstr ""
+
+#: src/premium/top-rated-posts/views/widgets/top-rated-posts/form.php:34
+msgctxt "label"
+msgid "Category"
+msgstr ""
+
+#: src/premium/top-rated-posts/views/widgets/top-rated-posts/form.php:51
+msgctxt "label"
+msgid "Number of posts"
+msgstr ""
+
+#: src/premium/top-rated-posts/views/widgets/top-rated-posts/form.php:64
+msgctxt "label"
+msgid "Show score"
+msgstr ""
+
+#: src/premium/top-rated-posts/views/widgets/top-rated-posts/index.php:26
+msgid "No posts have been rated yet."
 msgstr ""
