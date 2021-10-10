@@ -13,6 +13,7 @@ namespace Bhittani\StarRating\core\actions;
 
 use function Bhittani\StarRating\core\functions\v2_v4;
 use function Bhittani\StarRating\core\functions\v4_v5;
+use function Bhittani\StarRating\core\functions\v5_v5_0_2;
 
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);
@@ -30,5 +31,9 @@ function upgrade(string $version, string $previous): void
             v2_v4();
             v4_v5();
         }
+    }
+
+    if (version_compare($previous, '5.0.2', '<')) {
+        v5_v5_0_2();
     }
 }

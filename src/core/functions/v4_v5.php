@@ -26,8 +26,8 @@ function v4_v5(): void
     option(array_filter([
         'greet' => preg_replace($varRegex, $varReplacement, get_option('kksr_greet')),
         'sd' => preg_replace($varRegex, $varReplacement, get_option('kksr_sd')),
-         // This was used in v2 but not afterwards.
-        'legend' => preg_replace($varRegex, $varReplacement, option('legend')),
+        // This was used in v2 but not afterwards, hence, force to default.
+        'legend' => kksr('core.options.legend'),
     ]));
 
     // Upgrade posts

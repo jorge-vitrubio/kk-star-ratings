@@ -26,7 +26,7 @@ function activate(): void
 
     if (! $previous) {
         action('install', $version);
-    } elseif (version_compare($previous, '5.0.0-alpha', '<')) {
+    } elseif (version_compare($previous, '5.0.2', '<')) {
         action('upgrade', $version, $previous);
     }
 
