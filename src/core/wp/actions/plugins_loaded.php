@@ -12,6 +12,7 @@
 namespace Bhittani\StarRating\core\wp\actions;
 
 use function Bhittani\StarRating\core\functions\action;
+use function Bhittani\StarRating\core\wp\functions\activate;
 
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);
@@ -20,5 +21,7 @@ if (! defined('KK_STAR_RATINGS')) {
 
 function plugins_loaded()
 {
+    activate();
+
     action('init', kksr());
 }

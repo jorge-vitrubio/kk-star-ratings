@@ -30,7 +30,9 @@ function activate(): void
         action('upgrade', $version, $previous);
     }
 
-    action('activate', $version, $previous);
+    if (version_compare($version, $previous, '!=')) {
+        action('activate', $version, $previous);
+    }
 
     option(['ver' => $version]);
 }
