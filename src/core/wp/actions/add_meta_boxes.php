@@ -26,7 +26,7 @@ function add_meta_boxes($type, $post): void
 
     if ($post) {
         $best = option('stars');
-        [$count, $score] = calculate($post->ID, 'default', $best);
+        [$count, $score] = calculate((int) $post->ID, 'default', $best);
         // $icon = '<span class="dashicons dashicons-star-half" style="margin-right: .25rem; font-size: 18px;"></span>';
         $legend = '';
 
