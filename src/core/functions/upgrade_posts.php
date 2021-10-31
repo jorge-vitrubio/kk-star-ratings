@@ -59,6 +59,10 @@ function upgrade_posts(array $args = []): array
                 'key' => meta_prefix('ratings'),
                 'compare' => 'EXISTS',
             ],
+            [
+                'key' => meta_prefix('ratings_default'),
+                'compare' => 'EXISTS',
+            ],
         ],
     ], $args);
 
