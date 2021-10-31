@@ -5,9 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased] - YYYY-MM-DD
+## [5.1.0] - 2021-10-31
 
-- WIP
+### Added
+- Batched migrations. Posts are now migrated in batches in the background.
+
+### Fixed
+- Bumped template code priority.
+
 
 ## [5.0.3] - 2021-10-11
 
