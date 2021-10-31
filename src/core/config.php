@@ -22,6 +22,7 @@ $path = plugin_dir_path(KK_STAR_RATINGS).'src/core/';
 
 return [
     // Manifest
+    'namespace' => rtrim($ns, '\\'),
     'path' => $path,
     'url' => $url,
     'views' => $path.'views/',
@@ -30,6 +31,7 @@ return [
     'actions' => autoload($ns.'actions', $path.'actions'),
     'filters' => autoload($ns.'filters', $path.'filters'),
     'functions' => autoload($ns.'functions', $path.'functions'),
+    'migrations' => autoload($ns.'migrations', $path.'migrations'),
     'wp' => [
         'actions' => autoload($ns.'wp\actions', $path.'wp/actions'),
         'filters' => autoload($ns.'wp\filters', $path.'wp/filters'),

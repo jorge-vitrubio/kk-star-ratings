@@ -12,6 +12,7 @@
 namespace Bhittani\StarRating\core\filters;
 
 use function Bhittani\StarRating\core\functions\filter;
+use function Bhittani\StarRating\core\functions\migrations;
 use function Bhittani\StarRating\core\functions\option;
 use function count;
 
@@ -26,8 +27,18 @@ function okay(?bool $okay, int $id, string $slug, array $payload): bool
         return $okay;
     }
 
+    if (! migrations()->isEmpty()) {
+        return false;
+    }
+
     if (! option('enable')) {
         return false;
+    }
+
+    $reference = $payload['reference'] ?? null;
+
+    if ($reference == 'template') {
+        return true;
     }
 
     $locations = (array) option('locations');
@@ -40,7 +51,7 @@ function okay(?bool $okay, int $id, string $slug, array $payload): bool
         return false;
     }
 
-    if ($payload['explicit'] ?? false) {
+    if ($reference == 'shortcode') {
         return true;
     }
 

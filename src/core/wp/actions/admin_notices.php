@@ -9,19 +9,22 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace Bhittani\StarRating\core\actions\admin;
+namespace Bhittani\StarRating\core\wp\actions;
 
 use function Bhittani\StarRating\core\functions\migrations;
-use function Bhittani\StarRating\core\functions\script_migrations;
+use function Bhittani\StarRating\core\functions\view;
 
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);
     exit();
 }
 
-function script(bool $isDebugMode = false): void
+function admin_notices(): void
 {
     if (! migrations()->isEmpty()) {
-        script_migrations($isDebugMode);
+        $type = 'warning';
+        $message = sprintf(__('%s has pending migrations. The ratings will be disabled until the migrations have finished.', 'kk-star-ratings'), kksr('name'));
+
+        echo view('notice.php', compact('type', 'message'));
     }
 }

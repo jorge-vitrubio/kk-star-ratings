@@ -9,19 +9,7 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace Bhittani\StarRating\core\actions;
-
-use function Bhittani\StarRating\core\functions\migrate;
-use function Bhittani\StarRating\core\functions\migrations;
-
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);
     exit();
-}
-
-function init(array $config): void
-{
-    // if (migrations()->isPending()) {
-    //     migrate();
-    // }
 }

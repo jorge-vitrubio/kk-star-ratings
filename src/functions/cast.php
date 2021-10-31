@@ -9,19 +9,20 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace Bhittani\StarRating\core\actions;
-
-use function Bhittani\StarRating\core\functions\migrate;
-use function Bhittani\StarRating\core\functions\migrations;
+namespace Bhittani\StarRating\functions;
 
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);
     exit();
 }
 
-function init(array $config): void
+/** Cast an integer to a base */
+function cast(float $value, int $to = 5, int $from = 5): float
 {
-    // if (migrations()->isPending()) {
-    //     migrate();
-    // }
+    // 4 * 5  / 5  = 4 * 1 = 4
+    // 4 * 10 / 5  = 4 * 2 = 8
+    // 8 * 5  / 10 = 8 / 2 = 4
+    // 4 * 8  / 6  = 4 * 4 / 3 = 5.33
+
+    return $value * $to / $from;
 }

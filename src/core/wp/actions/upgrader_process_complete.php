@@ -11,20 +11,21 @@
 
 namespace Bhittani\StarRating\core\wp\actions;
 
-use function Bhittani\StarRating\core\functions\action;
-use function Bhittani\StarRating\core\functions\option;
-use function Bhittani\StarRating\core\wp\functions\activate;
+use function Bhittani\StarRating\core\wp\functions\deactivate;
+use WP_Upgrader;
 
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);
     exit();
 }
 
-function plugins_loaded()
+function upgrader_process_complete(WP_Upgrader $upgrader, array $options): void
 {
-    if (version_compare(kksr('version'), option('ver'), '!=')) {
-        activate();
+    if ($options['action'] == 'update'
+        && $options['type'] == 'plugin'
+        && isset($options['plugin'])
+        && in_array(kksr('signature'), $options['plugins'])
+    ) {
+        deactivate();
     }
-
-    action('init', kksr());
 }

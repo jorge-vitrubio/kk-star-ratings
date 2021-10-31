@@ -33,22 +33,22 @@ function the_content(string $content): string
     }
 
     $align = 'left';
-    $explicit = false;
+    $reference = 'auto';
     $valign = 'top';
 
     $position = option('position');
 
     if (strpos($position, 'top-') === 0) {
-        $valign = 'top';
         $align = substr($position, 4);
+        $valign = 'top';
     }
 
     if (strpos($position, 'bottom-') === 0) {
-        $valign = 'bottom';
         $align = substr($position, 7);
+        $valign = 'bottom';
     }
 
-    $starRatings = to_shortcode(kksr('slug'), compact('align', 'explicit', 'valign'));
+    $starRatings = to_shortcode(kksr('slug'), compact('align', 'reference', 'valign'));
 
     if ($valign == 'top') {
         return $starRatings.$content;

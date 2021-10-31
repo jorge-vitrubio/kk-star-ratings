@@ -18,13 +18,14 @@ if (! defined('KK_STAR_RATINGS')) {
 
 function tabs(array $tabs): array
 {
-    return array_merge([
-        _x('General', 'Label', 'kk-star-ratings'),
-        _x('Appearance', 'Label', 'kk-star-ratings'),
-        _x('Rich Snippets', 'Label', 'kk-star-ratings'),
-        // [
-        //     'tab' => __('Addons', 'kk-star-ratings'),
-        //     'is_addon' => true,
+    return $tabs + [
+        'general' => _x('General', 'Label', 'kk-star-ratings'),
+        'appearance' => _x('Appearance', 'Label', 'kk-star-ratings'),
+        'rich_snippets' => _x('Rich Snippets', 'Label', 'kk-star-ratings'),
+        // 'tab' => [
+        //     'name' => _x('Name', 'Label', 'kk-star-ratings'),
+        //     'is_disabled' => true,
+        //     'is_addon' => false,
         // ],
-    ], $tabs);
+    ];
 }

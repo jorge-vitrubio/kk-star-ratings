@@ -27,7 +27,7 @@ function kk_star_ratings($attrs, string $contents, string $tag): string
         'align', 'best', 'count', 'gap', 'greet', 'id',
         'legend', 'readonly', 'score', 'size', 'slug', 'valign',
     ], '') + [
-        'explicit' => true,
+        'reference' => 'shortcode',
     ];
 
     $attrs = (array) $attrs;
@@ -57,8 +57,6 @@ function kk_star_ratings($attrs, string $contents, string $tag): string
     if (! $payload['slug']) {
         $payload['slug'] = 'default';
     }
-
-    $payload['explicit'] = (bool) $payload['explicit'];
 
     if (! filter('okay', null, $payload['id'], $payload['slug'], $payload)) {
         return '';

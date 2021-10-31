@@ -11,7 +11,7 @@
 
 namespace Bhittani\StarRating\core\actions;
 
-use function Bhittani\StarRating\core\functions\migrations;
+use function Bhittani\StarRating\core\functions\add_migration;
 use function Bhittani\StarRating\core\functions\upgrade_options;
 
 if (! defined('KK_STAR_RATINGS')) {
@@ -19,26 +19,24 @@ if (! defined('KK_STAR_RATINGS')) {
     exit();
 }
 
-function upgrade(string $version, string $previous): void
+function upgrade0(string $version, string $previous): void
 {
     if (version_compare($previous, '5.0.2', '<')) {
         upgrade_options();
     }
 
-    $migrations = migrations();
-
     $pendingMigrations = [];
 
-    foreach (kksr('core.migrations') as $tag => $options) {
-        $mtag = (string) substr(explode('/', $tag, 2)[0], 1);
+    foreach (kksr('core.migrations') as $tag => $fn) {
+        $tagParts = explode('/', $tag, 2);
+        $taggedVersion = substr($tagParts[0], 1);
 
-        if (version_compare($mtag, $previous, '>')
-            && version_compare($mtag, $version, '<=')
-            && ($migrations->isEmpty()
-                || version_compare($mtag, $migrations->top()['tag'], '>')
-            )
+        if (version_compare($taggedVersion, $previous, '>')
+            && version_compare($taggedVersion, $version, '<=')
         ) {
-            $pendingMigrations[] = compact('tag', 'options') + ['version' => $mtag];
+            $pendingMigrations[] = [
+                'version' => $taggedVersion,
+            ] + compact('tag', 'fn');
         }
     }
 
@@ -48,13 +46,7 @@ function upgrade(string $version, string $previous): void
     });
 
     foreach ($pendingMigrations as $pendingMigration) {
-        [$_, $payloadFn] = $pendingMigration['options']();
-
-        $migrations->create(
-            $pendingMigration['tag'],
-            $payloadFn($version, $previous)
-        );
+        [$_, $payloadFn] = $pendingMigration['fn']();
+        add_migration($pendingMigration['tag'], $payloadFn($pendingMigration['version']));
     }
-
-    $migrations->persist();
 }

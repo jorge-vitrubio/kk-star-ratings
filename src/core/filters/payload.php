@@ -21,7 +21,7 @@ if (! defined('KK_STAR_RATINGS')) {
 
 function payload(array $payload): array
 {
-    [$count, $score] = calculate($payload['id'], $payload['slug']);
+    [$count, $score] = calculate($payload['id'], $payload['slug'], $payload['best']);
 
     if (! (is_numeric($payload['count']) || $payload['count'])) {
         $payload['count'] = $count;

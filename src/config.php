@@ -37,5 +37,6 @@ return [
     'slug' => 'Plugin Slug',
     'version' => 'Version',
 ]) + [
+    'classes' => autoload($ns.'classes', $src.'classes'),
     'functions' => autoload($ns.'functions', $src.'functions'),
 ];

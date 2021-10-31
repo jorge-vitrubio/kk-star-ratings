@@ -28,5 +28,7 @@ function kk_star_ratings($idOrPostOrPayload = null): string
         $payload['id'] = $idOrPostOrPayload;
     }
 
-    return do_shortcode(to_shortcode('kk-star-ratings', $payload));
+    $payload['reference'] = 'template';
+
+    return do_shortcode(to_shortcode(kksr('slug'), $payload));
 }

@@ -11,6 +11,9 @@
 
 namespace Bhittani\StarRating\core\actions;
 
+use function Bhittani\StarRating\core\functions\migrations;
+use function Bhittani\StarRating\core\functions\script_migrations;
+
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);
     exit();
@@ -18,6 +21,10 @@ if (! defined('KK_STAR_RATINGS')) {
 
 function script(bool $isDebugMode = false): void
 {
+    if (! migrations()->isEmpty()) {
+        script_migrations($isDebugMode);
+    }
+
     wp_enqueue_script(
         kksr('slug'),
         kksr('core.url').'public/js/kk-star-ratings'

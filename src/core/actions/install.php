@@ -18,4 +18,8 @@ if (! defined('KK_STAR_RATINGS')) {
 
 function install(string $version): void
 {
+    // v3 and v4 did not save its version due to a bug
+    // so we enforce a previous installation.
+    // Hence, lets upgrade!
+    upgrade($version, '5.0.0-alpha');
 }

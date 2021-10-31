@@ -27,5 +27,5 @@ if (! defined('KK_STAR_RATINGS')) {
  */
 function post_meta($id, $keyOrMeta, $default = null)
 {
-    return base_post_meta($id, $keyOrMeta, $default, '_'.kksr('nick').'_', kksr('core.post_meta'));
+    return base_post_meta($id, $keyOrMeta, $default, meta_prefix(''), kksr('core.post_meta'));
 }

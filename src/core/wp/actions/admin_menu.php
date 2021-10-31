@@ -11,8 +11,6 @@
 
 namespace Bhittani\StarRating\core\wp\actions;
 
-use function Bhittani\StarRating\core\functions\action;
-
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);
     exit();
@@ -25,9 +23,7 @@ function admin_menu(): void
         kksr('name'),
         'manage_options',
         kksr('slug'),
-        function () {
-            action('admin/index');
-        },
+        kksr('core.actions.admin/index'),
         'dashicons-star-filled'
     );
 }

@@ -11,7 +11,6 @@
 
 namespace Bhittani\StarRating\core\actions;
 
-use function Bhittani\StarRating\core\functions\migrate;
 use function Bhittani\StarRating\core\functions\migrations;
 
 if (! defined('KK_STAR_RATINGS')) {
@@ -19,9 +18,17 @@ if (! defined('KK_STAR_RATINGS')) {
     exit();
 }
 
-function init(array $config): void
+function downgrade(string $version, string $previous): void
 {
-    // if (migrations()->isPending()) {
-    //     migrate();
-    // }
+    $migrations = migrations();
+
+    while (! $migrations->isEmpty()
+        // Pop until version matches.
+        && (substr($tag = $migrations->top()['tag'], 0, 1) === 'v')
+        && ($mtag = substr(explode('/', $tag, 2)[0], 1))
+        && version_compare($mtag, $version, '!=')) {
+        $migrations->pop();
+    }
+
+    $migrations->persist();
 }

@@ -23,41 +23,22 @@ if (! defined('KK_STAR_RATINGS')) {
 
 function index(): void
 {
-    $rawTabs = filter('admin/tabs', []);
-
-    $tabKeys = array_filter(array_map(function ($tab) {
-        if (! is_array($tab)) {
-            return $tab;
-        }
-
-        return $tab['tab'] ?? null;
-    }, $rawTabs), function ($tab) {
-        return ! is_null($tab);
-    });
-
-    $tabValues = array_filter(array_map(function ($tab) {
-        if (! is_array($tab)) {
-            return [];
-        }
-
-        if (! isset($tab['tab'])) {
-            return null;
-        }
-
-        unset($tab['tab']);
-
-        return $tab;
-    }, $rawTabs), function ($tab) {
-        return ! is_null($tab);
-    });
-
-    $tabs = array_combine($tabKeys, $tabValues);
-
+    $tabs = filter('admin/tabs', []);
     reset($tabs);
-    $active = filter('admin/active_tab', key($tabs) ?: '');
+    $active = filter('admin/active_tab', key($tabs) ?: 'general');
 
-    if (isset($tabs[$active])) {
-        $tabs[$active]['is_active'] = true;
+    foreach ($tabs as $slug => &$tab) {
+        if (! is_array($tab)) {
+            $tab = ['name' => $tab];
+        }
+
+        $tab = [
+            'is_active' => $slug == $active,
+        ] + $tab + [
+            'is_active' => false,
+            'is_addon' => false,
+            'is_disabled' => false,
+        ];
     }
 
     $errors = [];

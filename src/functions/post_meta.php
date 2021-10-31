@@ -65,7 +65,7 @@ function post_meta($id, $keyOrMeta, $default = null, string $prefix = null, arra
 
     $value = $default;
 
-    if (get_post_meta($id, $prefix.$key)) {
+    if (metadata_exists('post', $id, $prefix.$key)) {
         $value = get_post_meta($id, $prefix.$key, $isSingle);
     }
 

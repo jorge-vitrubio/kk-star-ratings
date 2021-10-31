@@ -12,8 +12,8 @@
 namespace Bhittani\StarRating\core\wp\actions;
 
 use function Bhittani\StarRating\core\functions\action;
-use function Bhittani\StarRating\core\functions\cast;
 use function Bhittani\StarRating\core\functions\filter;
+use function Bhittani\StarRating\functions\cast;
 use function Bhittani\StarRating\functions\sanitize;
 use function Bhittani\StarRating\functions\to_shortcode;
 use Exception;

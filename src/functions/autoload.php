@@ -116,7 +116,9 @@ function autoload($namespace, string $path = null, array $excludes = [], int $de
 
         if (! $exists($fqFnOrCn)) {
             require_once $filepath;
+        }
 
+        if ($exists($fqFnOrCn)) {
             $autoloads = [$name => $fqFnOrCn] + $autoloads;
         }
     }
