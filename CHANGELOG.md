@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [5.1.3] - 2021-11-01
+
+### Updated
+- Migrate 20 posts instead of 50 per batch.
+
+### Fixed
+- Migrations were not being processed continuously due to a javascript bug.
+
 ## [5.1.2] - 2021-11-01
 
 ### Fixed
