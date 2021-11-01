@@ -24,7 +24,7 @@ function posts(): array
         // Migration callback.
         function (array $payload) {
             if (($ids = upgrade_posts($payload))
-                && count($ids) >= 20
+                && count($ids) >= 5
             ) {
                 ++$payload['paged'];
 
@@ -45,7 +45,7 @@ function posts(): array
             return [
                 'max_id' => (int) ($maxIdRow ? $maxIdRow->ID : null),
                 'paged' => 1,
-                'posts_per_page' => 20,
+                'posts_per_page' => 5,
             ];
         },
         // Progress. [<total>, <current>]

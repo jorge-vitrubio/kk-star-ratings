@@ -25,6 +25,19 @@ function upgrade(string $version, string $previous): void
         upgrade_options();
     }
 
+    if (version_compare($previous, '5.1.4', '<')) {
+        $migrations = migrations();
+
+        if (! $migrations->isEmpty()
+            && ($migration = $migrations->bottom())
+            && $migration['tag'] == 'v5.1.0/posts'
+        ) {
+            $migration['payload']['paged'] = 1;
+            $migration['payload']['posts_per_page'] = 5;
+            $migrations->replace($migration)->persist();
+        }
+    }
+
     $migrations = migrations();
 
     $pendingMigrations = [];
@@ -35,7 +48,10 @@ function upgrade(string $version, string $previous): void
         if (version_compare($mtag, $previous, '>')
             && version_compare($mtag, $version, '<=')
             && ($migrations->isEmpty()
-                || version_compare($mtag, $migrations->top()['tag'], '>')
+                || (
+                    ($ttag = (string) substr(explode('/', $migrations->top()['tag'], 2)[0], 1))
+                        && version_compare($mtag, $ttag, '>')
+                )
             )
         ) {
             $pendingMigrations[] = compact('tag', 'options') + ['version' => $mtag];
