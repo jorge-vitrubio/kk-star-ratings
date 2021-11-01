@@ -22,9 +22,10 @@ if (! defined('KK_STAR_RATINGS')) {
 function admin_notices(): void
 {
     if (! migrations()->isEmpty()) {
+        $icon = get_admin_url(null, 'images/wpspin_light.gif');
+        $message = sprintf(__('%s has pending migrations. These migrations are running in the background and the ratings will remain disabled until the migrations have finished.', 'kk-star-ratings'), kksr('name'));
         $type = 'warning';
-        $message = sprintf(__('%s has pending migrations. The migrations are running in the background and the ratings will remain disabled until the migrations have finished.', 'kk-star-ratings'), kksr('name'));
 
-        echo view('notice.php', compact('type', 'message'));
+        echo view('notice.php', compact('icon', 'message', 'type'));
     }
 }
