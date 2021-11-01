@@ -33,6 +33,7 @@ jQuery(document).ready(function ($) {
       function (xhr, status, err) {
         if (xhr.responseJSON && xhr.responseJSON.error) {
           console.error(xhr.responseJSON.error);
+          setTimeout(migrate, 5000);
         }
       }
     );
