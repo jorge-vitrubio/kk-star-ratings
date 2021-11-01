@@ -48,5 +48,13 @@ function posts(): array
                 'posts_per_page' => 50,
             ];
         },
+        // Progress. [<total>, <current>]
+        // TODO: Work in progress!
+        // function (array $payload) {
+        //     return [
+        //         $payload['max_id'],
+        //         $payload['posts_per_page'] * $payload['paged'],
+        //     ];
+        // },
     ];
 }

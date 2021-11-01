@@ -23,7 +23,7 @@ function admin_notices(): void
 {
     if (! migrations()->isEmpty()) {
         $type = 'warning';
-        $message = sprintf(__('%s has pending migrations. The ratings will be disabled until the migrations have finished.', 'kk-star-ratings'), kksr('name'));
+        $message = sprintf(__('%s has pending migrations. The migrations are running in the background and the ratings will remain disabled until the migrations have finished.', 'kk-star-ratings'), kksr('name'));
 
         echo view('notice.php', compact('type', 'message'));
     }
