@@ -11,6 +11,10 @@
 
 namespace Bhittani\StarRating\classes;
 
+use function Bhittani\StarRating\functions\autoload_class;
+
+autoload_class(Stack::class);
+
 class Migration extends Stack
 {
     /** @var callable */
