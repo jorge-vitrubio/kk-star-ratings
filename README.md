@@ -6,7 +6,7 @@ Tags: star ratings, votings, rate posts, ajax ratings, infinite stars, unlimited
 Requires at least: 5.0
 Requires PHP: 7.2
 Tested up to: 5.8.1
-Stable tag: 5.1.3
+Stable tag: 5.1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 </only:wp -->
