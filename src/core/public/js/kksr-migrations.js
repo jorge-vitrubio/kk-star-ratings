@@ -22,10 +22,10 @@ jQuery(document).ready(function ($) {
   function migrate() {
     ajax(
       function (response, status, xhr) {
-        if (response) {
-          if (response.status == "pending") {
+        if (response && response.data) {
+          if (response.data.status == "pending") {
             migrate();
-          } else if (response.status == "busy") {
+          } else if (response.data.status == "busy") {
             setTimeout(migrate, 5000);
           }
         }
