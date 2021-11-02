@@ -31,9 +31,9 @@ function validate(?bool $valid, int $id, string $slug, array $payload): bool
         throw new Exception(__('The ratings are readonly.', 'kk-star-ratings'));
     }
 
-    if (! migrations()->isEmpty()) {
-        throw new Exception(__('Under maintenance.', 'kk-star-ratings'));
-    }
+    // if (! migrations()->isEmpty()) {
+    //     throw new Exception(__('Under maintenance.', 'kk-star-ratings'));
+    // }
 
     if (! option('enable')) {
         throw new Exception(__('Not allowed at the moment.', 'kk-star-ratings'));

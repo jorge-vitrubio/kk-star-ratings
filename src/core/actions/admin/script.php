@@ -21,7 +21,7 @@ if (! defined('KK_STAR_RATINGS')) {
 
 function script(bool $isDebugMode = false): void
 {
-    if (! migrations()->isEmpty()) {
-        script_migrations($isDebugMode);
-    }
+    // if (! migrations()->isEmpty()) {
+    //     script_migrations($isDebugMode);
+    // }
 }

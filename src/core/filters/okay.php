@@ -27,9 +27,9 @@ function okay(?bool $okay, int $id, string $slug, array $payload): bool
         return $okay;
     }
 
-    if (! migrations()->isEmpty()) {
-        return false;
-    }
+    // if (! migrations()->isEmpty()) {
+    //     return false;
+    // }
 
     if (! option('enable')) {
         return false;
