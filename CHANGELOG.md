@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [5.2.0] - 2021-11-02
+
+### Updated
+- Deprecated the use of migrations in favor of migrating posts when accessed.
+
 ## [5.1.4] - 2021-11-01
 
 ### Updated
