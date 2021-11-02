@@ -49,7 +49,7 @@ function post_meta($id, $keyOrMeta, $default = null, string $prefix = null, arra
                 continue;
             }
 
-            add_post_meta($id, $prefix.$key, $value);
+            add_post_meta($id, $prefix.$key, $value, true);
         }
 
         return $keyOrMeta;
