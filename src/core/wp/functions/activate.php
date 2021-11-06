@@ -24,17 +24,17 @@ function activate(): void
     $version = kksr('version');
     $previous = option('ver');
 
-    if (! $previous) {
-        action('install', $version);
-    } elseif (version_compare($version, $previous, '<')) {
-        action('downgrade', $version, $previous);
-    } elseif (version_compare($version, $previous, '>')) {
-        action('upgrade', $version, $previous);
-    }
-
     if (version_compare($version, $previous, '!=')) {
-        action('activate', $version, $previous);
-    }
+        if (! $previous) {
+            action('install', $version);
+        } elseif (version_compare($version, $previous, '<')) {
+            action('downgrade', $version, $previous);
+        } elseif (version_compare($version, $previous, '>')) {
+            action('upgrade', $version, $previous);
+        }
 
-    option(['ver' => $version]);
+        action('activate', $version, $previous);
+
+        option(['ver' => $version]);
+    }
 }

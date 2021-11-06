@@ -12,11 +12,20 @@
 namespace Bhittani\StarRating\classes;
 
 use function Bhittani\StarRating\functions\autoload_class;
+use InvalidArgumentException;
 
 autoload_class(Stack::class);
 
 class Migration extends Stack
 {
+    /**
+     * @see https://semver.org/#is-there-a-suggested-regular-expression-regex-to-check-a-semver-string
+     * @see https://regex101.com/r/vkijKf/1/
+     *
+     * @var string
+     */
+    public const VERSION_REGEX = '/^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$/';
+
     /** @var callable */
     protected $cron;
 
@@ -30,7 +39,7 @@ class Migration extends Stack
     public function isBusy(): bool
     {
         return ! $this->isEmpty()
-            && $this->bottom()['status'] == 'working';
+            && $this->bottom()->status == 'working';
     }
 
     public function isPending(): bool
@@ -38,17 +47,54 @@ class Migration extends Stack
         return ! ($this->isEmpty() || $this->isBusy());
     }
 
-    public function create(string $tag, $payload): self
+    public function flush(): self
     {
-        $this->push([
+        while (! $this->isEmpty()) {
+            $this->pop();
+        }
+
+        return $this;
+    }
+
+    public function create(string $tag, string $version, $payload): self
+    {
+        if (! preg_match(static::VERSION_REGEX, $version)) {
+            throw new InvalidArgumentException("Can not create a migration. The string '{$version}' is not a valid semver.");
+        }
+
+        $this->push((object) [
             'payload' => $payload,
             'status' => 'pending',
             'tag' => $tag,
             'times' => 0,
             'timestamp' => time(),
+            'version' => $version,
         ]);
 
         return $this;
+    }
+
+    /** @param bool|null $touch */
+    public function patch(string $status, $payload = null, $touch = null): self
+    {
+        $migration = $this->bottom();
+
+        $migration->status = $status;
+        $migration->timestamp = time();
+
+        if (! is_null($payload)) {
+            $migration->payload = $payload;
+
+            if (is_null($touch)) {
+                $touch = true;
+            }
+        }
+
+        if ($touch) {
+            ++$migration->times;
+        }
+
+        return $this->replace($migration);
     }
 
     public function replace($migration): self
@@ -111,7 +157,7 @@ class Migration extends Stack
      *             8  -> The migration is already being processed.
      *             16 -> The migration is not current.
      */
-    public function migrate(string $tag, callable $fn): int
+    public function migrate(string $tag, string $version, callable $fn): int
     {
         if ($this->isEmpty()) {
             return 4;
@@ -119,24 +165,23 @@ class Migration extends Stack
 
         $migration = $this->bottom();
 
-        if ($migration['tag'] !== $tag) {
+        if ($migration->tag !== $tag
+            || $migration->version !== $version
+        ) {
             return 16;
         }
 
-        if ($migration['status'] == 'working') {
-            $seconds = time() - $migration['timestamp'];
+        if ($migration->status == 'working') {
+            $seconds = time() - $migration->timestamp;
 
-            if ($seconds <= 60) {
+            if ($seconds <= (60 * 5)) {
                 return 8;
             }
         }
 
-        $migration['status'] = 'working';
-        $migration['timestamp'] = time();
+        $this->patch('working')->persist();
 
-        $this->replace($migration)->persist();
-
-        $value = $fn($migration['payload']);
+        $value = $fn($migration->payload);
 
         if (is_null($value)) {
             $this->remove()->persist();
@@ -144,12 +189,7 @@ class Migration extends Stack
             return 1;
         }
 
-        $migration['payload'] = $value;
-        $migration['status'] = 'pending';
-        $migration['timestamp'] = time();
-        $migration['times'] = $migration['times'] + 1;
-
-        $this->replace($migration)->persist();
+        $this->patch('pending', $value)->persist();
 
         return 2;
     }

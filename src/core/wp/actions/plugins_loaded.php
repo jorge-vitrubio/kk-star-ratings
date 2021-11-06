@@ -12,7 +12,6 @@
 namespace Bhittani\StarRating\core\wp\actions;
 
 use function Bhittani\StarRating\core\functions\action;
-use function Bhittani\StarRating\core\functions\option;
 use function Bhittani\StarRating\core\wp\functions\activate;
 
 if (! defined('KK_STAR_RATINGS')) {
@@ -22,9 +21,10 @@ if (! defined('KK_STAR_RATINGS')) {
 
 function plugins_loaded()
 {
-    if (version_compare(kksr('version'), option('ver'), '!=')) {
-        activate();
-    }
+    // We aren't using `register_activation_hook` because it is buggy
+    // and does not get called when the plugin is implictly updated.
+    activate();
 
+    // Let everyone know that the plugin is loaded and initialized.
     action('init', kksr());
 }

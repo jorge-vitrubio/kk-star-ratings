@@ -12,6 +12,8 @@
 namespace Bhittani\StarRating\core\actions;
 
 use function Bhittani\StarRating\core\functions\migrations;
+use function Bhittani\StarRating\core\functions\migrators;
+use function Bhittani\StarRating\core\functions\option;
 use function Bhittani\StarRating\core\functions\upgrade_options;
 
 if (! defined('KK_STAR_RATINGS')) {
@@ -25,51 +27,26 @@ function upgrade(string $version, string $previous): void
         upgrade_options();
     }
 
-    if (version_compare($previous, '5.1.4', '<')) {
-        $migrations = migrations();
-
-        if (! $migrations->isEmpty()
-            && ($migration = $migrations->bottom())
-            && $migration['tag'] == 'v5.1.0/posts'
-        ) {
-            $migration['payload']['paged'] = 1;
-            $migration['payload']['posts_per_page'] = 5;
-            $migrations->replace($migration)->persist();
-        }
+    if (version_compare($previous, '5.2.1', '<')) {
+        option(['migrations' => '']);
     }
 
     $migrations = migrations();
 
-    $pendingMigrations = [];
-
-    foreach (kksr('core.migrations') as $tag => $options) {
-        $mtag = (string) substr(explode('/', $tag, 2)[0], 1);
-
-        if (version_compare($mtag, $previous, '>')
-            && version_compare($mtag, $version, '<=')
-            && ($migrations->isEmpty()
-                || (
-                    ($ttag = (string) substr(explode('/', $migrations->top()['tag'], 2)[0], 1))
-                        && version_compare($mtag, $ttag, '>')
-                )
+    foreach (migrators() as $migrator) {
+        if (version_compare($migrator->semver, $previous, '>')
+            && version_compare($migrator->semver, $version, '<=')
+            && (
+                $migrations->isEmpty()
+                || version_compare($migrator->semver, $migrations->top()->version, '>')
             )
         ) {
-            $pendingMigrations[] = compact('tag', 'options') + ['version' => $mtag];
+            $migrations->create(
+                $migrator->tag,
+                $migrator->semver,
+                $migrator->payload($version, $previous)
+            );
         }
-    }
-
-    // Will already be sorted, but lets be damn sure!
-    usort($pendingMigrations, function ($a, $b) {
-        return version_compare($a['version'], $b['version']);
-    });
-
-    foreach ($pendingMigrations as $pendingMigration) {
-        [$_, $payloadFn] = $pendingMigration['options']();
-
-        $migrations->create(
-            $pendingMigration['tag'],
-            $payloadFn($version, $previous)
-        );
     }
 
     $migrations->persist();

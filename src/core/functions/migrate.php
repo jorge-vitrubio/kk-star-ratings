@@ -18,7 +18,6 @@ if (! defined('KK_STAR_RATINGS')) {
 
 /**
  * @return int
- *             0  -> Could not process any migration.
  *             1  -> The migration was processed and completed.
  *             2  -> The migration was processed but still pending.
  *             4  -> There are no migrations available.
@@ -27,18 +26,23 @@ if (! defined('KK_STAR_RATINGS')) {
  */
 function migrate(): int
 {
-    if (migrations()->isEmpty()) {
-        return 4;
-    }
+    $migrations = migrations();
 
-    foreach (kksr('core.migrations') as $tag => $options) {
-        [$fn] = $options();
-        $code = migrations()->migrate($tag, $fn);
+    while (! $migrations->isEmpty()) {
+        foreach (migrators() as $migrator) {
+            $code = $migrations->migrate(
+                $migrator->tag,
+                $migrator->semver,
+                $migrator->handler
+            );
 
-        if (in_array($code, [1, 2, 4, 8])) {
-            return $code;
+            if (in_array($code, [1, 2, 4, 8])) {
+                return $code;
+            }
         }
+
+        $migrations->remove()->persist();
     }
 
-    return isset($code) ? $code : 0;
+    return 4;
 }

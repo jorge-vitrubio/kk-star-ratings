@@ -31,7 +31,7 @@ return [
     'actions' => autoload($ns.'actions', $path.'actions'),
     'filters' => autoload($ns.'filters', $path.'filters'),
     'functions' => autoload($ns.'functions', $path.'functions'),
-    'migrations' => autoload($ns.'migrations', $path.'migrations'),
+    'migrators' => autoload($ns.'migrators', $path.'migrators'),
     'wp' => [
         'actions' => autoload($ns.'wp\actions', $path.'wp/actions'),
         'filters' => autoload($ns.'wp\filters', $path.'wp/filters'),
@@ -48,6 +48,8 @@ return [
         'status_*' => '',
     ],
     'options' => [
+        // Internal
+        'activated' => false,
         // General
         'enable' => true,
         'exclude_categories' => [],

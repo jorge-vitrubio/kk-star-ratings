@@ -23,10 +23,8 @@ function downgrade(string $version, string $previous): void
     $migrations = migrations();
 
     while (! $migrations->isEmpty()
-        // Pop until version matches.
-        && (substr($tag = $migrations->top()['tag'], 0, 1) === 'v')
-        && ($mtag = substr(explode('/', $tag, 2)[0], 1))
-        && version_compare($mtag, $version, '!=')) {
+        && version_compare($migrations->top()->version, $version, '!=')
+    ) {
         $migrations->pop();
     }
 

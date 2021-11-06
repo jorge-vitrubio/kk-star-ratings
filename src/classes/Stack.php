@@ -27,12 +27,12 @@ class Stack extends SplStack
         $this->storeKey = $storeKey;
 
         if ($serialized = $store($storeKey)) {
-            $this->unserialize(base64_decode($serialized));
+            $this->unserialize($serialized);
         }
     }
 
     public function persist(): void
     {
-        ($this->store)([$this->storeKey => base64_encode($this->serialize())]);
+        ($this->store)([$this->storeKey => $this->serialize()]);
     }
 }

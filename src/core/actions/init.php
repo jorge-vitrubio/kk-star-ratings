@@ -19,6 +19,7 @@ if (! defined('KK_STAR_RATINGS')) {
     exit();
 }
 
+/** At this point, the plugin is ready (and activated). */
 function init(array $config): void
 {
     // if (migrations()->isPending()) {

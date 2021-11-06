@@ -19,5 +19,9 @@ kksr(['core' => require __DIR__.'/config.php']);
 require_once __DIR__.'/hooks.php';
 require_once __DIR__.'/hydrate.php';
 
-register_activation_hook(KK_STAR_RATINGS, kksr('core.wp.functions.activate'));
 register_deactivation_hook(KK_STAR_RATINGS, kksr('core.wp.functions.deactivate'));
+
+// We aren't using `register_activation_hook` because it is buggy
+// and does not get called when the plugin is implictly updated.
+// The activation will be handled when the plugin is loaded.
+// register_activation_hook(KK_STAR_RATINGS, kksr('core.wp.functions.activate'));
