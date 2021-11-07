@@ -23,7 +23,7 @@ if (! defined('KK_STAR_RATINGS')) {
     exit();
 }
 
-function the_post(WP_Post $post, WP_Query $query): void
+function the_post(WP_Post $post, WP_Query $query = null): void
 {
     $id = $post->ID;
 
