@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [5.2.2] - 2021-11-07
+
+### Fixed
+- Not enough arguments error that occured sometimes during `the_post` action hook has been fixed by marking the second argument as optional.
+
 ## [5.2.1] - 2021-11-06
 
 ### Fixed
