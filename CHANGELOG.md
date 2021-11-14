@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [5.2.3] - 2021-11-14
+
+### Fixed
+- Removed whitespaces in ajax responses when a vote is casted to fix refresh issues.
+- Option value for a stack may be corrupted which is now ignored.
+
 ## [5.2.2] - 2021-11-07
 
 ### Fixed
