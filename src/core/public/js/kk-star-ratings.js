@@ -79,7 +79,7 @@ jQuery(document).ready(function ($) {
           payload: $el.data("payload"),
         },
         function (response, status, xhr) {
-          var $newEl = $(response);
+          var $newEl = $(response.trim());
           $newEl.addClass($el.attr("class"));
           $el.replaceWith($newEl);
           destroy();

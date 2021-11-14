@@ -61,7 +61,7 @@ function wp_ajax_kk_star_ratings()
 
         unset($payload['count'], $payload['score']);
 
-        $html = do_shortcode(to_shortcode(kksr('slug'), $payload));
+        $html = trim(do_shortcode(to_shortcode(kksr('slug'), $payload)));
 
         wp_die($html, 201);
     } catch (Exception $e) {
