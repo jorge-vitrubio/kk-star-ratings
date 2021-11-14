@@ -11,6 +11,7 @@
 
 namespace Bhittani\StarRating\classes;
 
+use Exception;
 use SplStack;
 
 class Stack extends SplStack
@@ -27,7 +28,11 @@ class Stack extends SplStack
         $this->storeKey = $storeKey;
 
         if ($serialized = $store($storeKey)) {
-            $this->unserialize($serialized);
+            try {
+                $this->unserialize($serialized);
+            } catch (Exception $e) {
+                // Silently ignore.
+            }
         }
     }
 
