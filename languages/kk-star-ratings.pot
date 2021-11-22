@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the kk Star Ratings plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: kk Star Ratings 5.2.3\n"
+"Project-Id-Version: kk Star Ratings 5.2.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/kk-star-ratings\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-11-14T09:55:26+00:00\n"
+"POT-Creation-Date: 2021-11-22T11:56:15+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: kk-star-ratings\n"
@@ -197,79 +197,70 @@ msgstr ""
 msgid "Choose the default position for the auto-embedded star ratings."
 msgstr ""
 
-#: src/core/views/admin/tabs/general.php:37
+#: src/core/views/admin/tabs/general.php:36
 msgctxt "Label"
 msgid "Home"
 msgstr ""
 
-#: src/core/views/admin/tabs/general.php:38
+#: src/core/views/admin/tabs/general.php:37
 msgctxt "Label"
 msgid "Archives"
 msgstr ""
 
-#: src/core/views/admin/tabs/general.php:42
+#: src/core/views/admin/tabs/general.php:41
 msgctxt "Label"
 msgid "Allow voting in archives"
 msgstr ""
 
-#: src/core/views/admin/tabs/general.php:43
+#: src/core/views/admin/tabs/general.php:42
 msgctxt "Label"
 msgid "Allow guests to vote"
 msgstr ""
 
-#: src/core/views/admin/tabs/general.php:44
+#: src/core/views/admin/tabs/general.php:43
 msgctxt "Label"
 msgid "Unique votes (based on IP Address)"
 msgstr ""
 
-#: src/core/views/admin/tabs/general.php:54
+#: src/core/views/admin/tabs/general.php:53
 #: src/core/views/admin/tabs/rich-snippets.php:17
 msgctxt "Label"
 msgid "Status"
 msgstr ""
 
-#: src/core/views/admin/tabs/general.php:59
+#: src/core/views/admin/tabs/general.php:58
 msgctxt "Label"
 msgid "Active"
 msgstr ""
 
-#: src/core/views/admin/tabs/general.php:62
+#: src/core/views/admin/tabs/general.php:61
 msgid "Globally activate/deactivate the star ratings."
 msgstr ""
 
-#: src/core/views/admin/tabs/general.php:70
+#: src/core/views/admin/tabs/general.php:69
 msgctxt "Label"
 msgid "Strategies"
 msgstr ""
 
-#: src/core/views/admin/tabs/general.php:82
+#: src/core/views/admin/tabs/general.php:81
 msgid "Select the voting strategies."
 msgstr ""
 
-#: src/core/views/admin/tabs/general.php:90
-msgctxt "Label"
-msgid "Manual Control"
-msgstr ""
-
-#: src/core/views/admin/tabs/general.php:102
-msgid "Select the post types that should not auto embed the markup and will be manually controlled by the theme. E.g. Using %s in your theme/template file(s)."
-msgstr ""
-
-#: src/core/views/admin/tabs/general.php:110
+#: src/core/views/admin/tabs/general.php:89
 msgctxt "Label"
 msgid "Locations"
 msgstr ""
 
-#: src/core/views/admin/tabs/general.php:122
+#: src/core/views/admin/tabs/general.php:101
 msgid "Star ratings will be auto-embedded for the selected locations. You may still manually allow star ratings for unselected/other locations. E.g. Using %s in your theme/template file(s)."
 msgstr ""
 
-#: src/core/views/admin/tabs/general.php:130
+#: src/core/views/admin/tabs/general.php:109
 msgctxt "Label"
 msgid "Exclude Categories"
 msgstr ""
 
-#: src/core/views/admin/tabs/general.php:142
+#: src/core/views/admin/tabs/general.php:121
 msgid "The posts belonging to the selected categories will not auto-embed the star ratings. You may still manually show the star ratings. E.g. Using %s in your theme/template file(s)."
 msgstr ""
 
@@ -390,13 +381,12 @@ msgctxt "Label"
 msgid "Select Icon"
 msgstr ""
 
-#: src/premium/top-rated-posts/classes/TopRatedPostsWidget.php:27
-#: src/premium/top-rated-posts/classes/TopRatedPostsWidget.php:66
+#: src/premium/top-rated-posts/classes/TopRatedPostsWidget.php:29
 msgctxt "label"
 msgid "Top Rated Posts"
 msgstr ""
 
-#: src/premium/top-rated-posts/classes/TopRatedPostsWidget.php:30
+#: src/premium/top-rated-posts/classes/TopRatedPostsWidget.php:32
 msgid "Show top rated posts."
 msgstr ""
 
@@ -412,15 +402,15 @@ msgstr ""
 
 #: src/premium/top-rated-posts/views/widgets/top-rated-posts/form.php:34
 msgctxt "label"
-msgid "Category"
+msgid "Categories"
 msgstr ""
 
-#: src/premium/top-rated-posts/views/widgets/top-rated-posts/form.php:51
+#: src/premium/top-rated-posts/views/widgets/top-rated-posts/form.php:66
 msgctxt "label"
 msgid "Number of posts"
 msgstr ""
 
-#: src/premium/top-rated-posts/views/widgets/top-rated-posts/form.php:64
+#: src/premium/top-rated-posts/views/widgets/top-rated-posts/form.php:79
 msgctxt "label"
 msgid "Show score"
 msgstr ""
