@@ -8,7 +8,6 @@
     $enable = $get('enable');
     $excludeCategories = $get('exclude_categories');
     $locations = $get('locations');
-    $manualControl = $get('manual_control');
     $strategies = $get('strategies');
 
     $postTypes = [
@@ -83,26 +82,6 @@
                 </p>
             </td>
         </tr>
-
-        <!-- Manual Control -->
-        <!-- <tr>
-            <th scope="row" valign="top">
-                <?php echo esc_html_x('Manual Control', 'Label', 'kk-star-ratings'); ?>
-            </th>
-            <td>
-                <?php foreach ($postTypes as $type => $label) { ?>
-                    <p>
-                        <label>
-                            <input type="checkbox" name="<?php echo esc_attr($manualControl[0]); ?>[]" value="<?php echo esc_attr($type); ?>"<?php echo (in_array($type, $manualControl[1])) ? ' checked="checked"' : ''; ?>>
-                            <?php echo esc_html($label); ?>
-                        </label>
-                    </p>
-                <?php } ?>
-                <p class="description" style="max-width: 22rem; margin-top: .75rem;">
-                    <?php echo sprintf(esc_html__('Select the post types that should not auto embed the markup and will be manually controlled by the theme. E.g. Using %s in your theme/template file(s).', 'kk-star-ratings'), '<code>echo kk_star_ratings();</code>'); ?>
-                </p>
-            </td>
-        </tr> -->
 
         <!-- Locations -->
         <tr>
