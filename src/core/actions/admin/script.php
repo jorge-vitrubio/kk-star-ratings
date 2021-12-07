@@ -19,9 +19,13 @@ if (! defined('KK_STAR_RATINGS')) {
     exit();
 }
 
-function script(bool $isDebugMode = false): void
+function script(string $hook, bool $isDebugMode = false): void
 {
     // if (! migrations()->isEmpty()) {
     //     script_migrations($isDebugMode);
     // }
+
+    if ($hook == ('toplevel_page_'.kksr('slug'))) {
+        // Admin menu hook.
+    }
 }

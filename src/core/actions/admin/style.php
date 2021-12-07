@@ -16,6 +16,6 @@ if (! defined('KK_STAR_RATINGS')) {
     exit();
 }
 
-function style(bool $isDebugMode = false): void
+function style(string $hook, bool $isDebugMode = false): void
 {
 }

@@ -20,10 +20,8 @@ if (! defined('KK_STAR_RATINGS')) {
 
 function admin_enqueue_scripts($hook): void
 {
-    if ($hook == ('toplevel_page_'.kksr('slug'))) {
-        $isDebugMode = defined('WP_DEBUG') && WP_DEBUG;
+    $isDebugMode = defined('WP_DEBUG') && WP_DEBUG;
 
-        action('admin/style', $isDebugMode);
-        action('admin/script', $isDebugMode);
-    }
+    action('admin/style', $hook, $isDebugMode);
+    action('admin/script', $hook, $isDebugMode);
 }

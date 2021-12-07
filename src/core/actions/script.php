@@ -13,6 +13,7 @@ namespace Bhittani\StarRating\core\actions;
 
 use function Bhittani\StarRating\core\functions\migrations;
 use function Bhittani\StarRating\core\functions\script_migrations;
+use function Bhittani\StarRating\core\functions\scripts\main;
 
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);
@@ -25,22 +26,5 @@ function script(bool $isDebugMode = false): void
     //     script_migrations($isDebugMode);
     // }
 
-    wp_enqueue_script(
-        kksr('slug'),
-        kksr('core.url').'public/js/kk-star-ratings'
-            .($isDebugMode ? '' : '.min').'.js',
-        ['jquery'],
-        kksr('version'),
-        true
-    );
-
-    wp_localize_script(
-        kksr('slug'),
-        str_replace('-', '_', kksr('slug')),
-        [
-            'action' => kksr('slug'),
-            'endpoint' => admin_url('admin-ajax.php'),
-            'nonce' => wp_create_nonce(kksr('core.wp.actions.wp_ajax_'.kksr('slug'))),
-        ]
-    );
+    main($isDebugMode);
 }

@@ -9,16 +9,20 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace Bhittani\StarRating\core\actions;
-
-use function Bhittani\StarRating\core\functions\styles\main;
+namespace Bhittani\StarRating\core\functions\styles;
 
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);
     exit();
 }
 
-function style(bool $isDebugMode = false): void
+function main(bool $isDebugMode = false): void
 {
-    main($isDebugMode);
+    wp_enqueue_style(
+        kksr('slug'),
+        kksr('core.url').'public/css/kk-star-ratings'
+            .($isDebugMode ? '' : '.min').'.css',
+        [],
+        kksr('version')
+    );
 }
