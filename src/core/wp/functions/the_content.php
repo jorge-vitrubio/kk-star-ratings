@@ -9,8 +9,9 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace Bhittani\StarRating\core\wp\filters;
+namespace Bhittani\StarRating\core\wp\functions;
 
+use function Bhittani\StarRating\core\functions\filter;
 use function Bhittani\StarRating\core\functions\option;
 use function Bhittani\StarRating\functions\to_shortcode;
 
@@ -21,15 +22,8 @@ if (! defined('KK_STAR_RATINGS')) {
 
 function the_content(string $content): string
 {
-    foreach ([
-        kksr('slug'),
-        // Legacy...
-        'kkratings', // < v3
-        'kkstarratings', // v3, v4
-    ] as $tag) {
-        if (has_shortcode($content, $tag)) {
-            return $content;
-        }
+    if (! filter('embed', null, $content)) {
+        return $content;
     }
 
     $align = 'left';
