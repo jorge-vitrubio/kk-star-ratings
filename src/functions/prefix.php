@@ -34,9 +34,9 @@ function prefix($strOrPayload, string $prefix)
 
     $str = $strOrPayload;
 
-    if (strpos($str, $prefix) !== 0) {
-        return $prefix.$str;
+    if (strpos($str, $prefix) === 0) {
+        return $str;
     }
 
-    return substr($str, strlen($prefix));
+    return $prefix.$str;
 }
