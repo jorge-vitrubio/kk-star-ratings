@@ -3,7 +3,7 @@
 /*.cache
 /svn
 /bin
-/node_modules
+node_modules
 /vendor
 /dist
 /phpunit.xml
