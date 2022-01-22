@@ -9,16 +9,16 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace Bhittani\StarRating\core\actions;
-
-use function Bhittani\StarRating\core\functions\ld_json;
+namespace Bhittani\StarRating\core\functions;
 
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);
     exit();
 }
 
-function sd(array $payload): void
+function data(array $payload = []): array
 {
-    echo ld_json($payload);
+    $payload['title'] = esc_html($payload['title'] ?? get_post_field('post_title'));
+
+    return filter('payload', $payload);
 }

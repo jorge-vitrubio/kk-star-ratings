@@ -12,7 +12,7 @@
 namespace Bhittani\StarRating\core\wp\actions;
 
 use function Bhittani\StarRating\core\functions\action;
-use function Bhittani\StarRating\core\functions\calculate;
+use function Bhittani\StarRating\core\functions\data;
 use function Bhittani\StarRating\core\functions\option;
 
 if (! defined('KK_STAR_RATINGS')) {
@@ -23,14 +23,11 @@ if (! defined('KK_STAR_RATINGS')) {
 function wp_head(): void
 {
     if (option('enable') && option('grs') && is_singular()) {
-        $best = option('stars');
-        $id = get_post_field('ID');
-        $title = esc_html(get_post_field('post_title'));
-        [$count, $score] = calculate($id, 'default', $best);
+        $payload = data();
 
-        if ($count && $score) {
+        if ($payload['count'] && $payload['score']) {
             ob_start();
-            action('sd', compact('id', 'best', 'title', 'count', 'score'));
+            action('sd', $payload);
             echo ob_get_clean();
         }
     }

@@ -9,16 +9,18 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace Bhittani\StarRating\core\actions;
+namespace Bhittani\StarRating\core\functions;
 
-use function Bhittani\StarRating\core\functions\ld_json;
+use function Bhittani\StarRating\functions\bind;
 
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);
     exit();
 }
 
-function sd(array $payload): void
+function ld_json(array $payload = [], string $json = null): string
 {
-    echo ld_json($payload);
+    $sd = bind($json ?: option('sd'), data($payload));
+
+    return '<script type="application/ld+json">'.trim($sd).'</script>';
 }

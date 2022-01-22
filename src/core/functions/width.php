@@ -16,8 +16,11 @@ if (! defined('KK_STAR_RATINGS')) {
     exit();
 }
 
-/** Calculate the width, providing a gap */
-function width(float $score, float $size, float $gap = 0): float
+/** Calculate the width, providing a size and a gap */
+function width(float $score, float $size = null, float $gap = null): float
 {
+    $size = $size ?? option('size');
+    $gap = $gap ?? option('gap');
+
     return max(0, $score * $size + $score * $gap - $gap / 2);
 }

@@ -9,16 +9,19 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace Bhittani\StarRating\core\actions;
-
-use function Bhittani\StarRating\core\functions\ld_json;
+namespace Bhittani\StarRating\functions;
 
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);
     exit();
 }
 
-function sd(array $payload): void
+/** Bind values based on provided key value pairs. */
+function bind(string $subject, array $payload): string
 {
-    echo ld_json($payload);
+    foreach ($payload as $key => $value) {
+        $subject = str_replace('{'.$key.'}', $value, $subject);
+    }
+
+    return $subject;
 }
