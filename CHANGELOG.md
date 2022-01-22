@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [5.2.5] - 2022-01-22
+
+### Added
+- Support for custom rich snippets (ld_json) with binding. 
+- Support for Gutenberg blocks using hooks.
+- Url and path utility functions.
+
+### Fixed
+- The prefix function logic has been corrected.
+
 ## [5.2.4] - 2021-11-22
 
 ### Fixed
