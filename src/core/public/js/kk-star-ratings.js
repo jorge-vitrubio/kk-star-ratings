@@ -5,108 +5,115 @@
 
 "use strict";
 
-// (function (fn) {
-//   if (document.readyState != 'loading'){
-//     return fn();
-//   }
+(function (fn) {
+  if (document.readyState != "loading") {
+    return fn();
+  }
 
-//   document.addEventListener('DOMContentLoaded', fn);
-// })(function kkStarRatings() {
-//   console.log('ready!');
+  document.addEventListener("DOMContentLoaded", fn);
+})(function kkStarRatings() {
+  var isBusy = false;
 
-//   function onClick(e) {
-//     e.preventDefault();
-//     var $el = e.currentTarget;
-//     console.log($el);
-//     //
-//   }
-
-//   var $els = document.querySelectorAll('.kk-star-ratings');
-//   for (var i = 0; i < $els.length; i++) {
-//     var $el = $els[i];
-//     console.log($el);
-//     var $stars = document.querySelectorAll('[data-star]', $el);
-//     for (var j = 0; j < $stars.length; j++) {
-//       var $star = $stars[j];
-//       console.log($star);
-//       $star.addEventListener('click', onClick);
-//     }
-//   }
-// });
-
-jQuery(document).ready(function ($) {
-  function apply($el, options) {
-    var options = options || { isBusy: false };
-
-    function ajax(data, successCallback, errorCallback) {
-      if (options.isBusy || $el.hasClass("kksr-disabled")) {
-        return;
-      }
-
-      options.isBusy = true;
-
-      $.ajax({
-        type: "POST",
-        url: kk_star_ratings.endpoint,
-        data: Object.assign(
-          {
-            nonce: kk_star_ratings.nonce,
-            action: kk_star_ratings.action,
-          },
-          data
-        ),
-        error: errorCallback,
-        success: successCallback,
-        complete: function () {
-          options.isBusy = false;
-        },
-      });
+  function post(data, successCallback, errorCallback) {
+    if (isBusy) {
+      return;
     }
 
-    function onClick(e) {
-      var $star = $(this);
+    isBusy = true;
 
-      // var payload = {
-      //   id: $el.data('id'),
-      //   slug: $el.data('slug'),
-      //   score: $star.data('star'),
-      //   best: $('[data-star]', $el).length
-      // };
+    data = Object.assign(
+      {
+        nonce: kk_star_ratings.nonce,
+        action: kk_star_ratings.action,
+      },
+      data
+    );
 
-      ajax(
-        {
-          rating: $star.data("star"),
-          payload: $el.data("payload"),
+    var query = [];
+    for (var key in data) {
+      query.push(encodeURIComponent(key) + "=" + encodeURIComponent(data[key]));
+    }
+
+    var request = new XMLHttpRequest();
+
+    request.open("POST", kk_star_ratings.endpoint, true);
+
+    request.onload = function () {
+      if (request.status >= 200 && request.status < 400) {
+        successCallback(request.responseText, request);
+      } else {
+        errorCallback(request.responseText, request);
+      }
+    };
+
+    request.onloadend = function () {
+      isBusy = false;
+    };
+
+    request.setRequestHeader(
+      "Content-type",
+      "application/x-www-form-urlencoded; charset=UTF-8"
+    );
+
+    request.send(query.join("&"));
+  }
+
+  function htmlToEl(html) {
+    var div = document.createElement("div");
+    div.innerHTML = html.trim();
+
+    return div.firstChild;
+  }
+
+  function apply($el) {
+    function vote($star) {
+      var data = {
+        rating: $star.getAttribute("data-star"),
+      };
+
+      var payload = JSON.parse($el.getAttribute("data-payload"));
+
+      for (var key in payload) {
+        data["payload[" + key + "]"] = payload[key];
+      }
+
+      post(
+        data,
+        function (html) {
+          var $newEl = htmlToEl(html);
+          $el.parentNode.replaceChild($newEl, $el);
+          unmount();
+          $el = null;
+          apply($newEl);
         },
-        function (response, status, xhr) {
-          var $newEl = $(response.trim());
-          $newEl.addClass($el.attr("class"));
-          $el.replaceWith($newEl);
-          destroy();
-          apply($newEl, options);
-        },
-        function (xhr, status, err) {
-          if (xhr.responseJSON && xhr.responseJSON.error) {
-            console.error(xhr.responseJSON.error);
-          }
-        }
+        console.error
       );
     }
 
-    function destroy() {
-      $("[data-star]", $el).each(function () {
-        $(this).off("click", onClick);
-      });
-
-      $el.remove();
+    function onClick(e) {
+      e.preventDefault();
+      vote(e.currentTarget);
     }
 
-    $("[data-star]", $el).each(function () {
-      $(this).on("click", onClick);
-    });
+    var $stars = $el.querySelectorAll("[data-star]");
+
+    function unmount() {
+      Array.prototype.forEach.call($stars, function ($star) {
+        $star.removeEventListener("click", onClick);
+      });
+    }
+
+    function mount() {
+      Array.prototype.forEach.call($stars, function ($star) {
+        $star.addEventListener("click", onClick);
+      });
+    }
+
+    mount();
   }
 
-  $(".kk-star-ratings").each(function () {
-    apply($(this));
-  });
+  Array.prototype.forEach.call(
+    document.querySelectorAll(".kk-star-ratings"),
+    apply
+  );
 });

@@ -22,7 +22,7 @@ function main(bool $isDebugMode = false): void
         kksr('slug'),
         kksr('core.url').'public/js/kk-star-ratings'
             .($isDebugMode ? '' : '.min').'.js',
-        ['jquery'],
+        [],
         kksr('version'),
         true
     );
