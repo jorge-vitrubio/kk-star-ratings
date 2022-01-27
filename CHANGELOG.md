@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [5.2.6] - 2022-01-27
+
+### Updated
+- jQuery is no more required.
+
 ## [5.2.5] - 2022-01-22
 
 ### Added

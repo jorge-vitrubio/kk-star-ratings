@@ -6,7 +6,7 @@ Tags: star ratings, votings, rate posts, ajax ratings, infinite stars, unlimited
 Requires at least: 5.0
 Requires PHP: 7.2
 Tested up to: 5.8.1
-Stable tag: 5.2.5
+Stable tag: 5.2.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 </only:wp -->
@@ -23,10 +23,7 @@ kk Star Ratings - A WordPress Plugin
 ![icon-plugin-version]
 ![icon-wp-version]
 ![icon-wp-tested]
-
 ![icon-php-version]
-<!-- [![Travis Build Status][icon-travis-status]][link-travis-status] -->
-
 [![License][icon-license]](LICENSE.txt)
 <!-- /only:github -->
 
@@ -234,7 +231,7 @@ The GPLv2 or later license. Please see the [License File](LICENSE.txt) for more 
 [icon-plugin-version]: https://img.shields.io/wordpress/plugin/v/kk-star-ratings.svg
 
 <!-- PHP version -->
-[icon-php-version]: https://img.shields.io/travis/php-v/kamalkhan/kk-star-ratings/master.svg
+[icon-php-version]: https://img.shields.io/wordpress/plugin/required-php/kk-star-ratings
 
 <!-- Travis Status -->
 [icon-travis-status]: https://img.shields.io/travis/kamalkhan/kk-star-ratings.svg
