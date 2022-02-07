@@ -25,8 +25,10 @@ function payload(array $payload): array
     $payload['id'] = (int) ($payload['id'] ?? get_post_field('ID'));
 
     if (! $payload['id']) {
-        $url = home_url(add_query_arg([]));
-        $payload['id'] = url_to_postid($url);
+        if (! ($payload['id'] = get_the_ID())) {
+            $url = home_url(add_query_arg([]));
+            $payload['id'] = url_to_postid($url);
+        }
     }
 
     $payload['slug'] = $payload['slug'] ?? 'default';
