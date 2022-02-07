@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [5.2.7] - 2022-02-07
+
+### Fixed
+- Checks for `get_the_ID()` before falling back to query vars.
+
 ## [5.2.6] - 2022-01-27
 
 ### Updated
