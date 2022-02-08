@@ -36,4 +36,4 @@ The activation will be handled when the plugin is loaded.
 We need a higher priority for `the_content` filter
 so that we can check for shortcodes and blocks.
 ================================================== */
-add_filter('the_content', kksr('core.wp.functions.the_content'), 8);
+// add_filter('the_content', kksr('core.wp.functions.the_content'), 8);
