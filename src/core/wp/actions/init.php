@@ -21,6 +21,8 @@ if (! defined('KK_STAR_RATINGS')) {
 
 function init(): void
 {
+    load_plugin_textdomain(kksr('domain'), false, kksr('signature').'/languages');
+
     foreach (filter('blocks', []) as $namespace => $payload) {
         block($namespace, $payload);
     }
