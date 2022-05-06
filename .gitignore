@@ -15,9 +15,10 @@ TODO.md
 # Premium
 /src/premium
 
-# Fiber
-/fiber
-/src-fiber
+# Scope
+/scope
+/config
+/toaster
 
 # Temp
 /composer.json
