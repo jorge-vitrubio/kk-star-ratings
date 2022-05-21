@@ -23,8 +23,7 @@ function upgrader_process_complete(WP_Upgrader $upgrader, array $options): void
 {
     if ($options['action'] == 'update'
         && $options['type'] == 'plugin'
-        && isset($options['plugin'])
-        && in_array(kksr('signature'), $options['plugins'])
+        && in_array(kksr('signature'), $options['plugins'] ?? [])
     ) {
         deactivate();
     }
