@@ -41,7 +41,7 @@
         <?php foreach ($tabs as $tab => $tabMeta) { ?>
             <a class="nav-tab <?php echo ($tabMeta['is_active'] ?? false) ? 'nav-tab-active' : ''; ?>"
                 style="position: relative; border-radius: 4px 4px 0 0; <?php echo ($tabMeta['is_disabled'] ?? false) ? 'opacity: 50%; pointer-events: none;' : ''; ?> <?php echo ($tabMeta['is_addon'] ?? false) ? (($tabMeta['is_active'] ?? false) ? 'background-color: auto; border-color: auto;' : 'background-color: #f6efc7; border-color: #ead2ae;') : ''; ?>"
-                href="<?php echo esc_url(add_query_arg(['page' => $_GET['page'] ?? '', 'tab' => $tab], admin_url('admin.php'))); ?>"
+                href="<?php echo esc_url($tabMeta['link'] ?? add_query_arg(['page' => $_GET['page'] ?? '', 'tab' => $tab], admin_url('admin.php'))); ?>"
                 <?php ($tabMeta['is_disabled'] ?? false) ? 'onclick="return false;"' : ''; ?>>
                 <?php echo esc_html($tabMeta['name'] ?? 'Untitled'); ?>
                 <?php if ($tabMeta['is_addon'] ?? false) { ?>

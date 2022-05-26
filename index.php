@@ -10,9 +10,11 @@
  * Author URI:      http://bhittani.com
  * Text Domain:     kk-star-ratings
  * Domain Path:     /languages
- * Version:         5.2.11
+ * Version:         5.3.0
  * License:         GPLv2 or later
  */
+
+use function Bhittani\StarRating\core\functions\action;
 
 if (! defined('ABSPATH')) {
     http_response_code(404);
@@ -34,7 +36,7 @@ if (function_exists('kksr_freemius')) {
 
     require_once __DIR__.'/src/index.php';
     require_once __DIR__.'/src/core/index.php';
-    /* @fs */
-    require_once __DIR__.'/src/premium/index.php';
-    /* @endfs */
+
+    // Let everyone know that the plugin is loaded.
+    action('init', kksr());
 }

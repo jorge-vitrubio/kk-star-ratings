@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [5.3.0] - 2022-05-26
+
+### Added
+- Introduced the concept of addons.
+
+### Updated
+- The plugin `init` action is now called as soon as the plugin is loaded instead of the `plugins_loaded` WordPress action.
+- Bumped WordPress version (6.0).
+
 ## [5.2.11] - 2022-05-21
 
 ### Fixed
