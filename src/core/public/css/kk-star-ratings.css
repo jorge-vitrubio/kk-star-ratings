@@ -4,10 +4,10 @@
 */
 
 .kk-star-ratings {
-    display: -webkit-inline-box !important;
-    display: -webkit-inline-flex !important;
-    display: -ms-inline-flexbox !important;
-    display: inline-flex !important;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
     -webkit-box-align: center;
     -webkit-align-items: center;
     -ms-flex-align: center;
@@ -15,20 +15,19 @@
     /* vertical-align: text-top; */
 }
 
+.kk-star-ratings.kksr-shortcode {
+    display: -webkit-inline-box;
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+}
+
 .kk-star-ratings.kksr-valign-top {
     margin-bottom: 2rem;
-    display: -webkit-box !important;
-    display: -webkit-flex !important;
-    display: -ms-flexbox !important;
-    display: flex !important;
 }
 
 .kk-star-ratings.kksr-valign-bottom {
     margin-top: 2rem;
-    display: -webkit-box !important;
-    display: -webkit-flex !important;
-    display: -ms-flexbox !important;
-    display: flex !important;
 }
 
 .kk-star-ratings.kksr-align-left {
