@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [5.3.1] - 2022-07-08
+
+### Fixed
+- Backwards compatibility of `kksr_rate` and `kksr_vote` action hook.
+- Refactored the way fingerprint (IP Address) is calculated.
+- View templates now respect a view slug.
+- Shortcode now accepts a custom class attribute.
+- Touched CSS styles.
+
 ## [5.3.0] - 2022-05-26
 
 ### Added
