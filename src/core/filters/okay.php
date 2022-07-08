@@ -51,7 +51,7 @@ function okay(?bool $okay, int $id, string $slug, array $payload): bool
         return false;
     }
 
-    if ($reference == 'shortcode') {
+    if ($reference != 'auto') {
         return true;
     }
 
