@@ -23,6 +23,7 @@ function save(float $outOf5, int $id, string $slug, array $payload): void
 {
     $count = (int) filter('count', null, $id, $slug);
     $ratings = (float) filter('ratings', null, $id, $slug);
+    $legacySlug = $slug == 'default' ? '' : "_{$slug}";
 
     // For safe keeping, ensure we have not already casted this vote.
     if ($count == ((int) $payload['count'] ?? 0)
@@ -41,7 +42,6 @@ function save(float $outOf5, int $id, string $slug, array $payload): void
         ]);
 
         // Legacy support...
-        $legacySlug = $slug == 'default' ? '' : "_{$slug}";
 
         post_meta($id, [
             "casts{$legacySlug}" => $newCount, // < v5
@@ -50,4 +50,17 @@ function save(float $outOf5, int $id, string $slug, array $payload): void
             "avg{$legacySlug}" => $newRatings / $newCount, // < v3
         ]);
     }
+
+    // Backwards compatibility!
+    // Allow third-party code to continue relying
+    // on legacy/depecrated action hook.
+
+    // < v3
+    do_action('kksr_rate', $id, $outOf5, $fingerprint);
+
+    // v3 (replaced by v4)
+    // do_action('kksr_vote', $id, $outOf5, $fingerprint);
+
+    // < v5
+    do_action('kksr_vote', $outOf5, 5, $id, $legacySlug, $fingerprint);
 }
