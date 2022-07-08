@@ -18,8 +18,33 @@ if (! defined('KK_STAR_RATINGS')) {
     exit();
 }
 
-function view(?string $__slug, string $__base, string $__path, array $__payload = []): string
+/**
+ * Render a view template.
+ *
+ * Since 5.3.1, a slug is also accepted which would cause an error
+ * for third party code that relied on the previous definition.
+ * To mitigate the error, we check on the 4th parameter for null.
+ *
+ * @param string|array|null $pathOrPayload
+ *
+ * @throws InvalidArgumentException if the template can not be located
+ */
+function view(?string $slugOrBase, string $baseOrPath, $pathOrPayload = null, array $payload = null): string
 {
+    $__slug = $slugOrBase;
+    $__base = $baseOrPath;
+    $__path = $pathOrPayload;
+    $__payload = $payload;
+
+    if (is_null($payload)) {
+        $__slug = null;
+        $__base = $slugOrBase;
+        $__path = $baseOrPath;
+        $__payload = $pathOrPayload;
+    }
+
+    unset($slugOrBase, $baseOrPath, $pathOrPayload, $payload);
+
     $resolve = function (?string $slug, string $base, string $path): string {
         if (is_file($path)) {
             return $path;
