@@ -22,5 +22,13 @@ function fingerprint(?string $fingerprint, int $id, string $slug): string
         return $fingerprint;
     }
 
-    return md5($_SERVER['REMOTE_ADDR']);
+    $ip = $_SERVER['REMOTE_ADDR'];
+
+    if ($httpClientIp = ($_SERVER['HTTP_CLIENT_IP'] ?? null)) {
+        $ip = $httpClientIp;
+    } elseif ($httpXForwardedFor = ($_SERVER['HTTP_X_FORWARDED_FOR'] ?? null)) {
+        $ip = $httpXForwardedFor;
+    }
+
+    return md5($ip);
 }
