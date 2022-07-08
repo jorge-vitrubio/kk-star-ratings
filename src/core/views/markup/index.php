@@ -5,10 +5,27 @@
     }
 ?>
 
-<div class="kk-star-ratings
-    <?php echo $valign ? (' kksr-valign-'.esc_attr($valign)) : ''; ?>
-    <?php echo $align ? (' kksr-align-'.esc_attr($align)) : ''; ?>
-    <?php echo $readonly ? ' kksr-disabled' : ''; ?>"
+<?php
+    $class = ['kk-star-ratings', $class ?? null];
+
+    if ($reference = (($reference ?? null) ?: null)) {
+        $class[] = "kksr-{$reference}";
+    }
+
+    if ($align = (($align ?? null) ?: null)) {
+        $class[] = "kksr-align-{$align}";
+    }
+
+    if ($valign = (($valign ?? null) ?: null)) {
+        $class[] = "kksr-valign-{$valign}";
+    }
+
+    if ($readonly = (($readonly ?? null) ?: null)) {
+        $class[] = 'kksr-disabled';
+    }
+?>
+
+<div class="<?php echo implode(' ', array_filter(array_map('esc_attr', $class))); ?>"
     data-payload="<?php echo esc_attr(json_encode(array_map('esc_attr', $__payload))); ?>">
     <?php echo $__view('markup/stars.php'); ?>
     <?php echo $__view('markup/legend.php'); ?>

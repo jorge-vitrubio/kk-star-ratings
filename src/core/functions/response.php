@@ -19,8 +19,8 @@ if (! defined('KK_STAR_RATINGS')) {
 function response(array $payload): string
 {
     $payload += array_fill_keys([
-        'align', 'count', 'id', 'readonly',
-        'score', 'slug', 'valign',
+        'align', 'class', 'count', 'id', 'readonly',
+        'reference', 'score', 'slug', 'valign',
     ], '') + [
         'best' => option('stars'),
         'gap' => option('gap'),
@@ -43,6 +43,8 @@ function response(array $payload): string
     $payload['legend'] = str_replace('{count}', $payload['count'], $payload['legend']);
     $payload['legend'] = str_replace('{score}', $payload['score'], $payload['legend']);
     $payload['legend'] = str_replace('{votes}', _n('vote', 'votes', $payload['count'], 'kk-star-ratings'), $payload['legend']);
+
+    $payload['font_factor'] = 1.25;
 
     ob_start();
 
