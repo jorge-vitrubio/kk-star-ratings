@@ -16,9 +16,9 @@ if (! defined('KK_STAR_RATINGS')) {
     exit();
 }
 
-function block(string $namespace, array $payload): void
+function block(string $namespace, array $payload, string $slug = null): string
 {
-    $slug = 'block-'.$namespace;
+    $slug = $slug ?: ($payload['slug'] ?? trim(preg_replace('/[^\w]+/', '_', $namespace), '_'));
 
     wp_register_script(
         $slug,
@@ -33,4 +33,6 @@ function block(string $namespace, array $payload): void
         'editor_script' => $slug,
         'render_callback' => $payload['block'] ?? null,
     ]));
+
+    return $slug;
 }
