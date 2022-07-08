@@ -18,17 +18,20 @@ if (! defined('KK_STAR_RATINGS')) {
     exit();
 }
 
-function view(string $__base, string $__path, array $__payload = []): string
+function view(?string $__slug, string $__base, string $__path, array $__payload = []): string
 {
-    $resolve = function (string $base, string $path): string {
+    $resolve = function (?string $slug, string $base, string $path): string {
         if (is_file($path)) {
             return $path;
         }
 
         $path = ltrim($path, '\/');
-        $directory = kksr('slug').'/'.basename(dirname($base));
-        $parentTheme = get_template_directory().'/'.$directory.'/'.$path;
-        $childTheme = get_stylesheet_directory().'/'.$directory.'/'.$path;
+        $directory = kksr('slug');
+        if ($slug && ($sanitizedSlug = ltrim(strip_prefix($slug, kksr('nick')), '-'))) {
+            $directory .= "/{$sanitizedSlug}";
+        }
+        $parentTheme = get_template_directory()."/{$directory}/{$path}";
+        $childTheme = get_stylesheet_directory()."/{$directory}/{$path}";
 
         if (is_file($childTheme)) {
             return $childTheme;
@@ -38,7 +41,7 @@ function view(string $__base, string $__path, array $__payload = []): string
             return $parentTheme;
         }
 
-        $template = $base.'/'.$path;
+        $template = "{$base}/{$path}";
 
         if (is_file($template)) {
             return $template;
@@ -47,13 +50,13 @@ function view(string $__base, string $__path, array $__payload = []): string
         throw new InvalidArgumentException("The template '{$path}' could not be located at '{$template}'");
     };
 
-    $__view = function (string $path, array $payload = []) use ($__payload, $__base) {
-        return view($__base, $path, array_merge($__payload, $payload));
+    $__view = function (string $path, array $payload = []) use ($__payload, $__slug, $__base) {
+        return view($__slug, $__base, $path, array_merge($__payload, $payload));
     };
     $__kksr = 'kksr';
     $__base = rtrim($__base, '\/');
     $__dusk = kksr('functions.dusk_attr');
-    $__template = $resolve($__base, $__path);
+    $__template = $resolve($__slug, $__base, $__path);
 
     unset($resolve);
 

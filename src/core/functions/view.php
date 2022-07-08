@@ -21,5 +21,5 @@ if (! defined('KK_STAR_RATINGS')) {
 /** @throws InvalidArgumentException If the template is not found */
 function view(string $path, array $payload = []): string
 {
-    return base_view(kksr('core.views'), $path, $payload);
+    return base_view(null, kksr('core.views'), $path, $payload);
 }
