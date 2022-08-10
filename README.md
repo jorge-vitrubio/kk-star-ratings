@@ -5,8 +5,8 @@ Donate link: https://github.com/kamalkhan/kk-star-ratings
 Tags: star ratings, votings, rate posts, ajax ratings, infinite stars, unlimited stars, google rich snippets, structured data, SEO, SERP
 Requires at least: 5.0
 Requires PHP: 7.2
-Tested up to: 6.0
-Stable tag: 5.3.1
+Tested up to: 6.0.1
+Stable tag: 5.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 </only:wp -->
