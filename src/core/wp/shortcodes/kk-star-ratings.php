@@ -27,6 +27,7 @@ function kk_star_ratings($attrs, string $contents, string $tag): string
         'align', 'best', 'class', 'count', 'gap', 'greet', 'id',
         'legend', 'readonly', 'score', 'size', 'slug', 'valign',
     ], '') + [
+        'ignore' => false,
         'reference' => 'shortcode',
     ];
 
@@ -49,6 +50,10 @@ function kk_star_ratings($attrs, string $contents, string $tag): string
     }
 
     $payload = shortcode_atts($defaults, $attrs + ['legend' => $contents], $tag);
+
+    if ($payload['ignore']) {
+        return '';
+    }
 
     if (! $payload['id']) {
         $payload['id'] = (int) get_the_ID();
