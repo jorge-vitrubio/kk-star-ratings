@@ -5,15 +5,15 @@ Donate link: https://github.com/kamalkhan/kk-star-ratings
 Tags: star ratings, votings, rate posts, ajax ratings, infinite stars, unlimited stars, google rich snippets, structured data, SEO, SERP
 Requires at least: 5.0
 Requires PHP: 7.2
-Tested up to: 6.0.1
-Stable tag: 5.3.2
+Tested up to: 6.0
+Stable tag: 5.3.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 </only:wp -->
 
 <!-- only:github/ -->
-kk Star Ratings - A WordPress Plugin
-======
+
+# kk Star Ratings - A WordPress Plugin
 
 ![icon-plugin-installs]
 ![icon-plugin-downloads-per-day]
@@ -25,6 +25,7 @@ kk Star Ratings - A WordPress Plugin
 ![icon-wp-tested]
 ![icon-php-version]
 [![License][icon-license]](LICENSE.txt)
+
 <!-- /only:github -->
 
 kk Star Ratings allows blog visitors to involve and interact more effectively with your website by rating posts.
@@ -32,21 +33,22 @@ kk Star Ratings allows blog visitors to involve and interact more effectively wi
 This plugin has been renewed from the ground up as of v5.
 
 <!-- only:github/ -->
-**Table of contents**
----
-  - [Features](#features)
-  - [Installation](#installation)
-    - [Auto](#auto)
-    - [Manual](#manual)
-  - [FAQs](#faqs)
-  - [Changelog](#changelog)
-  - [i18n](#i18n)
-  - [Testing](#testing)
-  - [Contributing](#contributing)
-  - [Security](#security)
-  - [Credits](#credits)
-  - [Attribution](#attribution)
-  - [License](#license)
+
+## **Table of contents**
+
+-   [Features](#features)
+-   [Installation](#installation)
+    -   [Auto](#auto)
+    -   [Manual](#manual)
+-   [FAQs](#faqs)
+-   [Changelog](#changelog)
+-   [i18n](#i18n)
+-   [Testing](#testing)
+-   [Contributing](#contributing)
+-   [Security](#security)
+-   [Credits](#credits)
+-   [Attribution](#attribution)
+-   [License](#license)
 <!-- /only:github -->
 
 <!-- only:wp>
@@ -54,58 +56,67 @@ This plugin has been renewed from the ground up as of v5.
 </only:wp -->
 
 <!-- only:github/ -->
+
 ## Features
+
 <!-- /only:github -->
 
 kk Star Ratings is a widely used star rating plugin for wordpress. Here are some highlighted features:
 
-- User defined amount of star ratings (5 as default) in your **posts**, **pages** and publicly accesible **custom post types**.
+-   User defined amount of star ratings (5 as default) in your **posts**, **pages** and publicly accesible **custom post types**.
 
-- Structured data supporting **google rich snippets** showing the star ratings in search results which has the potential to drive more traffic to your website.
+-   Structured data supporting **google rich snippets** showing the star ratings in search results which has the potential to drive more traffic to your website.
 
-- Widespread coverage of custom hooks.
+-   Widespread coverage of custom hooks.
 
-- Full control via options page. You can,
+-   Full control via options page. You can,
 
-  - Enable or disable globally.
-  
-  - Disable star ratings in posts that belong to certain categories.
+    -   Enable or disable globally.
 
-  - Choose where to show the star ratings. It can be on the **homepage**, in **archives**, in **posts**, in **pages** and/or in **custom post types**.
+    -   Disable star ratings in posts that belong to certain categories.
 
-  - Control the structured data schema and type.
+    -   Choose where to show the star ratings. It can be on the **homepage**, in **archives**, in **posts**, in **pages** and/or in **custom post types**.
 
-  - Restrict votings per unique ip.
+    -   Control the structured data schema and type.
 
-  - Allow voting in archives.
+    -   Restrict votings per unique ip.
 
-  - Allow guests to vote.
+    -   Allow voting in archives.
 
-  - Customize position within the post content.
+    -   Allow guests to vote.
 
-  - Adjust the amount of stars.
-  
-- And much more...
+    -   Customize position within the post content.
+
+    -   Adjust the amount of stars.
+
+-   And much more...
 
 <!-- only:wp>
 == Installation ==
 </only:wp -->
 
 <!-- only:github/ -->
+
 ## Installation
+
 <!-- /only:github -->
 
 <!-- only:github/ -->
+
 ### Auto
+
 1. Navigate to your wordpress plugins dashboard page.
 2. Upload the plugin zip file.
 3. Activate the plugin via the wordpress plugins dashboard page.
 4. Adjust the plugin options under the kk Star Ratings menu in wp-admin.
-<!-- /only:github -->
+ <!-- /only:github -->
 
 <!-- only:github/ -->
+
 ### Manual
+
 <!-- /only:github -->
+
 1. Extract the plugin zip file.
 1. Upload/move the folder `kk-star-ratings` to the `wp-content/plugins` directory.
 1. Activate the plugin via the wordpress plugins dashboard page.
@@ -116,14 +127,18 @@ kk Star Ratings is a widely used star rating plugin for wordpress. Here are some
 </only:wp -->
 
 <!-- only:github/ -->
+
 ## FAQs
+
 <!-- /only:github -->
 
 <!-- only:wp>
 = What should I do if structured data do not show in search result pages. =
 </only:wp -->
 <!-- only:github/ -->
-> What should I do if the structured data is not picked by search result pages? 
+
+> What should I do if the structured data is not picked by search result pages?
+
 <!-- /only:github -->
 
 Please have patience as we have no control over how google or any search engine indexes your pages. It might take some days or even weeks for the robots to crawl the ratings.
@@ -132,7 +147,9 @@ Please have patience as we have no control over how google or any search engine 
 = I have been using a version of this plugin prior to v5. Is it safe for me to update? =
 </only:wp -->
 <!-- only:github/ -->
+
 > I have been using a version of this plugin prior to v5. Is it safe for me to update?
+
 <!-- /only:github -->
 
 All previous ratings and options will be preserved. However, since v5 has been renewed from scratch, we do not support downgrading after upgrading to v5.
@@ -141,7 +158,9 @@ All previous ratings and options will be preserved. However, since v5 has been r
 = I found a bug or want to contribute. =
 </only:wp -->
 <!-- only:github/ -->
+
 > I found a bug or want to contribute.
+
 <!-- /only:github -->
 
 The source of this plugin is located at [Github](https://github.com/kamalkhan/kk-star-ratings). Feel free to post an issue or submit a pull request.
@@ -186,17 +205,18 @@ All previous ratings and options will be preserved. However, since v3 has been r
 </only:wp -->
 
 <!-- only:github/ -->
+
 ## Changelog
 
 Please see the [CHANGELOG](CHANGELOG.md) for more information on what has changed.
 
-[Version 4.x](.github/CHANGELOG-v4.md) has been *archived* as of July 2021.
+[Version 4.x](.github/CHANGELOG-v4.md) has been _archived_ as of July 2021.
 
-[Version 3.x](.github/CHANGELOG-v3.md) has been *archived* as of October 2019.
+[Version 3.x](.github/CHANGELOG-v3.md) has been _archived_ as of October 2019.
 
-[Version 2.x](.github/CHANGELOG-v2.md) has been *archived* as of July 2019.
+[Version 2.x](.github/CHANGELOG-v2.md) has been _archived_ as of July 2019.
 
-[Version 1.x](.github/CHANGELOG-v1.md) has been *archived* as of March 2016.
+[Version 1.x](.github/CHANGELOG-v1.md) has been _archived_ as of March 2016.
 
 ## Contributing
 
@@ -208,8 +228,8 @@ If you discover any security related issues, please email `shout@bhittani.com` i
 
 ## Credits
 
-- [Kamal Khan](https://github.com/kamalkhan)
-- [All Contributors][link-contributors]
+-   [Kamal Khan](https://github.com/kamalkhan)
+-   [All Contributors][link-contributors]
 
 ## Attribution
 
@@ -220,33 +240,42 @@ The [pull request template](.github/PR_TEMPLATE) and [issue template](.github/IS
 The GPLv2 or later license. Please see the [License File](LICENSE.txt) for more information.
 
 <!-- WordPress -->
+
 [icon-wp-version]: https://img.shields.io/wordpress/plugin/wp-version/kk-star-ratings.svg
 [icon-wp-tested]: https://img.shields.io/wordpress/plugin/tested/kk-star-ratings.svg
 [icon-wp-rating]: https://img.shields.io/wordpress/plugin/rating/kk-star-ratings.svg
 
 <!-- Plugin -->
+
 [icon-plugin-downloads-per-day]: https://img.shields.io/wordpress/plugin/dd/kk-star-ratings.svg
 [icon-plugin-downloads]: https://img.shields.io/wordpress/plugin/dt/kk-star-ratings.svg
 [icon-plugin-installs]: https://img.shields.io/wordpress/plugin/installs/kk-star-ratings.svg
 [icon-plugin-version]: https://img.shields.io/wordpress/plugin/v/kk-star-ratings.svg
 
 <!-- PHP version -->
+
 [icon-php-version]: https://img.shields.io/wordpress/plugin/required-php/kk-star-ratings
 
 <!-- Travis Status -->
+
 [icon-travis-status]: https://img.shields.io/travis/kamalkhan/kk-star-ratings.svg
 [link-travis-status]: https://travis-ci.org/kamalkhan/kk-star-ratings
 
 <!-- Packagist Downloads -->
+
 [icon-packagist-downloads]: https://img.shields.io/packagist/dt/bhittani/kk-star-ratings.svg
 [link-packagist-downloads]: https://packagist.org/packages/bhittani/kk-star-ratings
 
 <!-- License -->
+
 [icon-license]: https://img.shields.io/badge/License-GPL%20v2-blue.svg
 
 <!-- Composer -->
+
 [link-composer]: https://getcomposer.org
 
 <!-- Contributors -->
+
 [link-contributors]: https://github.com/kamalkhan/kk-star-ratings/contributors
+
 <!-- /only:github -->
