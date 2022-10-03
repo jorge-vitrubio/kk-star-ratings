@@ -11,6 +11,8 @@
 
 namespace Bhittani\StarRating\core\filters;
 
+use function Bhittani\StarRating\functions\applying_filter;
+
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);
     exit();
@@ -21,6 +23,10 @@ function embed(?bool $bool, string $content): bool
 {
     if (! is_null($bool)) {
         return $bool;
+    }
+
+    if (applying_filter('get_the_excerpt')) {
+        return false;
     }
 
     foreach ([

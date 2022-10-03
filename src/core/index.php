@@ -9,6 +9,8 @@
  * the LICENSE file that was distributed with this source code.
  */
 
+use function Bhittani\StarRating\functions\applying_filter;
+
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);
     exit();
@@ -32,8 +34,17 @@ The activation will be handled when the plugin is loaded.
 ============================================================== */
 // register_activation_hook(KK_STAR_RATINGS, kksr('core.wp.functions.activate'));
 
-/* ==================================================
-We need a higher priority for `the_content` filter
-so that we can check for shortcodes and blocks.
-================================================== */
-// add_filter('the_content', kksr('core.wp.functions.the_content'), 8);
+/* ==============================================================
+To be aware of the fact that 'the_content' filter
+is being applied within the 'get_the_excerpt'
+filter, we must ensure we set up a flag.
+============================================================== */
+add_filter('get_the_excerpt', function ($excerpt) {
+    applying_filter(['get_the_excerpt' => true]);
+    return $excerpt;
+}, PHP_INT_MIN);
+
+add_filter('get_the_excerpt', function ($excerpt) {
+    applying_filter(['get_the_excerpt' => false]);
+    return $excerpt;
+}, PHP_INT_MAX);
