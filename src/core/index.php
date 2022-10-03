@@ -41,10 +41,12 @@ filter, we must ensure we set up a flag.
 ============================================================== */
 add_filter('get_the_excerpt', function ($excerpt) {
     applying_filter(['get_the_excerpt' => true]);
+
     return $excerpt;
 }, PHP_INT_MIN);
 
 add_filter('get_the_excerpt', function ($excerpt) {
     applying_filter(['get_the_excerpt' => false]);
+
     return $excerpt;
 }, PHP_INT_MAX);

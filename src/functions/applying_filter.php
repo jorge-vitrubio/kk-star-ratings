@@ -18,7 +18,8 @@ if (! defined('KK_STAR_RATINGS')) {
 
 /**
  * @param string|array<string,bool> $filter
- * @return null|bool
+ *
+ * @return bool|null
  */
 function applying_filter($filter)
 {
