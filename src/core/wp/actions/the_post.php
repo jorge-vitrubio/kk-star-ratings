@@ -25,9 +25,13 @@ if (! defined('KK_STAR_RATINGS')) {
 
 function the_post(WP_Post $post, WP_Query $query = null): void
 {
+    static $patched = [];
+
     $id = $post->ID;
 
-    if (metadata_exists('post', $id, meta_prefix('avg'))) {
+    if (! in_array($id, $patched)
+        && metadata_exists('post', $id, meta_prefix('avg'))
+    ) {
         // v5
         // if (metadata_exists('post', $id, meta_prefix('count_default'))) {
         //     $count = max((int) post_meta($id, 'count_default'), 0);
@@ -69,4 +73,6 @@ function the_post(WP_Post $post, WP_Query $query = null): void
             'ratings_default' => $ratings,
         ]);
     }
+
+    $patched[] = $id;
 }
