@@ -9,18 +9,14 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace Bhittani\StarRating\core\filters;
+namespace Bhittani\StarRating\core\functions\admin\scripts;
 
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);
     exit();
 }
 
-/**
- * @param array<int,array<string,mixed>> $blocks
- * @return array<int,array<string,mixed>>
- */
-function blocks(array $blocks): array
+function blocks(bool $isDebugMode = false): void
 {
-    return $blocks;
+    wp_enqueue_script(kksr('slug').'-blocks');
 }

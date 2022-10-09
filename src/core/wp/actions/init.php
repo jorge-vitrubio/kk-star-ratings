@@ -11,8 +11,7 @@
 
 namespace Bhittani\StarRating\core\wp\actions;
 
-use function Bhittani\StarRating\core\functions\filter;
-use function Bhittani\StarRating\functions\block;
+use function Bhittani\StarRating\core\wp\functions\register_blocks;
 
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);
@@ -23,7 +22,5 @@ function init(): void
 {
     load_plugin_textdomain(kksr('domain'), false, kksr('signature').'/languages');
 
-    foreach (filter('blocks', []) as $namespace => $payload) {
-        block($namespace, $payload);
-    }
+    register_blocks();
 }

@@ -11,6 +11,7 @@
 
 namespace Bhittani\StarRating\core\actions\admin;
 
+use function Bhittani\StarRating\core\functions\admin\scripts\blocks;
 use function Bhittani\StarRating\core\functions\migrations;
 use function Bhittani\StarRating\core\functions\script_migrations;
 
@@ -28,4 +29,6 @@ function script(string $hook, bool $isDebugMode = false): void
     if ($hook == ('toplevel_page_'.kksr('slug'))) {
         // Admin menu hook.
     }
+
+    blocks($isDebugMode);
 }

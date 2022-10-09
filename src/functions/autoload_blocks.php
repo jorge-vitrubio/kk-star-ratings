@@ -18,60 +18,19 @@ if (! defined('KK_STAR_RATINGS')) {
 
 use DirectoryIterator;
 
-function autoload_blocks(string $namespace, string $path, string $slug = null): array
+/** @return array<string,array<string,mixed>> */
+function autoload_blocks(string $path): array
 {
-    $path = rtrim($path, '\/');
-    $namespace = rtrim($namespace, '\\');
-
     if (! is_dir($path)) {
         return [];
     }
 
-    if (is_null($slug)) {
-        $slug = kksr('slug');
-    }
-
-    $isDebugMode = defined('WP_DEBUG') && WP_DEBUG;
-
     $autoloads = [];
 
     foreach (new DirectoryIterator($path) as $fileInfo) {
-        if (! ($fileInfo->isDot()
-            || $fileInfo->isFile()
-        )) {
-            $name = $fileInfo->getFilename();
-            $path = $fileInfo->getRealPath();
-            $ns = $namespace.'\\'.$name;
-            $signature = $slug.'/'.$name;
-
-            $functions = autoload($ns, $path);
-
-            $attributes = [];
-
-            if ($attributes = ($functions['attributes'] ?? [])) {
-                unset($functions['attributes']);
-                $attributes = $attributes();
-            }
-
-            $dependencies = [];
-
-            if ($dependencies = ($functions['dependencies'] ?? [])) {
-                unset($functions['dependencies']);
-                $dependencies = $dependencies();
-            }
-
-            $dist = $path.'/dist/block'.($isDebugMode ? '.es5' : '.min');
-
-            $assetFile = $dist.'.asset.php';
-            $options = is_file($assetFile) ? ((array) require $assetFile) : [];
-
-            $autoloads[$signature] = $functions + [
-                // 'namespace' => $signature,
-                'script' => url($dist.'.js'),
-                'version' => $options['version'] ?? kksr('version'),
-                'attributes' => $attributes,
-                'dependencies' => array_merge($options['dependencies'] ?? [], $dependencies),
-            ];
+        if (! ($fileInfo->isDot() || $fileInfo->isFile())) {
+            $block = autoload_block($fileInfo->getPathname());
+            $autoloads[$block['name']] = $block;
         }
     }
 

@@ -9,18 +9,24 @@
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace Bhittani\StarRating\core\filters;
+namespace Bhittani\StarRating\functions;
 
 if (! defined('KK_STAR_RATINGS')) {
     http_response_code(404);
     exit();
 }
 
-/**
- * @param array<int,array<string,mixed>> $blocks
- * @return array<int,array<string,mixed>>
- */
-function blocks(array $blocks): array
+function autoload_array(string $filepath): array
 {
-    return $blocks;
+    if (! is_file($filepath)) {
+        return [];
+    }
+
+    $maybeArray = require $filepath;
+
+    if (! is_array($maybeArray)) {
+        return [];
+    }
+
+    return $maybeArray;
 }
