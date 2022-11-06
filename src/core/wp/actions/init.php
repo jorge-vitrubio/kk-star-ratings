@@ -20,7 +20,7 @@ if (! defined('KK_STAR_RATINGS')) {
 
 function init(): void
 {
-    load_plugin_textdomain(kksr('domain'), false, kksr('signature').'/languages');
+    load_plugin_textdomain(kksr('domain'), false, dirname(kksr('signature')).'/languages');
 
     register_blocks();
 }
