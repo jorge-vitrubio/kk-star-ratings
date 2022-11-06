@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [5.4.0] - 2022-11-06
+
+### Added
+-   Custom blocks support.
+
+### Fixed
+-   Text domain path was incorrect in `load_plugin_textdomain`.
+-   Use single quotes in payload html attribute (#124).
+
 ## [5.3.4] - 2022-09-06
 
 ### Fixed
