@@ -26,15 +26,16 @@ function autoload_block(string $fileOrDir): array
         return [];
     }
 
-    // if (is_file($fileOrDir)) {
-    //     return [];
-    // }
-
     $path = rtrim($fileOrDir, '\/').'/';
     $blockFile = "{$path}block.php";
 
+    if (is_file($fileOrDir)) {
+        $path = dirname($fileOrDir).'/';
+        $blockFile = $fileOrDir;
+    }
+
     if (! is_file($blockFile)) {
-        // Could not locate the block.php file.
+        // Could not locate the block file.
         return [];
     }
 
