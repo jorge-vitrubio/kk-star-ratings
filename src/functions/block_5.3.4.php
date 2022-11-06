@@ -17,10 +17,7 @@ if (! defined('KK_STAR_RATINGS')) {
 }
 
 /**
- * @param string $namespace
  * @param array<string,mixed> $payload
- * @param null|string $slug
- * @return string
  */
 function block_5_3_4(string $namespace, array $payload = [], string $slug = null): string
 {

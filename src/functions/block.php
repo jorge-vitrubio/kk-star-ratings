@@ -19,7 +19,7 @@ if (! defined('KK_STAR_RATINGS')) {
 /**
  * @param string|array<string,mixed> $blockOrDeprecatedNamespace
  * @param array<string,mixed> $deprecatedPayload
- * @param null|string $deprecatedSlug
+ *
  * @return string|array<string,mixed>
  */
 function block($blockOrDeprecatedNamespace, array $deprecatedPayload = [], string $deprecatedSlug = null)
@@ -80,7 +80,7 @@ function block($blockOrDeprecatedNamespace, array $deprecatedPayload = [], strin
     // Construct meta.
     $block['meta'] = array_filter([
         'title' => $block['title'] ?? null,
-        'api_version' => $block['api_version'] ?? null
+        'api_version' => $block['api_version'] ?? null,
     ]) + ($block['meta'] ?? []) + [
         'api_version' => 2,
     ];

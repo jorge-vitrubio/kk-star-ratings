@@ -17,8 +17,9 @@ if (! defined('KK_STAR_RATINGS')) {
 }
 
 /**
- * @param array<int,array<string,mixed>> $blocks
- * @return array<int,array<string,mixed>>
+ * @param array<string,array<string,mixed>> $blocks
+ *
+ * @return array<string,array<string,mixed>>
  */
 function blocks(array $blocks): array
 {
