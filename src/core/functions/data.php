@@ -18,7 +18,7 @@ if (! defined('KK_STAR_RATINGS')) {
 
 function data(array $payload = []): array
 {
-    $payload['title'] = esc_html($payload['title'] ?? get_post_field('post_title'));
+    $payload['title'] = esc_html($payload['title'] ?? get_post_field('post_title', $payload['id'] ?? null));
 
     return filter('payload', $payload);
 }
