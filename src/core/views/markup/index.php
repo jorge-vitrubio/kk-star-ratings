@@ -30,5 +30,7 @@
     <?php if (! $legendonly) { ?>
         <?php echo $__view('markup/stars.php'); ?>
     <?php } ?>
-    <?php echo $__view('markup/legend.php'); ?>
+    <?php if (! $starsonly) { ?>
+        <?php echo $__view('markup/legend.php'); ?>
+    <?php } ?>
 </div>

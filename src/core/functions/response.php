@@ -20,7 +20,7 @@ function response(array $payload): string
 {
     $payload += array_fill_keys([
         'align', 'class', 'count', 'id', 'legendonly', 'readonly',
-        'reference', 'score', 'slug', 'valign',
+        'reference', 'score', 'slug', 'starsonly', 'valign',
     ], '') + [
         'best' => option('stars'),
         'gap' => option('gap'),
@@ -35,6 +35,7 @@ function response(array $payload): string
     $payload['legendonly'] = (bool) $payload['legendonly'];
     $payload['readonly'] = (bool) $payload['readonly'];
     $payload['size'] = (int) $payload['size'];
+    $payload['starsonly'] = (bool) $payload['starsonly'];
 
     $payload = filter('payload', $payload);
 

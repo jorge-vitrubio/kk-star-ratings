@@ -25,7 +25,8 @@ function kk_star_ratings($attrs, string $contents, string $tag): string
 {
     $defaults = array_fill_keys([
         'align', 'best', 'class', 'count', 'gap', 'greet', 'id',
-        'legend', 'legendonly', 'readonly', 'score', 'size', 'slug', 'valign',
+        'legend', 'legendonly', 'readonly', 'score', 'size',
+        'slug', 'starsonly', 'valign',
     ], '') + [
         'ignore' => false,
         'reference' => 'shortcode',
