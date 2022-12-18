@@ -1,7 +1,7 @@
 <!-- only:wp>
 === kk Star Ratings ===
 Contributors: bhittani
-Donate link: https://github.com/kamalkhan/kk-star-ratings
+Donate link: https://www.buymeacoffee.com/bhittani
 Tags: star ratings, votings, rate posts, ajax ratings, infinite stars, unlimited stars, google rich snippets, structured data, SEO, SERP
 Requires at least: 5.0
 Requires PHP: 7.2
