@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [5.4.3] - 2023-03-30
+
+### Updated
+-   Bumped WordPress to v6.2.
+-   Bumped freemius to v2.5.6.
+### Fixed
+-   `kk_star_ratings()` helper function has been fixed.
+
 ## [5.4.2] - 2022-12-18
 
 ### Added
