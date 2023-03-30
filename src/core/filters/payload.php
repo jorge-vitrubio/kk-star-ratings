@@ -22,15 +22,23 @@ if (! defined('KK_STAR_RATINGS')) {
 
 function payload(array $payload): array
 {
-    $payload['id'] = (int) ($payload['id'] ?? get_post_field('ID'));
+    $payload['id'] = (int) ($payload['id'] ?? null);
 
     if (! $payload['id']) {
-        if (! ($payload['id'] = get_the_ID())) {
-            $url = home_url(add_query_arg([]));
+        $payload['id'] = (int) get_post_field('ID');
+    }
+
+    if (! ($payload['id'])) {
+        $url = home_url(add_query_arg([]));
+
+        global $wp_rewrite;
+
+        if ($wp_rewrite) {
             $payload['id'] = url_to_postid($url);
         }
     }
 
+    $payload['title'] = esc_html($payload['title'] ?? get_post_field('post_title', $payload['id'] ?: null));
     $payload['slug'] = $payload['slug'] ?? 'default';
     $payload['best'] = $payload['best'] ?? option('stars');
 

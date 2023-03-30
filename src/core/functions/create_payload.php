@@ -20,9 +20,17 @@ if (! defined('KK_STAR_RATINGS')) {
  * @param int|string|array|object|WP_POST|null $idOrPostOrPayload
  * @return array<string,mixed>
  */
-function data($idOrPostOrPayload = null): array
+function create_payload($idOrPostOrPayload = null): array
 {
-    $payload = create_payload($idOrPostOrPayload);
+    $payload = [];
 
-    return filter('payload', $payload);
+    if (is_array($idOrPostOrPayload)) {
+        $payload = $idOrPostOrPayload;
+    } elseif (is_object($idOrPostOrPayload)) {
+        $payload['id'] = $idOrPostOrPayload->ID;
+    } elseif ($idOrPostOrPayload) {
+        $payload['id'] = $idOrPostOrPayload;
+    }
+
+    return $payload;
 }

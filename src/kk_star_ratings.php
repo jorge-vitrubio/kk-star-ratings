@@ -9,24 +9,13 @@
  * the LICENSE file that was distributed with this source code.
  */
 
+use function Bhittani\StarRating\core\functions\create_payload;
 use function Bhittani\StarRating\functions\to_shortcode;
 
 /** @param int|string|array|object|WP_POST|null $idOrPostOrPayload */
 function kk_star_ratings($idOrPostOrPayload = null): string
 {
-    $payload = [];
-
-    if (is_array($idOrPostOrPayload)) {
-        $payload = $idOrPostOrPayload;
-    }
-
-    if (is_object($idOrPostOrPayload)) {
-        $payload['id'] = $idOrPostOrPayload->ID;
-    }
-
-    if ($idOrPostOrPayload) {
-        $payload['id'] = $idOrPostOrPayload;
-    }
+    $payload = create_payload($idOrPostOrPayload);
 
     $payload['reference'] = 'template';
 
