@@ -18,6 +18,7 @@ if (! defined('KK_STAR_RATINGS')) {
 
 /**
  * @param int|string|array|object|WP_POST|null $idOrPostOrPayload
+ *
  * @return array<string,mixed>
  */
 function create_payload($idOrPostOrPayload = null): array
