@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [5.4.4] - 2023-06-29
+
+### Fixed
+-   Lookup IP addresses in alternative headers only when admin/user explicitly allows this as a strategy. Previously this was implicity done without the consent of the admin/user.
+
 ## [5.4.3] - 2023-03-30
 
 ### Updated
