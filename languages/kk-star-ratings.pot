@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: kk Star Ratings 5.4.3\n"
+"Project-Id-Version: kk Star Ratings 5.4.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/kk-star-ratings\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-03-30T16:16:16+00:00\n"
+"POT-Creation-Date: 2023-06-29T09:31:03+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: kk-star-ratings\n"
@@ -222,45 +222,54 @@ msgctxt "Label"
 msgid "Unique votes (based on IP Address)"
 msgstr ""
 
-#: src/core/views/admin/tabs/general.php:53
+#: src/core/views/admin/tabs/general.php:45
+msgctxt "Label"
+msgid "Lookup IP addresses in alternative headers"
+msgstr ""
+
+#: src/core/views/admin/tabs/general.php:49
+msgid "This could result into manipulation of the ratings, bypassing IP protection"
+msgstr ""
+
+#: src/core/views/admin/tabs/general.php:61
 #: src/core/views/admin/tabs/rich-snippets.php:17
 msgctxt "Label"
 msgid "Status"
 msgstr ""
 
-#: src/core/views/admin/tabs/general.php:58
+#: src/core/views/admin/tabs/general.php:66
 msgctxt "Label"
 msgid "Active"
 msgstr ""
 
-#: src/core/views/admin/tabs/general.php:61
+#: src/core/views/admin/tabs/general.php:69
 msgid "Globally activate/deactivate the star ratings."
 msgstr ""
 
-#: src/core/views/admin/tabs/general.php:69
+#: src/core/views/admin/tabs/general.php:77
 msgctxt "Label"
 msgid "Strategies"
 msgstr ""
 
-#: src/core/views/admin/tabs/general.php:81
+#: src/core/views/admin/tabs/general.php:131
 msgid "Select the voting strategies."
 msgstr ""
 
-#: src/core/views/admin/tabs/general.php:89
+#: src/core/views/admin/tabs/general.php:139
 msgctxt "Label"
 msgid "Locations"
 msgstr ""
 
-#: src/core/views/admin/tabs/general.php:101
+#: src/core/views/admin/tabs/general.php:151
 msgid "Star ratings will be auto-embedded for the selected locations. You may still manually allow star ratings for unselected/other locations. E.g. Using %s in your theme/template file(s)."
 msgstr ""
 
-#: src/core/views/admin/tabs/general.php:109
+#: src/core/views/admin/tabs/general.php:159
 msgctxt "Label"
 msgid "Exclude Categories"
 msgstr ""
 
-#: src/core/views/admin/tabs/general.php:121
+#: src/core/views/admin/tabs/general.php:171
 msgid "The posts belonging to the selected categories will not auto-embed the star ratings. You may still manually show the star ratings. E.g. Using %s in your theme/template file(s)."
 msgstr ""
 
