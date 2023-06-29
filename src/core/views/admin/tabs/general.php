@@ -1,5 +1,7 @@
 <?php
 
+use function Bhittani\StarRating\core\functions\option;
+
     if (! defined('KK_STAR_RATINGS')) {
         http_response_code(404);
         exit();
@@ -41,6 +43,14 @@
         'archives' => _x('Allow voting in archives', 'Label', 'kk-star-ratings'),
         'guests' => _x('Allow guests to vote', 'Label', 'kk-star-ratings'),
         'unique' => _x('Unique votes (based on IP Address)', 'Label', 'kk-star-ratings'),
+        'alt_ip_headers' => [
+            'label' => _x('Lookup IP addresses in alternative headers', 'Label', 'kk-star-ratings'),
+            'help_enabled' => [
+                'color' => '#d5a020',
+                'status' => 'Warning',
+                'content' => __('This could result into manipulation of the ratings, bypassing IP protection', 'kk-star-ratings'),
+            ],
+        ],
     ];
 ?>
 
@@ -69,13 +79,55 @@
                 <?php echo esc_html_x('Strategies', 'Label', 'kk-star-ratings'); ?>
             </th>
             <td>
-                <?php foreach ($availableStrategies as $value => $label) { ?>
-                    <p>
-                        <label>
-                            <input type="checkbox" name="<?php echo esc_attr($strategies[0]); ?>[]" value="<?php echo esc_attr($value); ?>"<?php echo (in_array($value, $strategies[1])) ? ' checked="checked"' : ''; ?>>
-                            <?php echo esc_html($label); ?>
-                        </label>
-                    </p>
+                <?php foreach ($availableStrategies as $value => $labelOrOptions) { ?>
+                    <div x-data="{ enabled: <?php echo in_array($value, $strategies[1]) ? 'true' : 'false'; ?> }">
+                        <?php
+                            $options = $labelOrOptions;
+                            if (! is_array($labelOrOptions)) {
+                                $options = ['label' => $labelOrOptions];
+                            }
+                        ?>
+                        <p>
+                            <label>
+                                <input type="checkbox"
+                                    name="<?php echo esc_attr($strategies[0]); ?>[]"
+                                    value="<?php echo esc_attr($value); ?>"
+                                    <?php echo in_array($value, $strategies[1]) ? 'checked="checked"' : ''; ?>
+                                    @change="function (e) { enabled = e.target.checked; }">
+                                <?php echo esc_html($options['label'] ?? ''); ?>
+                            </label>
+                        </p>
+
+                        <!-- Help -->
+                        <?php if ($options['help'] ?? null) : ?>
+                        <?php
+                            $help = $options['help'];
+                            if (! is_array($help)) {
+                                $help = ['content' => $help];
+                            }
+                        ?>
+                        <p style="<?php echo ($help['color'] ?? null) ? "color:{$help['color']};" : ''; ?>">
+                            <?php echo ($help['status'] ?? null) ? "<b>{$help['status']}:</b>" : ''; ?>
+                            <i><?php echo esc_html($help['content']); ?></i>.
+                        </p>
+                        <?php endif; ?>
+
+                        <!-- Help (enabled) -->
+                        <div x-show="enabled">
+                            <?php if ($options['help_enabled'] ?? null) : ?>
+                            <?php
+                                $help = $options['help_enabled'];
+                                if (! is_array($help)) {
+                                    $help = ['content' => $help];
+                                }
+                            ?>
+                            <p style="<?php echo ($help['color'] ?? null) ? "color:{$help['color']};" : ''; ?>">
+                                <?php echo ($help['status'] ?? null) ? "<b>{$help['status']}:</b>" : ''; ?>
+                                <i><?php echo esc_html($help['content']); ?></i>.
+                            </p>
+                            <?php endif; ?>
+                        </div>
+                    </div>
                 <?php } ?>
                 <p class="description" style="max-width: 22rem; margin-top: .75rem;">
                     <?php echo esc_html__('Select the voting strategies.', 'kk-star-ratings'); ?>
