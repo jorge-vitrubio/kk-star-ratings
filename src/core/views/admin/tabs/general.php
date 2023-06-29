@@ -1,7 +1,5 @@
 <?php
 
-use function Bhittani\StarRating\core\functions\option;
-
     if (! defined('KK_STAR_RATINGS')) {
         http_response_code(404);
         exit();
@@ -99,7 +97,7 @@ use function Bhittani\StarRating\core\functions\option;
                         </p>
 
                         <!-- Help -->
-                        <?php if ($options['help'] ?? null) : ?>
+                        <?php if ($options['help'] ?? null) { ?>
                         <?php
                             $help = $options['help'];
                             if (! is_array($help)) {
@@ -110,11 +108,11 @@ use function Bhittani\StarRating\core\functions\option;
                             <?php echo ($help['status'] ?? null) ? "<b>{$help['status']}:</b>" : ''; ?>
                             <i><?php echo esc_html($help['content']); ?></i>.
                         </p>
-                        <?php endif; ?>
+                        <?php } ?>
 
                         <!-- Help (enabled) -->
                         <div x-show="enabled">
-                            <?php if ($options['help_enabled'] ?? null) : ?>
+                            <?php if ($options['help_enabled'] ?? null) { ?>
                             <?php
                                 $help = $options['help_enabled'];
                                 if (! is_array($help)) {
@@ -125,7 +123,7 @@ use function Bhittani\StarRating\core\functions\option;
                                 <?php echo ($help['status'] ?? null) ? "<b>{$help['status']}:</b>" : ''; ?>
                                 <i><?php echo esc_html($help['content']); ?></i>.
                             </p>
-                            <?php endif; ?>
+                            <?php } ?>
                         </div>
                     </div>
                 <?php } ?>
