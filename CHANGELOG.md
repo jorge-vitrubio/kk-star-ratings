@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [5.4.6] - 2023-10-21
+
+### Fixed
+- Race condition during votes has been fixed.
+- Only published posts can be rated.
+
+### Updated
+- Bump Freemius SDK.
+
 ## [5.4.5] - 2023-07-05
 
 ### Updated
