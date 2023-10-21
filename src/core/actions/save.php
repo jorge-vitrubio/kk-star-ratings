@@ -25,14 +25,15 @@ function save(float $outOf5, int $id, string $slug, array $payload): void
     $count = (int) filter('count', null, $id, $slug);
     $ratings = (float) filter('ratings', null, $id, $slug);
     $legacySlug = $slug == 'default' ? '' : "_{$slug}";
+    $fingerprint = filter('fingerprint', null, $id, $slug);
 
     // For safe keeping, ensure we have not already casted this vote.
-    if ($count == ((int) $payload['count'] ?? 0)
+    if (get_post_status($id) === 'publish'
+        && $count == ((int) $payload['count'] ?? 0)
         && $ratings == ((float) $payload['ratings'] ?? 0)
     ) {
         $newCount = $count + 1;
         $newRatings = $ratings + $outOf5;
-        $fingerprint = filter('fingerprint', null, $id, $slug);
         $shouldBeUnique = in_array('unique', (array) option('strategies'));
 
         post_meta($id, [
